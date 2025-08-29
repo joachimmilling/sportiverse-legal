@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportiverse - Legal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #20124D 0%, #141035 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: 700;
+            color: #FF00FF;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+        }
+        
+        .tagline {
+            color: #00D4FF;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .legal-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .legal-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 0, 255, 0.2);
+        }
+        
+        .legal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 0, 255, 0.3);
+        }
+        
+        .legal-card h2 {
+            color: #FF00FF;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .legal-card p {
+            color: #9491A4;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        
+        .legal-card a {
+            display: inline-block;
+            background: #FF00FF;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .legal-card a:hover {
+            background: #d400d4;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 20px;
+            color: #9491A4;
+            font-size: 14px;
+        }
+        
+        .last-updated {
+            margin-top: 10px;
+            opacity: 0.7;
+        }
+        
+        /* Decorative elements */
+        .decor-circle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 0, 255, 0.1), transparent);
+            top: -100px;
+            right: -100px;
+        }
+        
+        .circle-2 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.08), transparent);
+            bottom: -50px;
+            left: -100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="decor-circle circle-1"></div>
+    <div class="decor-circle circle-2"></div>
+    
+    <div class="container">
+        <header>
+            <h1 class="logo">sportiverse</h1>
+            <p class="tagline">Legal & Privacy Center</p>
+        </header>
+        
+        <div class="legal-links">
+            <div class="legal-card">
+                <h2>Terms & Conditions</h2>
+                <p>Read our terms of service and understand your rights and responsibilities</p>
+                <a href="terms.html">View Terms</a>
+            </div>
+            
+            <div class="legal-card">
+                <h2>Privacy Policy</h2>
+                <p>Learn how we collect, use, and protect your personal information</p>
+                <a href="privacy.html">View Privacy</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2024 Sportiverse. All rights reserved.</p>
+            <p class="last-updated">Last updated: December 2024</p>
+        </div>
+    </div>
+</body>
+</html>
