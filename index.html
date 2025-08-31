@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sportiverse - Where Teams Connect, Compete & Grow</title>
+    <title>Sportiverse - Sports Management Platform</title>
     <style>
         * {
             margin: 0;
@@ -12,10 +12,11 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: #0C120C;
             color: #ffffff;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
         
         /* Navigation */
@@ -26,62 +27,68 @@
             z-index: 1000;
             background: rgba(12, 18, 12, 0.95);
             backdrop-filter: blur(10px);
-            padding: 20px 0;
+            padding: 18px 0;
             transition: all 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         nav.scrolled {
-            padding: 15px 0;
+            padding: 14px 0;
             background: rgba(12, 18, 12, 0.98);
         }
         
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
         .logo {
-            font-size: 32px;
-            font-weight: 700;
+            font-size: 24px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
             color: #087F8C;
-            letter-spacing: 1px;
         }
         
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 36px;
             align-items: center;
         }
         
         .nav-links a {
-            color: #FEFEE3;
+            color: rgba(255, 255, 255, 0.85);
             text-decoration: none;
             transition: color 0.3s;
             font-weight: 500;
+            font-size: 15px;
         }
         
         .nav-links a:hover {
-            color: #087F8C;
+            color: #ffffff;
         }
         
         .cta-button {
-            background: linear-gradient(135deg, #087F8C, #0A6A75);
+            background: #087F8C;
             color: white;
-            padding: 12px 28px;
-            border-radius: 25px;
+            padding: 10px 24px;
+            border-radius: 6px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(8, 127, 140, 0.3);
+            font-size: 15px;
         }
         
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(8, 127, 140, 0.4);
+            background: #0A6A75;
+            transform: translateY(-1px);
         }
         
         /* Hero Section */
@@ -92,7 +99,7 @@
             justify-content: center;
             position: relative;
             background: linear-gradient(135deg, #0C120C 0%, #1A2A1A 100%);
-            padding: 100px 20px 50px;
+            padding: 120px 24px 80px;
         }
         
         .hero-content {
@@ -100,73 +107,6 @@
             text-align: center;
             z-index: 2;
             position: relative;
-        }
-        
-        .hero h1 {
-            font-size: clamp(48px, 8vw, 80px);
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #087F8C, #D68C45);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.1;
-        }
-        
-        .hero-subtitle {
-            font-size: clamp(20px, 3vw, 28px);
-            color: #FFC9B9;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-        
-        .hero-description {
-            font-size: 18px;
-            color: #FEFEE3;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .primary-btn {
-            background: linear-gradient(135deg, #087F8C, #0A6A75);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 18px;
-            transition: all 0.3s;
-            box-shadow: 0 6px 20px rgba(8, 127, 140, 0.3);
-        }
-        
-        .primary-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(8, 127, 140, 0.4);
-        }
-        
-        .secondary-btn {
-            background: transparent;
-            color: #D68C45;
-            padding: 16px 40px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 18px;
-            border: 2px solid #D68C45;
-            transition: all 0.3s;
-        }
-        
-        .secondary-btn:hover {
-            background: #D68C45;
-            color: white;
         }
         
         /* Animated Background */
@@ -183,7 +123,7 @@
         .float {
             position: absolute;
             border-radius: 50%;
-            opacity: 0.1;
+            opacity: 0.05;
             animation: float 20s infinite;
         }
         
@@ -199,7 +139,7 @@
         .float-2 {
             width: 200px;
             height: 200px;
-            background: radial-gradient(circle, #D68C45, transparent);
+            background: radial-gradient(circle, #087F8C, transparent);
             top: 60%;
             right: 10%;
             animation-delay: 5s;
@@ -208,7 +148,7 @@
         .float-3 {
             width: 150px;
             height: 150px;
-            background: radial-gradient(circle, #FFC9B9, transparent);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
             bottom: 10%;
             left: 30%;
             animation-delay: 10s;
@@ -220,97 +160,167 @@
             66% { transform: translate(-20px, 20px) rotate(240deg); }
         }
         
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 64px);
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #ffffff;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero h1 .accent {
+            color: #087F8C;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(18px, 2.5vw, 22px);
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+        
+        .hero-description {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 600px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .primary-btn {
+            background: #087F8C;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .primary-btn:hover {
+            background: #0A6A75;
+            transform: translateY(-2px);
+        }
+        
+        .secondary-btn {
+            background: transparent;
+            color: #ffffff;
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .secondary-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
         /* Features Section */
         .features {
-            padding: 100px 20px;
-            background: linear-gradient(180deg, #0C120C 0%, #1A2A1A 50%, #0C120C 100%);
+            padding: 100px 24px;
+            background: #0C120C;
         }
         
         .section-title {
             text-align: center;
-            font-size: clamp(36px, 5vw, 48px);
-            margin-bottom: 20px;
-            color: #087F8C;
+            font-size: clamp(32px, 4vw, 42px);
+            margin-bottom: 16px;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
         
         .section-subtitle {
             text-align: center;
-            font-size: 20px;
-            color: #FFC9B9;
-            margin-bottom: 60px;
-            font-weight: 300;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 64px;
+            font-weight: 400;
         }
         
         .features-grid {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
         }
         
         .feature-card {
-            background: rgba(254, 254, 227, 0.02);
-            border: 1px solid rgba(8, 127, 140, 0.2);
-            border-radius: 20px;
-            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 36px 32px;
             transition: all 0.3s;
             position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #087F8C, #D68C45);
         }
         
         .feature-card:hover {
-            transform: translateY(-5px);
-            background: rgba(254, 254, 227, 0.04);
-            box-shadow: 0 10px 30px rgba(8, 127, 140, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(8, 127, 140, 0.3);
+            transform: translateY(-2px);
         }
         
         .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #087F8C, #0A6A75);
-            border-radius: 15px;
+            width: 48px;
+            height: 48px;
+            background: rgba(8, 127, 140, 0.15);
+            border-radius: 8px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            font-size: 28px;
+            position: relative;
+        }
+        
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #087F8C;
+            fill: none;
+            stroke-width: 2;
         }
         
         .feature-card h3 {
-            color: #FEFEE3;
-            margin-bottom: 15px;
-            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 12px;
+            font-size: 20px;
+            font-weight: 600;
         }
         
         .feature-card p {
-            color: #FFC9B9;
+            color: rgba(255, 255, 255, 0.65);
             line-height: 1.6;
-            opacity: 0.9;
+            font-size: 15px;
         }
         
         /* How It Works */
         .how-it-works {
-            padding: 100px 20px;
-            background: #0C120C;
+            padding: 100px 24px;
+            background: rgba(255, 255, 255, 0.02);
         }
         
         .steps-container {
             max-width: 1000px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 48px;
         }
         
         .step {
@@ -319,35 +329,37 @@
         }
         
         .step-number {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #D68C45, #C67A3D);
+            width: 64px;
+            height: 64px;
+            background: rgba(8, 127, 140, 0.1);
+            border: 2px solid #087F8C;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 32px;
-            font-weight: bold;
-            color: white;
-            box-shadow: 0 8px 20px rgba(214, 140, 69, 0.3);
+            margin: 0 auto 24px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #087F8C;
         }
         
         .step h3 {
-            color: #FEFEE3;
-            margin-bottom: 10px;
-            font-size: 22px;
+            color: #ffffff;
+            margin-bottom: 12px;
+            font-size: 20px;
+            font-weight: 600;
         }
         
         .step p {
-            color: #FFC9B9;
-            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 15px;
+            line-height: 1.6;
         }
         
         /* Benefits Section */
         .benefits {
-            padding: 100px 20px;
-            background: linear-gradient(180deg, #0C120C 0%, #1A2A1A 100%);
+            padding: 100px 24px;
+            background: #0C120C;
         }
         
         .benefits-tabs {
@@ -358,32 +370,37 @@
         .tab-buttons {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 50px;
+            gap: 12px;
+            margin-bottom: 48px;
             flex-wrap: wrap;
         }
         
         .tab-button {
-            padding: 15px 30px;
+            padding: 10px 24px;
             background: transparent;
-            border: 2px solid #087F8C;
-            color: #087F8C;
-            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.7);
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 15px;
+            font-weight: 500;
             transition: all 0.3s;
         }
         
         .tab-button.active {
-            background: linear-gradient(135deg, #087F8C, #0A6A75);
+            background: #087F8C;
             color: white;
-            border-color: transparent;
+            border-color: #087F8C;
+        }
+        
+        .tab-button:hover:not(.active) {
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
         }
         
         .tab-content {
             display: none;
-            animation: fadeIn 0.5s;
+            animation: fadeIn 0.4s;
         }
         
         .tab-content.active {
@@ -391,63 +408,72 @@
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         .benefit-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
         }
         
         .benefit-item {
             display: flex;
             align-items: start;
-            gap: 15px;
+            gap: 16px;
         }
         
         .benefit-check {
-            width: 24px;
-            height: 24px;
-            background: #087F8C;
-            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #087F8C;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            margin-top: 3px;
+            margin-top: 2px;
+        }
+        
+        .benefit-check::after {
+            content: '✓';
+            color: #087F8C;
+            font-size: 12px;
+            font-weight: bold;
         }
         
         .benefit-text h4 {
-            color: #FEFEE3;
-            margin-bottom: 5px;
-            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 6px;
+            font-size: 17px;
+            font-weight: 600;
         }
         
         .benefit-text p {
-            color: #FFC9B9;
+            color: rgba(255, 255, 255, 0.6);
             font-size: 14px;
-            opacity: 0.9;
+            line-height: 1.5;
         }
         
         /* CTA Section */
         .cta-section {
-            padding: 100px 20px;
-            background: linear-gradient(135deg, #087F8C, #D68C45);
+            padding: 100px 24px;
+            background: linear-gradient(135deg, #087F8C 0%, #0A6A75 100%);
             text-align: center;
         }
         
         .cta-section h2 {
-            font-size: clamp(36px, 5vw, 48px);
+            font-size: clamp(32px, 4vw, 42px);
             color: white;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+            font-weight: 600;
         }
         
         .cta-section p {
-            font-size: 20px;
+            font-size: 18px;
             color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 40px;
+            margin-bottom: 36px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -456,19 +482,20 @@
         .cta-section .primary-btn {
             background: white;
             color: #087F8C;
-            font-size: 20px;
-            padding: 18px 50px;
+            font-size: 16px;
+            padding: 14px 40px;
+            font-weight: 600;
         }
         
         .cta-section .primary-btn:hover {
-            background: #FEFEE3;
+            background: rgba(255, 255, 255, 0.95);
         }
         
         /* Footer */
         footer {
             background: #0C120C;
-            padding: 60px 20px 30px;
-            border-top: 1px solid rgba(8, 127, 140, 0.2);
+            padding: 64px 24px 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
         
         .footer-content {
@@ -476,34 +503,44 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 48px;
+            margin-bottom: 48px;
         }
         
         .footer-column h3 {
-            color: #087F8C;
+            color: #ffffff;
             margin-bottom: 20px;
-            font-size: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         
         .footer-column a {
             display: block;
-            color: #FFC9B9;
+            color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             transition: color 0.3s;
+            font-size: 14px;
         }
         
         .footer-column a:hover {
-            color: #FEFEE3;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+            font-size: 14px;
         }
         
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(8, 127, 140, 0.1);
-            color: #FFC9B9;
-            opacity: 0.7;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
         }
         
         /* Mobile Menu */
@@ -512,12 +549,13 @@
             flex-direction: column;
             gap: 4px;
             cursor: pointer;
+            padding: 4px;
         }
         
         .mobile-menu-toggle span {
-            width: 25px;
+            width: 20px;
             height: 2px;
-            background: #087F8C;
+            background: #ffffff;
             transition: all 0.3s;
         }
         
@@ -538,7 +576,16 @@
             
             .primary-btn, .secondary-btn {
                 width: 100%;
-                max-width: 300px;
+                max-width: 280px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps-container {
+                grid-template-columns: 1fr;
+                gap: 36px;
             }
         }
     </style>
@@ -547,12 +594,11 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">sportiverse</div>
+            <div class="logo">sportiverse<span>.</span></div>
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#how-it-works">How It Works</a>
                 <a href="#benefits">Benefits</a>
-                <a href="https://github.com/yourusername/sportiverse" target="_blank">GitHub</a>
                 <a href="#" class="cta-button">Get Started</a>
             </div>
             <div class="mobile-menu-toggle">
@@ -571,11 +617,11 @@
             <div class="float float-3"></div>
         </div>
         <div class="hero-content">
-            <h1>Where Teams Connect, Compete & Grow</h1>
-            <p class="hero-subtitle">The Complete Sports Management Platform</p>
+            <h1>The Complete <span class="accent">Sports Management</span> Platform</h1>
+            <p class="hero-subtitle">Connect. Compete. Grow.</p>
             <p class="hero-description">
                 Organize matches, manage clubs, track statistics, and build your sports community. 
-                Everything you need to take your team from grassroots to greatness.
+                A unified platform for teams, leagues, and athletes.
             </p>
             <div class="hero-buttons">
                 <a href="#" class="primary-btn">Download App</a>
@@ -586,84 +632,122 @@
     
     <!-- Features Section -->
     <section class="features" id="features">
-        <h2 class="section-title">Powerful Features for Every Team</h2>
-        <p class="section-subtitle">Everything you need in one unified platform</p>
+        <h2 class="section-title">Core Features</h2>
+        <p class="section-subtitle">Everything you need in one platform</p>
         
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">🏟️</div>
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
                 <h3>Club Management</h3>
-                <p>Create and manage sports clubs with custom branding, member roles, and invitation systems. Build your team identity.</p>
+                <p>Create and manage sports clubs with custom branding, member roles, and structured hierarchies. Streamline your organization.</p>
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon">🏆</div>
-                <h3>League & Tournaments</h3>
-                <p>Organize leagues with automated standings, customizable formats, and season management. From local to professional.</p>
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="7"></circle>
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                    </svg>
+                </div>
+                <h3>Leagues & Tournaments</h3>
+                <p>Organize competitive structures with automated standings, customizable formats, and comprehensive season management.</p>
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon">⚽</div>
-                <h3>Match Organization</h3>
-                <p>Schedule matches, track real-time scores, log events, and maintain a single source of truth for all match details.</p>
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                </div>
+                <h3>Match Scheduling</h3>
+                <p>Schedule matches, track real-time scores, and maintain a single source of truth for all match-related information.</p>
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon">📊</div>
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                </div>
                 <h3>Statistics & Analytics</h3>
-                <p>Track player performance, team statistics, and personal fitness metrics. Make data-driven decisions.</p>
+                <p>Track performance metrics, analyze team statistics, and make data-driven decisions with comprehensive reporting.</p>
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon">🏃</div>
-                <h3>Training Sessions</h3>
-                <p>Schedule training, track attendance, and communicate with team members. Keep everyone synchronized.</p>
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </div>
+                <h3>Training Management</h3>
+                <p>Schedule sessions, track attendance, and monitor progress. Keep your team synchronized and prepared.</p>
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon">📱</div>
-                <h3>Social Features</h3>
-                <p>Share achievements, create posts, engage with your community. Build your sports network.</p>
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <h3>Documentation</h3>
+                <p>Maintain official records, generate reports, and ensure compliance with league regulations and standards.</p>
             </div>
         </div>
     </section>
     
     <!-- How It Works -->
     <section class="how-it-works" id="how-it-works">
-        <h2 class="section-title">Get Started in Minutes</h2>
-        <p class="section-subtitle">Join thousands of teams already using Sportiverse</p>
+        <h2 class="section-title">Get Started</h2>
+        <p class="section-subtitle">Join thousands of teams using Sportiverse</p>
         
         <div class="steps-container">
             <div class="step">
                 <div class="step-number">1</div>
-                <h3>Download & Sign Up</h3>
-                <p>Get the app on iOS or Android and create your free account</p>
+                <h3>Register</h3>
+                <p>Download the app and create your account in seconds</p>
             </div>
             
             <div class="step">
                 <div class="step-number">2</div>
-                <h3>Create or Join</h3>
-                <p>Start your own club or join existing ones with invite codes</p>
+                <h3>Organize</h3>
+                <p>Create or join clubs and start managing your team</p>
             </div>
             
             <div class="step">
                 <div class="step-number">3</div>
-                <h3>Organize & Play</h3>
-                <p>Schedule matches, manage training, and track everything</p>
+                <h3>Compete</h3>
+                <p>Schedule matches and participate in leagues</p>
             </div>
             
             <div class="step">
                 <div class="step-number">4</div>
-                <h3>Grow Together</h3>
-                <p>Build your community, improve performance, achieve goals</p>
+                <h3>Analyze</h3>
+                <p>Track performance and improve with data insights</p>
             </div>
         </div>
     </section>
     
     <!-- Benefits Section -->
     <section class="benefits" id="benefits">
-        <h2 class="section-title">Built for Everyone in Sports</h2>
-        <p class="section-subtitle">From players to coaches to league organizers</p>
+        <h2 class="section-title">Built for Everyone</h2>
+        <p class="section-subtitle">Tailored solutions for every role</p>
         
         <div class="benefits-tabs">
             <div class="tab-buttons">
@@ -676,31 +760,31 @@
             <div id="players" class="tab-content active">
                 <div class="benefit-list">
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Personal Statistics</h4>
-                            <p>Track your performance, minutes played, goals, and achievements</p>
+                            <p>Track your performance metrics and career progression</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Match Schedule</h4>
-                            <p>Never miss a game with personalized fixture calendars</p>
+                            <p>Access personalized fixture calendars and notifications</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Training Tracking</h4>
-                            <p>Monitor your fitness progress and training attendance</p>
+                            <p>Monitor fitness progress and training attendance</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
-                            <h4>Social Sharing</h4>
-                            <p>Share achievements and connect with teammates</p>
+                            <h4>Team Integration</h4>
+                            <p>Connect with teammates and stay informed</p>
                         </div>
                     </div>
                 </div>
@@ -709,31 +793,31 @@
             <div id="coaches" class="tab-content">
                 <div class="benefit-list">
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Team Management</h4>
-                            <p>Organize lineups, formations, and player rotations efficiently</p>
+                            <p>Organize lineups and manage player rotations efficiently</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Performance Analytics</h4>
-                            <p>Access detailed statistics to make informed decisions</p>
+                            <p>Access detailed statistics for informed decision-making</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Training Planning</h4>
                             <p>Schedule sessions and track player development</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Communication Hub</h4>
-                            <p>Keep everyone informed with team announcements</p>
+                            <p>Centralized team communication and announcements</p>
                         </div>
                     </div>
                 </div>
@@ -742,31 +826,31 @@
             <div id="clubs" class="tab-content">
                 <div class="benefit-list">
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Brand Identity</h4>
-                            <p>Customize club colors, logos, and home arena details</p>
+                            <p>Customize club profile with colors and branding</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Member Management</h4>
-                            <p>Role-based permissions and easy invitation system</p>
+                            <p>Role-based permissions and invitation systems</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Match Organization</h4>
-                            <p>Schedule fixtures and manage venue bookings</p>
+                            <p>Streamlined fixture scheduling and venue management</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Community Building</h4>
-                            <p>Grow your fanbase and engage supporters</p>
+                            <p>Engage members and grow your fanbase</p>
                         </div>
                     </div>
                 </div>
@@ -775,31 +859,31 @@
             <div id="leagues" class="tab-content">
                 <div class="benefit-list">
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Automated Standings</h4>
-                            <p>Real-time league tables with configurable point systems</p>
+                            <p>Real-time tables with configurable point systems</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Season Management</h4>
-                            <p>Organize multiple divisions and tournament formats</p>
+                            <p>Multiple divisions and tournament formats</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Club Registration</h4>
-                            <p>Easy club enrollment and management system</p>
+                            <p>Efficient enrollment and management systems</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
+                        <div class="benefit-check"></div>
                         <div class="benefit-text">
                             <h4>Official Records</h4>
-                            <p>Maintain verified match results and statistics</p>
+                            <p>Verified match results and comprehensive statistics</p>
                         </div>
                     </div>
                 </div>
@@ -810,17 +894,17 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <h2>Ready to Transform Your Game?</h2>
-        <p>Join the sports management revolution. Available on iOS and Android.</p>
-        <a href="#" class="primary-btn">Get Sportiverse Free</a>
+        <p>Join the digital revolution in sports management.</p>
+        <a href="#" class="primary-btn">Get Sportiverse</a>
     </section>
     
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <h3>sportiverse</h3>
-                <p style="color: #FFC9B9; margin-bottom: 20px;">The complete sports management platform for teams, clubs, and leagues.</p>
-                <p style="color: #FFC9B9; opacity: 0.7;">© 2025 Sportiverse</p>
+                <h3>Sportiverse</h3>
+                <p>The complete sports management platform for teams, clubs, and leagues.</p>
+                <p style="margin-top: 16px;">© 2025 Sportiverse AS</p>
             </div>
             
             <div class="footer-column">
@@ -828,14 +912,10 @@
                 <a href="#features">Features</a>
                 <a href="#how-it-works">How It Works</a>
                 <a href="#benefits">Benefits</a>
-                <a href="#">Pricing</a>
             </div>
             
             <div class="footer-column">
                 <h3>Company</h3>
-                <a href="#">About Us</a>
-                <a href="#">Blog</a>
-                <a href="#">Careers</a>
                 <a href="#">Contact</a>
             </div>
             
@@ -843,13 +923,11 @@
                 <h3>Legal</h3>
                 <a href="terms.html">Terms & Conditions</a>
                 <a href="privacy.html">Privacy Policy</a>
-                <a href="#">Cookie Policy</a>
-                <a href="#">GDPR</a>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>Made with ❤️ for the sports community | Oslo, Norway</p>
+            <p>Oslo, Norway</p>
         </div>
     </footer>
     
