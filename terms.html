@@ -12,105 +12,311 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #0C120C 0%, #0C120C 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0C120C;
             color: #ffffff;
             min-height: 100vh;
             line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
         }
         
-        .container {
-            max-width: 800px;
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(12, 18, 12, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 18px 0;
+            transition: all 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        nav.scrolled {
+            padding: 14px 0;
+            background: rgba(12, 18, 12, 0.98);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .logo span {
+            color: #087F8C;
         }
         
         .back-link {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            font-size: 15px;
             display: inline-flex;
             align-items: center;
-            color: #D68C45;
-            text-decoration: none;
-            margin: 20px 0;
-            transition: opacity 0.3s;
+            gap: 8px;
         }
         
         .back-link:hover {
-            opacity: 0.8;
+            color: #087F8C;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 140px 24px 60px;
+            background: linear-gradient(135deg, #0C120C 0%, #1A2A1A 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(8, 127, 140, 0.1), transparent);
+            top: -150px;
+            right: -150px;
+            border-radius: 50%;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
         }
         
         h1 {
-            color: #087F8C;
-            font-size: 42px;
-            margin-bottom: 10px;
+            font-size: clamp(42px, 6vw, 56px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #ffffff;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
         }
         
         .effective-date {
-            color: #FFC9B9;
-            margin-bottom: 40px;
-            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+            font-weight: 400;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        h2 {
-            color: #087F8C;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 24px;
+        .effective-date::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: #087F8C;
+            border-radius: 50%;
         }
         
-        h3 {
-            color: #D68C45;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-        
-        p, li {
-            color: #e0e0e0;
-            margin-bottom: 15px;
-        }
-        
-        ul {
-            margin-left: 30px;
-            margin-bottom: 20px;
+        /* Content Sections */
+        .content {
+            padding: 80px 24px;
+            max-width: 900px;
+            margin: 0 auto;
         }
         
         .section {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border-left: 3px solid #087F8C;
+            padding: 36px;
+            margin-bottom: 32px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #087F8C, rgba(8, 127, 140, 0.3));
+        }
+        
+        .section:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-2px);
+        }
+        
+        h2 {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+        
+        h3 {
+            color: #087F8C;
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 28px;
+            margin-bottom: 16px;
+        }
+        
+        p {
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 16px;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        ul {
+            margin: 20px 0 20px 24px;
+        }
+        
+        li {
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 12px;
+            font-size: 16px;
+            position: relative;
+            padding-left: 8px;
+        }
+        
+        li::marker {
+            color: #087F8C;
         }
         
         .important {
             background: rgba(8, 127, 140, 0.1);
+            border: 1px solid rgba(8, 127, 140, 0.3);
             border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid #087F8C;
+            padding: 24px;
+            margin: 24px 0;
+            position: relative;
+            animation: fadeIn 0.4s;
         }
         
+        .important strong {
+            color: #087F8C;
+            font-weight: 600;
+        }
+        
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(10px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        /* Contact Info */
         .contact-info {
-            background: rgba(214, 140, 69, 0.1);
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 40px;
+            background: linear-gradient(135deg, rgba(8, 127, 140, 0.1), rgba(8, 127, 140, 0.05));
+            border: 1px solid rgba(8, 127, 140, 0.2);
+            border-radius: 12px;
+            padding: 36px;
+            margin-top: 48px;
+            text-align: center;
+        }
+        
+        .contact-info h2 {
+            color: #087F8C;
+            margin-bottom: 24px;
+        }
+        
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
         }
         
         a {
-            color: #D68C45;
+            color: #087F8C;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+        
+        a:hover {
+            border-bottom-color: #087F8C;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0C120C;
+            padding: 48px 24px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 20px 40px;
+            }
+            
+            .section {
+                padding: 28px 20px;
+            }
+            
+            h1 {
+                font-size: 36px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            .contact-info {
+                padding: 28px 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="index.html" class="back-link">
-            ← Back to Home
-        </a>
-        
-        <h1>Terms & Conditions</h1>
-        <p class="effective-date">Effective Date: September 1, 2025</p>
-        
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">sportiverse<span>.</span></a>
+            <a href="index.html" class="back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Terms & Conditions</h1>
+            <p class="effective-date">Effective Date: September 1, 2025</p>
+        </div>
+    </section>
+    
+    <!-- Content -->
+    <div class="content">
         <div class="section">
             <h2>1. Acceptance of Terms</h2>
             <p>By accessing and using Sportiverse ("the App"), you agree to be bound by these Terms & Conditions. If you do not agree to these terms, please do not use the App.</p>
@@ -218,9 +424,30 @@
         <div class="contact-info">
             <h2>Contact Us</h2>
             <p>If you have questions about these Terms & Conditions, please contact us at:</p>
-            <p>Email: legal@sportiverse.no<br>
-            Address: Sportiverse AS, Oslo, Norway</p>
+            <p style="margin-top: 20px;">
+                <strong>Email:</strong> legal@sportiverse.no<br>
+                <strong>Address:</strong> Hagegata 1A, Oslo, Norway
+            </p>
         </div>
     </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Sportiverse. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
