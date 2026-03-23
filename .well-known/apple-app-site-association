@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "8G4MR9VC3Y.com.joachimmilling.sportiverse",
+        "paths": [
+          "/match/*",
+          "/club/*",
+          "/league/*",
+          "/profile/*",
+          "/session/*"
+        ]
+      }
+    ]
+  }
+}

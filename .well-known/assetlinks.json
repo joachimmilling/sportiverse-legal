@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.joachimmilling.sportiverse",
+      "sha256_cert_fingerprints": [
+        "74:AF:CD:27:FF:C1:79:5A:11:79:3B:E1:26:B0:A2:65:46:10:2A:4A:33:63:78:DB:0E:A2:28:CD:5D:8A:F6:9B"
+      ]
+    }
+  }
+]
