@@ -392,7 +392,7 @@
 
         <div class="section">
             <h2>What is retained, and why</h2>
-            <p>Some data is retained after account deletion. Where retention is required for legitimate purposes, your personal identifiers are removed and the data is anonymized.</p>
+            <p>Some data is retained after account deletion. Where retention is required for legitimate purposes, personal identifiers are removed or the data is anonymized — except for administrative audit logs, which retain user IDs for a short, fixed window before automatic deletion (see the Privacy Policy, section 4b).</p>
 
             <table>
                 <tr>
@@ -406,7 +406,12 @@
                     <td>Preserves the integrity of competitive history for clubs and leagues you participated in</td>
                 </tr>
                 <tr>
-                    <td>Security and abuse-prevention records</td>
+                    <td>Administrative audit logs (your UID if you were added, promoted, demoted, or removed by another admin)</td>
+                    <td>90 days from the action (auto-deleted by Firestore TTL)</td>
+                    <td>Fraud prevention, dispute resolution, platform integrity — see <a href="privacy.html#section-4b">Privacy Policy §4b</a></td>
+                </tr>
+                <tr>
+                    <td>Other security and abuse-prevention records</td>
                     <td>Limited retention period (see Privacy Policy)</td>
                     <td>Fraud prevention and abuse investigation</td>
                 </tr>
