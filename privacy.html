@@ -405,7 +405,8 @@
     <section class="hero">
         <div class="container">
             <h1>Privacy Policy</h1>
-            <p class="effective-date">Effective Date: April 21, 2026</p>
+            <p class="effective-date">Effective Date: April 25, 2026</p>
+            <p style="opacity: 0.85; font-size: 0.95em; margin-top: 8px;"><em>Updated April 25, 2026: clarified that administrative audit logs include the display name recorded at the time of each action, in addition to UIDs (see section 4b).</em></p>
         </div>
     </section>
     
@@ -544,10 +545,11 @@
             <ul>
                 <li>The user ID (UID) of the acting admin</li>
                 <li>The UID of the affected user (you, if you were added, promoted, demoted, or removed)</li>
+                <li>The display name of the acting admin and of the affected user, as shown at the time of the action</li>
                 <li>The action type (e.g. <em>member-added</em>, <em>admin-promoted</em>, <em>admin-demoted</em>, <em>member-removed</em>, <em>club-deleted</em>)</li>
                 <li>The club ID and a timestamp</li>
             </ul>
-            <p>We do <strong>not</strong> capture names, email addresses, profile content, or free-form notes in audit logs. Only UIDs and the action metadata above.</p>
+            <p>We do <strong>not</strong> capture email addresses, profile content, free-form notes, or any other personal data in audit logs. Display names are captured only as they were at the time of the action, so the entry remains readable for dispute resolution if the people involved later delete their accounts or change their names. While your account remains active, the audit-log viewer displays your <em>current</em> display name from your live profile — the captured name is shown only as a fallback after the original user record is no longer available.</p>
 
             <h3>Why we log this</h3>
             <p>The audit log exists purely to allow us to investigate disputes — for example, if a user reports they were kicked or demoted unfairly, or if we need to investigate coordinated abuse of admin powers. It is not a user-facing feature and is not used for profiling, analytics, advertising, or product development.</p>
@@ -556,10 +558,10 @@
             <p>Each audit-log entry is automatically deleted <strong>90 days</strong> after the action it records, enforced by a Firestore time-to-live policy. We cannot extend this window for individual entries.</p>
 
             <h3>Legal basis</h3>
-            <p>The processing relies on GDPR Article 6(1)(f) — legitimate interests pursued by Sportiverse (fraud prevention, dispute resolution, and platform integrity). We have balanced this against your rights and freedoms: the log contains UIDs only (data minimization), retention is short (90 days, TTL-enforced), and the data is not shared with third parties or combined with your profile for any other purpose.</p>
+            <p>The processing relies on GDPR Article 6(1)(f) — legitimate interests pursued by Sportiverse (fraud prevention, dispute resolution, and platform integrity). We have balanced this against your rights and freedoms: the log is limited to UIDs, action metadata, and the display names of the people directly involved, captured solely so the entry remains readable if those people later delete their accounts or change their names (without the captured name, the most important row — the cascade entry written when the actor leaves the club — would render as "unknown user" and be useless for dispute resolution); no emails, profile content, or free-form notes are captured; the live profile name is preferred over the captured one whenever it is still available; retention is short (90 days, TTL-enforced); and the data is not shared with third parties or combined with your profile for any other purpose.</p>
 
             <h3>Account deletion and this log</h3>
-            <p>If you exercise your right to erasure (delete your account), we remove your personal data from our systems as described in sections 6 and 7. However, any UID of yours <em>already captured</em> in audit-log entries before deletion will remain in those entries for the remainder of their individual 90-day windows, and will then be auto-deleted along with each entry.</p>
+            <p>If you exercise your right to erasure (delete your account), we remove your personal data from our systems as described in sections 6 and 7. However, any UID of yours, and the display name as it was at the time of the action, <em>already captured</em> in audit-log entries before deletion will remain in those entries for the remainder of their individual 90-day windows, and will then be auto-deleted along with each entry. We cannot remove individual entries on request.</p>
 
             <h3>Right to object</h3>
             <p>You can object to this processing by emailing <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> and citing the specific audit-log entries or timeframe. Because this processing serves fraud-prevention and dispute-resolution interests that may override an individual objection, we cannot guarantee immediate deletion within the 90-day window; we will, however, review each request on its merits. Regardless of the outcome, every entry is auto-deleted once its 90 days elapse.</p>
@@ -596,7 +598,7 @@
             <p>Correct inaccurate or incomplete personal data</p>
             
             <h3>Right to Erasure ("Right to be Forgotten")</h3>
-            <p>Request deletion of your personal data (with 30-day grace period). Note: administrative audit logs containing your UID remain for up to 90 days from the original action and are then auto-deleted (see section 4b).</p>
+            <p>Request deletion of your personal data (with 30-day grace period). Note: administrative audit logs containing your UID and the display name recorded at the time of each action remain for up to 90 days from the original action and are then auto-deleted; we cannot remove individual entries on request (see section 4b).</p>
             
             <h3>Right to Restrict Processing</h3>
             <p>Limit how we use your personal data</p>
@@ -623,7 +625,7 @@
                 <li><strong>Match Statistics:</strong> Indefinitely for historical records (anonymized after account deletion)</li>
                 <li><strong>Analytics Data:</strong> 2 years</li>
                 <li><strong>Logs and Security Data:</strong> 90 days</li>
-                <li><strong>Administrative Audit Logs:</strong> 90 days from the action, auto-deleted by Firestore TTL. Retained through account deletion until each entry's window elapses (see section 4b).</li>
+                <li><strong>Administrative Audit Logs:</strong> UID, action metadata, and the display names of the people directly involved (captured at the time of each action) — 90 days from the action, auto-deleted by Firestore TTL. Retained through account deletion until each entry's window elapses (see section 4b).</li>
             </ul>
         </div>
         
