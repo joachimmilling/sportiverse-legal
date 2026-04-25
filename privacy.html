@@ -537,19 +537,28 @@
         </div>
         
         <!-- See ADR-016 in sportiverse repo docs/DECISIONS.md -->
-        <div class="section">
+        <div class="section" id="section-4b">
             <h2>4b. Administrative Audit Logs</h2>
-            <p>When an admin takes an action on a club you are a member of (adding, promoting, demoting, or removing another member, or deleting a club), we write a short record to an internal audit log. This section explains what is captured, why, and how long it is kept.</p>
+            <p>When an action that affects who can govern a club is taken — an admin adding, promoting, demoting, or removing a member, a member (including an admin) leaving a club they belong to, an admin editing club settings or rotating the invite code, or an admin deleting the club — we write a short record to an internal audit log. This section explains what is captured, why, and how long it is kept.</p>
 
             <h3>What we log</h3>
+            <p>For <strong>member-level actions</strong> (a member added, promoted, demoted, removed, or leaving):</p>
             <ul>
-                <li>The user ID (UID) of the acting admin</li>
-                <li>The UID of the affected user (you, if you were added, promoted, demoted, or removed)</li>
-                <li>The display name of the acting admin and of the affected user, as shown at the time of the action</li>
-                <li>The action type (e.g. <em>member-added</em>, <em>admin-promoted</em>, <em>admin-demoted</em>, <em>member-removed</em>, <em>club-deleted</em>)</li>
+                <li>The user ID (UID) of the acting user — the admin who took the action, or the member themselves if they left</li>
+                <li>The UID of the affected user (which may be the same person as the acting user, e.g. when a member leaves)</li>
+                <li>The display names of the acting user and the affected user, as shown at the time of the action</li>
+                <li>The action type — one of <em>member-added</em>, <em>admin-promoted</em>, <em>admin-demoted</em>, <em>member-removed</em>, <em>member-left</em></li>
                 <li>The club ID and a timestamp</li>
             </ul>
-            <p>We do <strong>not</strong> capture email addresses, profile content, free-form notes, or any other personal data in audit logs. Display names are captured only as they were at the time of the action, so the entry remains readable for dispute resolution if the people involved later delete their accounts or change their names. While your account remains active, the audit-log viewer displays your <em>current</em> display name from your live profile — the captured name is shown only as a fallback after the original user record is no longer available.</p>
+            <p>For <strong>club-level actions</strong> (settings changes, invite-code rotation, club deletion):</p>
+            <ul>
+                <li>The UID of the acting admin</li>
+                <li>The acting admin's display name (captured at the time of the action) — only for club deletion; club-settings edits and invite-code rotations record only the UID</li>
+                <li>The action type — one of <em>club-updated</em>, <em>club-invite-code-rotated</em>, <em>club-deleted</em></li>
+                <li>For <em>club-updated</em>, the names of the fields that changed (e.g. "name", "description", "colors") — never the field values themselves</li>
+                <li>The club ID and a timestamp</li>
+            </ul>
+            <p>We do <strong>not</strong> capture email addresses, profile content, free-form notes, the actual contents of changed club settings, or any other personal data in audit logs. Where display names are captured, they are captured only as they were at the time of the action, so the entry remains readable for dispute resolution if the people involved later delete their accounts or change their names. While your account remains active, the audit-log viewer displays your <em>current</em> display name from your live profile — the captured name is shown only as a fallback after the original user record is no longer available.</p>
 
             <h3>Why we log this</h3>
             <p>The audit log exists purely to allow us to investigate disputes — for example, if a user reports they were kicked or demoted unfairly, or if we need to investigate coordinated abuse of admin powers. It is not a user-facing feature and is not used for profiling, analytics, advertising, or product development.</p>
@@ -558,7 +567,14 @@
             <p>Each audit-log entry is automatically deleted <strong>90 days</strong> after the action it records, enforced by a Firestore time-to-live policy. We cannot extend this window for individual entries.</p>
 
             <h3>Legal basis</h3>
-            <p>The processing relies on GDPR Article 6(1)(f) — legitimate interests pursued by Sportiverse (fraud prevention, dispute resolution, and platform integrity). We have balanced this against your rights and freedoms: the log is limited to UIDs, action metadata, and the display names of the people directly involved, captured solely so the entry remains readable if those people later delete their accounts or change their names (without the captured name, the most important row — the cascade entry written when the actor leaves the club — would render as "unknown user" and be useless for dispute resolution); no emails, profile content, or free-form notes are captured; the live profile name is preferred over the captured one whenever it is still available; retention is short (90 days, TTL-enforced); and the data is not shared with third parties or combined with your profile for any other purpose.</p>
+            <p>The processing relies on GDPR Article 6(1)(f) — legitimate interests pursued by Sportiverse (fraud prevention, dispute resolution, and platform integrity). We have balanced this against your rights and freedoms:</p>
+            <ul>
+                <li><strong>Necessity:</strong> the captured display names are needed so that entries about a member leaving or being removed remain readable after that person's account is deleted; without them, the most relevant rows for a dispute would render as "unknown user."</li>
+                <li><strong>Data minimization:</strong> the log is limited to UIDs, action metadata, and (where applicable) the display names of the acting user and the affected user. No emails, profile content, free-form notes, or club-settings values are captured. Club-settings edits record only the names of fields that changed, not their contents.</li>
+                <li><strong>Live-name preference:</strong> while a user's account exists, the audit-log viewer shows that user's <em>current</em> display name from their live profile. The captured name is read only as a fallback when the original user record is no longer available.</li>
+                <li><strong>Short retention:</strong> 90 days from the action, enforced by a Firestore time-to-live policy.</li>
+                <li><strong>No secondary use:</strong> the data is not shared with third parties and is not combined with your profile for any other purpose (no profiling, analytics, advertising, or product development).</li>
+            </ul>
 
             <h3>Account deletion and this log</h3>
             <p>If you exercise your right to erasure (delete your account), we remove your personal data from our systems as described in sections 6 and 7. However, any UID of yours, and the display name as it was at the time of the action, <em>already captured</em> in audit-log entries before deletion will remain in those entries for the remainder of their individual 90-day windows, and will then be auto-deleted along with each entry. We cannot remove individual entries on request.</p>
