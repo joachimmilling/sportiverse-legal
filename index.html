@@ -456,7 +456,7 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            grid-auto-rows: minmax(180px, auto);
+            grid-auto-rows: minmax(140px, auto);
             gap: 16px;
         }
 
@@ -481,16 +481,17 @@
 
         .bento-card h3 {
             font-family: 'Oxanium', sans-serif;
-            font-size: 18px;
+            font-size: 24px;
             font-weight: 600;
             color: var(--text);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
         }
 
         .bento-card p {
             color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.55;
+            font-size: 15px;
+            line-height: 1.6;
             font-weight: 300;
         }
 
@@ -526,7 +527,7 @@
         /* Stat number styling */
         .bento-stat {
             font-family: 'Saira Stencil One', sans-serif;
-            font-size: clamp(36px, 4vw, 52px);
+            font-size: clamp(40px, 4.5vw, 56px);
             color: var(--primary);
             line-height: 1;
             margin-bottom: 8px;
@@ -617,6 +618,25 @@
             border-radius: 50%;
             background: var(--primary);
             flex-shrink: 0;
+        }
+
+        /* ── Pitch ── */
+        .pitch-section {
+            padding: 80px 32px;
+        }
+
+        .pitch-canvas-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            aspect-ratio: 16 / 10;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        #pitch-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
         }
 
         /* ── CTA Section ── */
@@ -764,7 +784,21 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.97);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 20px 32px;
+                gap: 16px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            }
+            .nav-links.show { display: flex; }
             .mobile-menu-toggle { display: flex; }
 
             .hero { padding: 120px 20px 80px; }
@@ -987,6 +1021,13 @@
         </div>
     </section>
 
+    <!-- Pitch -->
+    <section class="pitch-section">
+        <div class="pitch-canvas-wrap">
+            <canvas id="pitch-canvas"></canvas>
+        </div>
+    </section>
+
     <div class="section-divider"></div>
 
     <!-- CTA -->
@@ -1150,6 +1191,50 @@
             }
 
             draw();
+        })();
+
+        // ── Pitch ──
+        (function() {
+            const canvas = document.getElementById('pitch-canvas');
+            const ctx = canvas.getContext('2d');
+            const wrap = canvas.parentElement;
+
+            function resize() {
+                const rect = wrap.getBoundingClientRect();
+                canvas.width = Math.floor(rect.width);
+                canvas.height = Math.floor(rect.height);
+                draw();
+            }
+
+            function draw() {
+                const w = canvas.width, h = canvas.height;
+                ctx.clearRect(0, 0, w, h);
+                ctx.strokeStyle = '#ffffff';
+                ctx.fillStyle = '#ffffff';
+                ctx.lineWidth = 2;
+                const m = w * 0.04;
+
+                ctx.strokeRect(m, m, w - m * 2, h - m * 2);
+                ctx.beginPath(); ctx.moveTo(w / 2, m); ctx.lineTo(w / 2, h - m); ctx.stroke();
+                ctx.beginPath(); ctx.arc(w / 2, h / 2, h * 0.2, 0, Math.PI * 2); ctx.stroke();
+                ctx.beginPath(); ctx.arc(w / 2, h / 2, 3, 0, Math.PI * 2); ctx.fill();
+
+                const paW = w * 0.15, paH = h * 0.44, paY = (h - paH) / 2;
+                ctx.strokeRect(m, paY, paW, paH);
+                ctx.strokeRect(w - m - paW, paY, paW, paH);
+
+                const gaW = w * 0.06, gaH = h * 0.2, gaY = (h - gaH) / 2;
+                ctx.strokeRect(m, gaY, gaW, gaH);
+                ctx.strokeRect(w - m - gaW, gaY, gaW, gaH);
+
+                const cR = w * 0.015;
+                [[m, m, 0, Math.PI * 0.5], [w - m, m, Math.PI * 0.5, Math.PI],
+                 [w - m, h - m, Math.PI, Math.PI * 1.5], [m, h - m, Math.PI * 1.5, Math.PI * 2]]
+                .forEach(([cx, cy, s, e]) => { ctx.beginPath(); ctx.arc(cx, cy, cR, s, e); ctx.stroke(); });
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
         })();
 
         // Navbar scroll effect
