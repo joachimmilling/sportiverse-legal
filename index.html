@@ -558,15 +558,53 @@
             background: var(--glass);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 40px 32px;
+            overflow: hidden;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .audience-card:hover {
             background: var(--glass-hover);
             border-color: rgba(255, 255, 255, 0.12);
             transform: translateY(-3px);
+        }
+
+        .audience-card .card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.75);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .audience-card:hover .card-image {
+            filter: brightness(0.9);
+            transform: scale(1.03);
+        }
+
+        .audience-card .card-image-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .audience-card .card-image-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to top, var(--bg), transparent);
+            pointer-events: none;
+        }
+
+        .audience-card .card-body {
+            padding: 12px 28px 32px;
+            margin-top: -24px;
+            position: relative;
         }
 
         .audience-card .card-label {
@@ -620,7 +658,7 @@
             flex-shrink: 0;
         }
 
-        /* ── Pitch ── */
+/* ── Pitch ── */
         .pitch-section {
             padding: 80px 32px;
         }
@@ -985,37 +1023,46 @@
 
             <div class="audience-grid">
                 <div class="audience-card">
-                    <span class="card-label">Coaches</span>
-                    <h3>Lead with clarity</h3>
-                    <p>Organize lineups, track performance, plan training, and keep the whole squad informed from one screen.</p>
-                    <ul class="audience-features">
-                        <li>Lineup and substitution management</li>
-                        <li>Performance analytics per player</li>
-                        <li>Training session scheduling</li>
-                        <li>Team communication hub</li>
-                    </ul>
+                    <div class="card-image-wrap"><img class="card-image" src="assets/onboarding-2.png" alt="Coaches tracking match data on the sideline" /></div>
+                    <div class="card-body">
+                        <span class="card-label">Coaches</span>
+                        <h3>Lead with clarity</h3>
+                        <p>Organize lineups, track performance, plan training, and keep the whole squad informed from one screen.</p>
+                        <ul class="audience-features">
+                            <li>Lineup and substitution management</li>
+                            <li>Performance analytics per player</li>
+                            <li>Training session scheduling</li>
+                            <li>Team communication hub</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="audience-card">
-                    <span class="card-label">Players</span>
-                    <h3>Own your career</h3>
-                    <p>Track your stats, see your progression, and never miss a match or training session again.</p>
-                    <ul class="audience-features">
-                        <li>Personal statistics and ratings</li>
-                        <li>Match and training calendar</li>
-                        <li>Career progression tracking</li>
-                        <li>Team activity feed</li>
-                    </ul>
+                    <div class="card-image-wrap"><img class="card-image" src="assets/onboarding-1.png" alt="Players celebrating a goal" /></div>
+                    <div class="card-body">
+                        <span class="card-label">Players</span>
+                        <h3>Own your career</h3>
+                        <p>Track your stats, see your progression, and never miss a match or training session again.</p>
+                        <ul class="audience-features">
+                            <li>Personal statistics and ratings</li>
+                            <li>Match and training calendar</li>
+                            <li>Career progression tracking</li>
+                            <li>Team activity feed</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="audience-card">
-                    <span class="card-label">Fans</span>
-                    <h3>Stay in the loop</h3>
-                    <p>Follow clubs and leagues. Watch results come in live. Celebrate the moments that matter.</p>
-                    <ul class="audience-features">
-                        <li>Live match scores and events</li>
-                        <li>League standings and stats</li>
-                        <li>Club and player profiles</li>
-                        <li>Match highlights in the feed</li>
-                    </ul>
+                    <div class="card-image-wrap"><img class="card-image" src="assets/onboarding-3.png" alt="Team together in the locker room" /></div>
+                    <div class="card-body">
+                        <span class="card-label">Fans</span>
+                        <h3>Stay in the loop</h3>
+                        <p>Follow clubs and leagues. Watch results come in live. Celebrate the moments that matter.</p>
+                        <ul class="audience-features">
+                            <li>Live match scores and events</li>
+                            <li>League standings and stats</li>
+                            <li>Club and player profiles</li>
+                            <li>Match highlights in the feed</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
