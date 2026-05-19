@@ -665,8 +665,8 @@
 
         /* Colored keyword variants with matching glow */
         .bento-keyword.color-coral {
-            color: #22C55E;
-            text-shadow: 0 0 40px rgba(34, 197, 94, 0.15);
+            color: #F97066;
+            text-shadow: 0 0 40px rgba(249, 112, 102, 0.15);
         }
         .bento-keyword.color-amber {
             color: #F59E0B;
@@ -690,7 +690,7 @@
         }
 
         /* Accent color RGB values per card */
-        .bento-card[data-accent="coral"]   { --accent-rgb: 34, 197, 94; }
+        .bento-card[data-accent="coral"]   { --accent-rgb: 249, 112, 102; }
         .bento-card[data-accent="amber"]   { --accent-rgb: 245, 158, 11; }
         .bento-card[data-accent="violet"]  { --accent-rgb: 168, 85, 247; }
         .bento-card[data-accent="pink"]    { --accent-rgb: 236, 72, 153; }
@@ -1328,7 +1328,7 @@
         <div class="vision-inner">
             <div class="vision-left">
                 <p class="section-label">Why We Exist</p>
-                <h2 class="section-heading">The platform where your sport lives</h2>
+                <h2 class="section-heading">The platform where your sport&nbsp;lives</h2>
                 <p class="section-description">
                     Sportiverse is the go-to platform for organizing your sport. Self-serve, mobile-first, and zero-friction. Norwegian grassroots football is the starting point. The ambition is every sport, everywhere.
                 </p>
@@ -1363,9 +1363,9 @@
         </div>
         <div class="bento-grid">
             <!-- Row 1 -->
-            <div class="bento-card bento-wide" data-accent="coral">
+            <div class="bento-card bento-wide" data-accent="emerald">
                 <div class="accent-shape"></div>
-                <div class="bento-keyword color-coral">LIVE</div>
+                <div class="bento-keyword color-emerald">LIVE</div>
                 <h3>Match Updates</h3>
                 <p>Real-time match events, automatic stats, and a live feed that keeps everyone connected — whether you're on the sideline or across the country.</p>
             </div>
@@ -1394,8 +1394,8 @@
             </div>
 
             <!-- Row 3 -->
-            <div class="bento-card bento-half" data-accent="emerald">
-                <div class="bento-keyword color-emerald">TRACK</div>
+            <div class="bento-card bento-half" data-accent="coral">
+                <div class="bento-keyword color-coral">TRACK</div>
                 <h3>Attendance</h3>
                 <p>Schedule training, track attendance, and keep the team prepared and synchronized.</p>
             </div>
@@ -1496,7 +1496,7 @@
     <section class="cta-section">
         <div class="cta-content">
             <p class="section-label">Get Started</p>
-            <h2 class="section-heading">The platform where your sport lives</h2>
+            <h2 class="section-heading">The platform where your sport&nbsp;lives</h2>
             <p class="section-description">
                 Download Sportiverse and start organizing. Create a club, schedule a match, or just follow the action.
             </p>
@@ -1625,7 +1625,11 @@
         gsap.utils.toArray('.section-heading').forEach(heading => {
             // Skip if inside hero
             if (heading.closest('.hero')) return;
-            const split = new SplitType(heading, { types: 'chars' });
+            const split = new SplitType(heading, { types: 'words, chars' });
+            // Prevent word breaks within split words
+            if (split.words) {
+                split.words.forEach(w => { w.style.whiteSpace = 'nowrap'; });
+            }
             gsap.from(split.chars, {
                 y: 30,
                 opacity: 0,
