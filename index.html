@@ -286,12 +286,36 @@
             z-index: 4;
         }
 
+        .store-badges-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
         .store-badges {
             display: flex;
             gap: 14px;
             justify-content: center;
             flex-wrap: wrap;
             align-items: center;
+        }
+
+        .store-beta-note {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.45);
+            letter-spacing: 0.03em;
+            text-align: center;
+        }
+
+        .store-beta-note a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .store-beta-note a:hover {
+            color: rgba(255, 255, 255, 0.85);
         }
 
         .store-badge {
@@ -1300,13 +1324,18 @@
                 <p class="hero-description">
                     Manage your club. Run your league. Track every match. All in one app — built for the people who live and breathe sport.
                 </p>
-                <div class="store-badges">
-                    <a href="https://apps.apple.com/app/sportiverse/id6746806737" class="store-badge" target="_blank" rel="noopener">
-                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.joachimmilling.sportiverse" class="store-badge" target="_blank" rel="noopener">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
-                    </a>
+                <div class="store-badges-wrap">
+                    <div class="store-badges">
+                        <!-- TODO: swap to App Store link post-launch -->
+                        <a href="https://testflight.apple.com/join/ctAMPGn9" class="store-badge" target="_blank" rel="noopener">
+                            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+                        </a>
+                        <!-- TODO: swap to Google Play link post-launch -->
+                        <a href="mailto:support@sportiverse.no?subject=Join%20Android%20Beta&body=Hi%2C%20I%27d%20like%20to%20join%20the%20Sportiverse%20Android%20beta.%20Please%20add%20this%20email%20to%20the%20test%20group." class="store-badge">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
+                        </a>
+                    </div>
+                    <p class="store-beta-note">Currently in beta — Android requires <a href="mailto:support@sportiverse.no?subject=Join%20Android%20Beta&body=Hi%2C%20I%27d%20like%20to%20join%20the%20Sportiverse%20Android%20beta.%20Please%20add%20this%20email%20to%20the%20test%20group.">access request</a></p>
                 </div>
             </div>
             <div class="hero-device">
@@ -1500,13 +1529,18 @@
             <p class="section-description">
                 Download Sportiverse and start organizing. Create a club, schedule a match, or just follow the action.
             </p>
-            <div class="store-badges" style="margin-top: 40px;">
-                <a href="https://apps.apple.com/app/sportiverse/id6746806737" class="store-badge" target="_blank" rel="noopener">
-                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.joachimmilling.sportiverse" class="store-badge" target="_blank" rel="noopener">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
-                </a>
+            <div class="store-badges-wrap" style="margin-top: 40px;">
+                <div class="store-badges">
+                    <!-- TODO: swap to App Store link post-launch -->
+                    <a href="https://testflight.apple.com/join/ctAMPGn9" class="store-badge" target="_blank" rel="noopener">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+                    </a>
+                    <!-- TODO: swap to Google Play link post-launch -->
+                    <a href="mailto:support@sportiverse.no?subject=Join%20Android%20Beta&body=Hi%2C%20I%27d%20like%20to%20join%20the%20Sportiverse%20Android%20beta.%20Please%20add%20this%20email%20to%20the%20test%20group." class="store-badge">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
+                    </a>
+                </div>
+                <p class="store-beta-note">Currently in beta — Android requires <a href="mailto:support@sportiverse.no?subject=Join%20Android%20Beta&body=Hi%2C%20I%27d%20like%20to%20join%20the%20Sportiverse%20Android%20beta.%20Please%20add%20this%20email%20to%20the%20test%20group.">access request</a></p>
             </div>
         </div>
     </section>
