@@ -1139,12 +1139,18 @@
         (function() {
             const canvas = document.getElementById('hero-canvas');
             const ctx = canvas.getContext('2d');
-            let w, h, time = 0;
+            let w, h, dpr, time = 0;
 
             function resize() {
                 const hero = canvas.parentElement;
-                w = canvas.width = hero.offsetWidth;
-                h = canvas.height = hero.offsetHeight;
+                dpr = Math.min(window.devicePixelRatio || 1, 3);
+                w = hero.offsetWidth;
+                h = hero.offsetHeight;
+                canvas.width = w * dpr;
+                canvas.height = h * dpr;
+                canvas.style.width = w + 'px';
+                canvas.style.height = h + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             }
 
             window.addEventListener('resize', resize);
@@ -1171,8 +1177,9 @@
             const bCtx = buf.getContext('2d');
 
             function resizeBuf() {
-                buf.width = w;
-                buf.height = h;
+                buf.width = w * dpr;
+                buf.height = h * dpr;
+                bCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
             }
 
             const origResize = resize;
@@ -1231,16 +1238,19 @@
                 }
 
                 // Draw blurred to main canvas
-                ctx.clearRect(0, 0, w, h);
-                ctx.filter = 'blur(20px)';
+                ctx.save();
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.filter = 'blur(' + (20 * dpr) + 'px)';
                 ctx.drawImage(buf, 0, 0);
 
                 // Layer a sharper pass on top for definition
-                ctx.filter = 'blur(6px)';
+                ctx.filter = 'blur(' + (6 * dpr) + 'px)';
                 ctx.globalAlpha = 0.4;
                 ctx.drawImage(buf, 0, 0);
                 ctx.globalAlpha = 1.0;
                 ctx.filter = 'none';
+                ctx.restore();
 
                 requestAnimationFrame(draw);
             }
