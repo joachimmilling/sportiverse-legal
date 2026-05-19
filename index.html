@@ -1195,17 +1195,20 @@
 
                 const step = Math.max(3, Math.round(w / 400));
 
+                // Scale modulator intensity by screen width — full effect at 1200px+, gentler on mobile
+                const intensity = Math.min(1.0, w / 1200);
+
                 for (const c of curtains) {
                     for (let x = 0; x <= w; x += step) {
                         const nx = x / w;
 
-                        // Pulsating modulators — visible breathing on different cycles
-                        const freqMod1 = 1.0 + 0.7 * Math.sin(time * 0.0073 + c.phase * 0.7);
-                        const freqMod2 = 1.0 + 0.6 * Math.sin(time * 0.0097 + c.phase * 1.1);
-                        const ampMod1  = 1.0 + 0.9 * Math.sin(time * 0.0051 + c.phase * 1.9);
-                        const ampMod2  = 1.0 + 0.8 * Math.sin(time * 0.0067 + c.phase * 0.3);
-                        const foldFreqMod = 1.0 + 0.8 * Math.sin(time * 0.0043 + c.phase * 2.3);
-                        const foldAmpMod  = 1.0 + 0.9 * Math.sin(time * 0.0059 + c.phase * 0.9);
+                        // Pulsating modulators — scaled down on narrow screens for softer mist
+                        const freqMod1 = 1.0 + 0.7 * intensity * Math.sin(time * 0.0073 + c.phase * 0.7);
+                        const freqMod2 = 1.0 + 0.6 * intensity * Math.sin(time * 0.0097 + c.phase * 1.1);
+                        const ampMod1  = 1.0 + 0.9 * intensity * Math.sin(time * 0.0051 + c.phase * 1.9);
+                        const ampMod2  = 1.0 + 0.8 * intensity * Math.sin(time * 0.0067 + c.phase * 0.3);
+                        const foldFreqMod = 1.0 + 0.8 * intensity * Math.sin(time * 0.0043 + c.phase * 2.3);
+                        const foldAmpMod  = 1.0 + 0.9 * intensity * Math.sin(time * 0.0059 + c.phase * 0.9);
 
                         // Base curve moves laterally with pulsating frequency & amplitude
                         const baseOffset =
