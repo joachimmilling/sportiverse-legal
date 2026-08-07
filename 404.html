@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Sportiverse</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Oxanium:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #087F8C;
+            --bg: #000000;
+            --text: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.55);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 32px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            margin-bottom: 48px;
+        }
+        .logo img { width: 40px; height: 40px; }
+        .logo-text {
+            font-family: 'Oxanium', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.3px;
+        }
+
+        .code {
+            font-family: 'Oxanium', sans-serif;
+            font-size: clamp(80px, 18vw, 160px);
+            font-weight: 800;
+            line-height: 1;
+            color: var(--primary);
+            letter-spacing: -0.04em;
+        }
+
+        h1 {
+            font-family: 'Oxanium', sans-serif;
+            font-size: clamp(22px, 4vw, 32px);
+            font-weight: 700;
+            margin-top: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 16px;
+            font-weight: 300;
+            margin-top: 12px;
+            max-width: 440px;
+            line-height: 1.7;
+        }
+
+        .home-link {
+            display: inline-block;
+            margin-top: 36px;
+            padding: 14px 32px;
+            border-radius: 999px;
+            background: var(--primary);
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: opacity 0.3s;
+        }
+        .home-link:hover { opacity: 0.85; }
+    </style>
+</head>
+<body>
+    <a href="/" class="logo">
+        <img src="/assets/icon.png" alt="Sportiverse" />
+        <span class="logo-text">sportiverse</span>
+    </a>
+    <div class="code">404</div>
+    <h1>Page not found</h1>
+    <p>The page you're looking for doesn't exist or has moved.<br>Siden du leter etter finnes ikke eller har flyttet.</p>
+    <a href="/" class="home-link">Back to home</a>
+    <script data-goatcounter="https://sportiverse.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
