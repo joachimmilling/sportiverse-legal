@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personvernerklæring - Sportiverse</title>
+    <meta name="description" content="Les Sportiverses personvernerklæring — hvordan vi samler inn, bruker og beskytter dataene dine.">
+    <link rel="canonical" href="https://sportiverse.no/no/privacy.html">
+    <link rel="alternate" hreflang="en" href="https://sportiverse.no/privacy.html">
+    <link rel="alternate" hreflang="nb" href="https://sportiverse.no/no/privacy.html">
+    <link rel="alternate" hreflang="x-default" href="https://sportiverse.no/privacy.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="view-transition" content="same-origin">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oxanium:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        nav {
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 20px 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-bottom: 1px solid transparent;
+        }
+        nav.scrolled { padding: 14px 0; background: rgba(0, 0, 0, 0.97); border-bottom-color: rgba(255, 255, 255, 0.07); }
+
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; align-items: center; }
+
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo img { width: 32px; height: 32px; }
+        .logo-text { font-family: 'Oxanium', sans-serif; font-size: 22px; font-weight: 600; color: #ffffff; letter-spacing: -0.3px; }
+
+        .back-link { color: rgba(255, 255, 255, 0.55); text-decoration: none; transition: color 0.3s; font-weight: 400; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; }
+        .back-link:hover { color: #ffffff; }
+
+        .hero { padding: 150px 32px 60px; position: relative; }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        h1 { font-family: 'Oxanium', sans-serif; font-size: clamp(36px, 5vw, 52px); font-weight: 700; margin-bottom: 14px; color: #ffffff; line-height: 1.1; letter-spacing: -0.03em; }
+        .effective-date { color: rgba(255, 255, 255, 0.45); font-size: 14px; font-weight: 300; }
+
+        .content { padding: 60px 32px 80px; max-width: 900px; margin: 0 auto; }
+        .section { margin-bottom: 48px; }
+
+        h2 { font-family: 'Oxanium', sans-serif; color: #ffffff; font-size: 22px; font-weight: 600; margin-bottom: 18px; letter-spacing: -0.01em; }
+        h3 { font-family: 'Oxanium', sans-serif; color: rgba(255, 255, 255, 0.85); font-size: 17px; font-weight: 600; margin-top: 28px; margin-bottom: 12px; }
+
+        p { color: rgba(255, 255, 255, 0.6); margin-bottom: 14px; font-size: 15px; line-height: 1.75; font-weight: 300; }
+        ul { margin: 16px 0 16px 20px; }
+        li { color: rgba(255, 255, 255, 0.6); margin-bottom: 8px; font-size: 15px; font-weight: 300; line-height: 1.65; }
+        li::marker { color: rgba(255, 255, 255, 0.2); }
+        li strong { color: rgba(255, 255, 255, 0.85); font-weight: 500; }
+
+        .important {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 10px;
+            padding: 22px 24px;
+            margin: 20px 0;
+        }
+        .important strong { color: rgba(255, 255, 255, 0.85); font-weight: 500; }
+
+        .gdpr-rights {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 14px;
+            padding: 36px;
+            margin: 32px 0;
+        }
+        .gdpr-rights h2 { color: #ffffff; margin-bottom: 24px; }
+        .gdpr-rights h3 { color: rgba(255, 255, 255, 0.85); margin-top: 24px; margin-bottom: 8px; }
+        .gdpr-rights p { color: rgba(255, 255, 255, 0.6); margin-bottom: 12px; }
+
+        table { width: 100%; margin: 24px 0; border-collapse: collapse; overflow: hidden; border-radius: 8px; background: rgba(255, 255, 255, 0.02); }
+        th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+        th { background: rgba(255, 255, 255, 0.04); color: rgba(255, 255, 255, 0.85); font-weight: 500; font-size: 14px; }
+        td { color: rgba(255, 255, 255, 0.6); font-size: 14px; font-weight: 300; }
+        tr:last-child td { border-bottom: none; }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 14px;
+            padding: 36px;
+            margin-top: 48px;
+            text-align: center;
+        }
+        .contact-info h2 { color: #ffffff; margin-bottom: 16px; }
+        .contact-info p { color: rgba(255, 255, 255, 0.6); font-size: 15px; }
+        .contact-info strong { color: rgba(255, 255, 255, 0.85); }
+
+        a { color: #087F8C; text-decoration: none; transition: color 0.3s; }
+        a:hover { color: #0A9DAD; }
+
+        footer { background: #000000; padding: 48px 32px 24px; border-top: 1px solid rgba(255, 255, 255, 0.07); text-align: center; }
+        .footer-content { max-width: 900px; margin: 0 auto; color: rgba(255, 255, 255, 0.3); font-size: 13px; font-weight: 300; }
+
+        @media (max-width: 768px) {
+            .hero { padding: 120px 20px 40px; }
+            .content { padding: 40px 20px 60px; }
+            .gdpr-rights { padding: 28px 20px; }
+            .contact-info { padding: 28px 20px; }
+            th, td { padding: 10px 8px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="/no/" class="logo">
+                <img src="/assets/icon.png" alt="Sportiverse" />
+                <span class="logo-text">sportiverse</span>
+            </a>
+            <div style="display: flex; gap: 24px; align-items: center;"><a href="/privacy.html" class="back-link" hreflang="en" onclick="try{localStorage.setItem('lang','en')}catch(e){}">English</a><a href="/no/" class="back-link">Tilbake til forsiden</a></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Personvernerklæring</h1>
+            <p class="effective-date">Gjelder fra: 25. april 2026</p>
+            <p class="effective-date" style="margin-top: 6px;">Denne oversettelsen er kun til informasjon. Ved motstrid gjelder den engelske versjonen.</p>
+            <p style="opacity: 0.85; font-size: 0.95em; margin-top: 8px;"><em>Oppdatert 25. april 2026: presisert at administrative revisjonslogger inkluderer visningsnavnet som ble registrert på tidspunktet for hver handling, i tillegg til UID-er (se punkt 4b).</em></p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="section">
+            <h2>1. Innledning</h2>
+            <p>Sportiverse ("vi", "vår", "oss") er opptatt av å beskytte personvernet ditt. Denne personvernerklæringen forklarer hvordan vi samler inn, bruker, utleverer og beskytter opplysningene dine når du bruker mobilapplikasjonen vår.</p>
+
+            <div class="important">
+                <p><strong>Etterlevelse av GDPR:</strong> Vi etterlever personvernforordningen (GDPR) fullt ut for brukere i Den europeiske union.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2. Opplysninger vi samler inn</h2>
+
+            <h3>Personopplysninger du oppgir</h3>
+            <ul>
+                <li><strong>Kontoinformasjon:</strong> E-post, passord, fornavn, etternavn</li>
+                <li><strong>Profilinformasjon:</strong> Fødselsdato, nasjonalitet, profilbilde, biografi</li>
+                <li><strong>Idrettsdata:</strong> Klubbmedlemskap, kampstatistikk, treningsplaner</li>
+                <li><strong>Brukerinnhold:</strong> Kommentarer, kampresultater, lagoppstillinger</li>
+            </ul>
+
+            <h3>Opplysninger som samles inn automatisk</h3>
+            <ul>
+                <li><strong>Enhetsinformasjon:</strong> Enhetstype, operativsystem, unike enhetsidentifikatorer</li>
+                <li><strong>Annonseidentifikatorer:</strong> Apple IDFA (iOS) og Google Advertising ID (Android), som brukes av annonsepartneren vår til å vise og måle annonser. Innsamling av IDFA på iOS krever ditt uttrykkelige samtykke via App Tracking Transparency-forespørselen.</li>
+                <li><strong>Bruksdata:</strong> Appfunksjoner som brukes, tidsbruk, interaksjonsmønstre</li>
+                <li><strong>Ytelsesdata:</strong> Krasjrapporter, ytelsesmålinger</li>
+            </ul>
+
+            <h3>Analysedata (med samtykke)</h3>
+            <p>Hvis du samtykker til analyse, samler vi inn:</p>
+            <ul>
+                <li>Bruksmønstre i appen og engasjement med funksjoner</li>
+                <li>Brukerreise og navigasjonsflyt</li>
+                <li>Ytelses- og stabilitetsmålinger</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. Hvordan vi bruker opplysningene dine</h2>
+
+            <table>
+                <tr>
+                    <th>Formål</th>
+                    <th>Rettslig grunnlag (GDPR)</th>
+                </tr>
+                <tr>
+                    <td>Levere og vedlikeholde tjenesten</td>
+                    <td>Oppfyllelse av avtale</td>
+                </tr>
+                <tr>
+                    <td>Opprette og administrere kontoen din</td>
+                    <td>Oppfyllelse av avtale</td>
+                </tr>
+                <tr>
+                    <td>Muliggjøre funksjoner for idrettsorganisasjoner</td>
+                    <td>Oppfyllelse av avtale</td>
+                </tr>
+                <tr>
+                    <td>Sende tjenesterelaterte varsler</td>
+                    <td>Berettiget interesse</td>
+                </tr>
+                <tr>
+                    <td>Analyse og forbedringer</td>
+                    <td>Samtykke</td>
+                </tr>
+                <tr>
+                    <td>Vise annonser for å finansiere gratistjenesten</td>
+                    <td>Berettiget interesse (ikke-persontilpassede annonser) / Samtykke (persontilpassede annonser)</td>
+                </tr>
+                <tr>
+                    <td>Administrativ revisjonslogging (svindelforebygging, tvisteløsning, plattformintegritet)</td>
+                    <td>Berettiget interesse (art. 6 nr. 1 bokstav f)</td>
+                </tr>
+                <tr>
+                    <td>Overholde rettslige forpliktelser</td>
+                    <td>Rettslig forpliktelse</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>4. Deling og utlevering av data</h2>
+
+            <h3>Vi deler data med:</h3>
+            <ul>
+                <li><strong>Andre brukere:</strong> Profilinformasjon, kampresultater og statistikk som en del av tjenesten</li>
+                <li><strong>Klubb-/ligamedlemmer:</strong> Informasjon som er relevant for idrettsaktivitetene dine</li>
+                <li><strong>Tjenesteleverandører:</strong> Firebase (Google) for infrastruktur og autentisering</li>
+                <li><strong>Annonsepartnere:</strong> Google AdMob for visning av annonser. Se punktet "Annonsering" nedenfor for detaljer.</li>
+            </ul>
+
+            <h3>Vi gjør IKKE følgende:</h3>
+            <ul>
+                <li>Selger personopplysningene dine</li>
+                <li>Bruker dataene dine til markedsføring via e-post eller push-varsler uten samtykke</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4a. Annonsering</h2>
+            <p>Sportiverse viser annonser for å finansiere gratistjenesten. Vi bruker <strong>Google AdMob</strong> (drevet av Google LLC) som vår eneste annonsepartner.</p>
+
+            <h3>Hva AdMob samler inn</h3>
+            <ul>
+                <li>Apple IDFA (iOS) eller Google Advertising ID (Android)</li>
+                <li>Omtrentlig (ikke-presis) posisjon utledet fra IP-adresse</li>
+                <li>Enhetsinformasjon (modell, operativsystem, språk)</li>
+                <li>Interaksjoner med annonser (visninger, klikk)</li>
+            </ul>
+
+            <h3>Persontilpassede kontra ikke-persontilpassede annonser</h3>
+            <p>Hvis du befinner deg i Det europeiske økonomiske samarbeidsområdet, Storbritannia eller Sveits, viser vi et samtykkeskjema ved første oppstart der du blir spurt om du tillater persontilpassede annonser. Du kan endre dette valget når som helst i Innstillinger → Personvern.</p>
+            <ul>
+                <li><strong>Med samtykke:</strong> AdMob kan bruke annonseidentifikatoren din til å vise annonser tilpasset dine interesser.</li>
+                <li><strong>Uten samtykke:</strong> Kun ikke-persontilpassede annonser vises, basert på kontekstuelle signaler i stedet for profilen din.</li>
+            </ul>
+
+            <h3>iOS App Tracking Transparency</h3>
+            <p>På iOS 14.5 og nyere krever Apple en ekstra tillatelsesforespørsel før eventuell sporing på tvers av apper. Hvis du avslår forespørselen, deles ingen IDFA med AdMob, og du vil kun se ikke-persontilpassede annonser.</p>
+
+            <h3>Les mer</h3>
+            <p>For detaljer om hvordan Google håndterer data som samles inn fra partnernettsteder og -apper, se <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Googles retningslinjer for partnerdata</a>. For å reservere deg mot persontilpassede annonser på tvers av Googles tjenester, gå til <a href="https://adssettings.google.com" target="_blank" rel="noopener">Googles annonseinnstillinger</a>.</p>
+        </div>
+
+        <!-- See ADR-016 in sportiverse repo docs/DECISIONS.md -->
+        <div class="section" id="section-4b">
+            <h2>4b. Administrative revisjonslogger</h2>
+            <p>Når det utføres en handling som påvirker hvem som kan styre en klubb — en administrator som legger til, forfremmer, degraderer eller fjerner et medlem, et medlem (inkludert en administrator) som forlater en klubb vedkommende tilhører, en administrator som endrer klubbinnstillinger eller roterer invitasjonskoden, eller en administrator som sletter klubben — skriver vi en kort oppføring til en intern revisjonslogg. Dette punktet forklarer hva som registreres, hvorfor, og hvor lenge det oppbevares.</p>
+
+            <h3>Hva vi logger</h3>
+            <p>For <strong>handlinger på medlemsnivå</strong> (et medlem som legges til, forfremmes, degraderes, fjernes eller forlater klubben):</p>
+            <ul>
+                <li>Bruker-ID-en (UID) til den handlende brukeren — administratoren som utførte handlingen, eller medlemmet selv hvis vedkommende forlot klubben</li>
+                <li>UID-en til den berørte brukeren (som kan være samme person som den handlende brukeren, f.eks. når et medlem forlater klubben)</li>
+                <li>Visningsnavnene til den handlende brukeren og den berørte brukeren, slik de var på tidspunktet for handlingen</li>
+                <li>Handlingstypen — én av <em>member-added</em>, <em>admin-promoted</em>, <em>admin-demoted</em>, <em>member-removed</em>, <em>member-left</em></li>
+                <li>Klubb-ID-en og et tidsstempel</li>
+            </ul>
+            <p>For <strong>handlinger på klubbnivå</strong> (endring av innstillinger, rotering av invitasjonskode, sletting av klubb):</p>
+            <ul>
+                <li>UID-en til den handlende administratoren</li>
+                <li>Den handlende administratorens visningsnavn (registrert på tidspunktet for handlingen) — kun ved sletting av klubb; endringer av klubbinnstillinger og rotering av invitasjonskode registrerer kun UID-en</li>
+                <li>Handlingstypen — én av <em>club-updated</em>, <em>club-invite-code-rotated</em>, <em>club-deleted</em></li>
+                <li>For <em>club-updated</em>, navnene på feltene som ble endret (f.eks. "name", "description", "colors") — aldri selve feltverdiene</li>
+                <li>Klubb-ID-en og et tidsstempel</li>
+            </ul>
+            <p>Vi registrerer <strong>ikke</strong> e-postadresser, profilinnhold, fritekstnotater, det faktiske innholdet i endrede klubbinnstillinger eller andre personopplysninger i revisjonslogger. Der visningsnavn registreres, registreres de kun slik de var på tidspunktet for handlingen, slik at oppføringen forblir lesbar for tvisteløsning dersom de involverte personene senere sletter kontoene sine eller endrer navn. Så lenge kontoen din er aktiv, viser revisjonslogg-visningen ditt <em>gjeldende</em> visningsnavn fra den aktive profilen din — det registrerte navnet vises kun som en reserveløsning etter at den opprinnelige brukeroppføringen ikke lenger er tilgjengelig.</p>
+
+            <h3>Hvorfor vi logger dette</h3>
+            <p>Revisjonsloggen finnes utelukkende for at vi skal kunne undersøke tvister — for eksempel hvis en bruker rapporterer å ha blitt kastet ut eller degradert urettmessig, eller hvis vi må undersøke koordinert misbruk av administratorrettigheter. Den er ikke en brukervendt funksjon og brukes ikke til profilering, analyse, annonsering eller produktutvikling.</p>
+
+            <h3>Oppbevaring og automatisk sletting</h3>
+            <p>Hver oppføring i revisjonsloggen slettes automatisk <strong>90 dager</strong> etter handlingen den registrerer, håndhevet av en time-to-live-policy i Firestore. Vi kan ikke forlenge dette tidsrommet for enkeltoppføringer.</p>
+
+            <h3>Rettslig grunnlag</h3>
+            <p>Behandlingen bygger på GDPR artikkel 6 nr. 1 bokstav f — berettigede interesser som forfølges av Sportiverse (svindelforebygging, tvisteløsning og plattformintegritet). Vi har veid dette opp mot dine rettigheter og friheter:</p>
+            <ul>
+                <li><strong>Nødvendighet:</strong> de registrerte visningsnavnene er nødvendige for at oppføringer om et medlem som forlater eller blir fjernet skal forbli lesbare etter at vedkommendes konto er slettet; uten dem ville de mest relevante radene i en tvist vises som "ukjent bruker".</li>
+                <li><strong>Dataminimering:</strong> loggen er begrenset til UID-er, metadata om handlingen og (der det er aktuelt) visningsnavnene til den handlende brukeren og den berørte brukeren. Ingen e-postadresser, profilinnhold, fritekstnotater eller verdier fra klubbinnstillinger registreres. Endringer av klubbinnstillinger registrerer kun navnene på feltene som ble endret, ikke innholdet i dem.</li>
+                <li><strong>Foretrukket bruk av gjeldende navn:</strong> så lenge en brukers konto eksisterer, viser revisjonslogg-visningen den brukerens <em>gjeldende</em> visningsnavn fra den aktive profilen. Det registrerte navnet leses kun som en reserveløsning når den opprinnelige brukeroppføringen ikke lenger er tilgjengelig.</li>
+                <li><strong>Kort oppbevaringstid:</strong> 90 dager fra handlingen, håndhevet av en time-to-live-policy i Firestore.</li>
+                <li><strong>Ingen sekundær bruk:</strong> dataene deles ikke med tredjeparter og kombineres ikke med profilen din for noe annet formål (ingen profilering, analyse, annonsering eller produktutvikling).</li>
+            </ul>
+
+            <h3>Kontosletting og denne loggen</h3>
+            <p>Hvis du utøver din rett til sletting (sletter kontoen din), fjerner vi personopplysningene dine fra systemene våre som beskrevet i punkt 6 og 7. Imidlertid vil enhver UID som tilhører deg, og visningsnavnet slik det var på tidspunktet for handlingen, som <em>allerede er registrert</em> i revisjonsloggoppføringer før slettingen, forbli i disse oppføringene ut deres individuelle 90-dagersperioder, og deretter slettes automatisk sammen med hver oppføring. Vi kan ikke fjerne enkeltoppføringer på forespørsel.</p>
+
+            <h3>Rett til å protestere</h3>
+            <p>Du kan protestere mot denne behandlingen ved å sende e-post til <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> og vise til de konkrete revisjonsloggoppføringene eller tidsrommet. Fordi denne behandlingen tjener interesser knyttet til svindelforebygging og tvisteløsning som kan veie tyngre enn en individuell protest, kan vi ikke garantere umiddelbar sletting innenfor 90-dagersperioden; vi vil imidlertid vurdere hver forespørsel individuelt. Uavhengig av utfallet slettes hver oppføring automatisk når dens 90 dager er utløpt.</p>
+        </div>
+
+        <div class="section">
+            <h2>5. Datalagring og sikkerhet</h2>
+
+            <h3>Lagringssted</h3>
+            <p>Dataene dine lagres på Google Firebase-servere, hovedsakelig plassert i:</p>
+            <ul>
+                <li>Europa (for EU-brukere)</li>
+                <li>USA (for brukere utenfor EU)</li>
+            </ul>
+
+            <h3>Sikkerhetstiltak</h3>
+            <ul>
+                <li>Kryptering under overføring (HTTPS/TLS)</li>
+                <li>Kryptering ved lagring for sensitive data</li>
+                <li>Sikker autentisering via Firebase Auth</li>
+                <li>Regelmessige sikkerhetsrevisjoner og oppdateringer</li>
+                <li>Tilgangskontroller og overvåking</li>
+            </ul>
+        </div>
+
+        <div class="gdpr-rights">
+            <h2>6. Dine rettigheter (GDPR)</h2>
+            <p>Etter GDPR har du følgende rettigheter:</p>
+
+            <h3>Rett til innsyn</h3>
+            <p>Be om en kopi av personopplysningene vi har om deg</p>
+
+            <h3>Rett til retting</h3>
+            <p>Rette uriktige eller ufullstendige personopplysninger</p>
+
+            <h3>Rett til sletting ("retten til å bli glemt")</h3>
+            <p>Be om sletting av personopplysningene dine (med 30 dagers angrefrist). Merk: administrative revisjonslogger som inneholder din UID og visningsnavnet som ble registrert på tidspunktet for hver handling, beholdes i inntil 90 dager fra den opprinnelige handlingen og slettes deretter automatisk; vi kan ikke fjerne enkeltoppføringer på forespørsel (se punkt 4b).</p>
+
+            <h3>Rett til begrensning av behandling</h3>
+            <p>Begrense hvordan vi bruker personopplysningene dine</p>
+
+            <h3>Rett til dataportabilitet</h3>
+            <p>Motta dataene dine i et strukturert, maskinlesbart format</p>
+
+            <h3>Rett til å protestere</h3>
+            <p>Protestere mot behandling basert på berettiget interesse</p>
+
+            <h3>Rett til å trekke tilbake samtykke</h3>
+            <p>Trekke tilbake samtykket til analyse når som helst i Innstillinger</p>
+
+            <p style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <strong>Slik utøver du disse rettighetene:</strong> Gå til Innstillinger → Personvern i appen, eller kontakt oss på privacy@sportiverse.no
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>7. Oppbevaring av data</h2>
+            <p>Vi oppbevarer dataene dine i ulike perioder avhengig av type:</p>
+            <ul>
+                <li><strong>Kontodata:</strong> Til kontoen slettes + 30 dagers gjenopprettingsperiode</li>
+                <li><strong>Kampstatistikk:</strong> På ubestemt tid for historiske registre (anonymiseres etter kontosletting)</li>
+                <li><strong>Analysedata:</strong> 2 år</li>
+                <li><strong>Logger og sikkerhetsdata:</strong> 90 dager</li>
+                <li><strong>Administrative revisjonslogger:</strong> UID, metadata om handlingen og visningsnavnene til de direkte involverte personene (registrert på tidspunktet for hver handling) — 90 dager fra handlingen, slettes automatisk av Firestore TTL. Beholdes gjennom kontosletting til hver oppførings periode er utløpt (se punkt 4b).</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>8. Barns personvern</h2>
+            <p>Sportiverse krever at brukere er minst 13 år gamle. Brukere under 18 år trenger foreldresamtykke. Vi samler ikke bevisst inn data fra barn under 13 år.</p>
+        </div>
+
+        <div class="section">
+            <h2>9. Internasjonale dataoverføringer</h2>
+            <p>Hvis du befinner deg i EU og dataene dine overføres ut av EU, sikrer vi hensiktsmessige garantier gjennom:</p>
+            <ul>
+                <li>Standard kontraktsklausuler</li>
+                <li>Beslutninger om tilstrekkelig beskyttelsesnivå</li>
+                <li>Privacy Shield-rammeverk (der det er aktuelt)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>10. Informasjonskapsler og sporing</h2>
+            <p>Sportiverse-mobilappen bruker ikke informasjonskapsler. Vi kan bruke:</p>
+            <ul>
+                <li>Lokal lagring for appinnstillinger</li>
+                <li>Analyse-SDK-er (kun med ditt samtykke)</li>
+                <li>Firebase Performance Monitoring (anonymisert)</li>
+                <li>Mobile annonseidentifikatorer (IDFA / Google Advertising ID) via Google AdMob — se punkt 4a</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>11. Endringer i denne erklæringen</h2>
+            <p>Vi vil varsle deg om vesentlige endringer via:</p>
+            <ul>
+                <li>Varsler i appen</li>
+                <li>E-post til din registrerte adresse</li>
+                <li>Tydelig melding i appen</li>
+            </ul>
+        </div>
+
+        <div class="contact-info">
+            <h2>Kontaktinformasjon</h2>
+            <p><strong>Personvernombud</strong></p>
+            <p style="margin-top: 16px;">
+                E-post: privacy@sportiverse.no<br>
+                Adresse: Hagegata 1A<br>
+                Oslo, Norge
+            </p>
+
+            <p style="margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <strong>Tilsynsmyndighet (Norge)</strong><br>
+                Datatilsynet<br>
+                Nettsted: www.datatilsynet.no
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Sportiverse. Alle rettigheter forbeholdt.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+    <script data-goatcounter="https://joachim.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

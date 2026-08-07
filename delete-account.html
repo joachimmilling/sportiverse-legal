@@ -6,8 +6,29 @@
     <title>Delete Your Account - Sportiverse</title>
     <meta name="description" content="How to delete your Sportiverse account and associated data.">
     <link rel="canonical" href="https://sportiverse.no/delete-account.html">
+    <link rel="alternate" hreflang="en" href="https://sportiverse.no/delete-account.html">
+    <link rel="alternate" hreflang="nb" href="https://sportiverse.no/no/delete-account.html">
+    <link rel="alternate" hreflang="x-default" href="https://sportiverse.no/delete-account.html">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <script>
+    (function () {
+        try {
+            var pref = localStorage.getItem('lang');
+            if (pref === 'en') return;
+            var langs = { nb: { match: /^(nb|nn|no)/, prefix: '/no' } };
+            var first = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+            for (var code in langs) {
+                if (pref === code || (!pref && langs[code].match.test(first))) {
+                    var map = { '/': '/', '/index.html': '/', '/privacy.html': '/privacy.html', '/terms.html': '/terms.html', '/delete-account.html': '/delete-account.html' };
+                    var t = map[location.pathname];
+                    if (t !== undefined) location.replace(langs[code].prefix + t);
+                    return;
+                }
+            }
+        } catch (e) {}
+    })();
+    </script>
     <meta name="view-transition" content="same-origin">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,7 +130,7 @@
                 <img src="assets/icon.png" alt="Sportiverse" />
                 <span class="logo-text">sportiverse</span>
             </a>
-            <a href="index.html" class="back-link">Back to Home</a>
+            <div style="display: flex; gap: 24px; align-items: center;"><a href="/no/delete-account.html" class="back-link" hreflang="nb" onclick="try{localStorage.setItem('lang','nb')}catch(e){}">Norsk</a><a href="index.html" class="back-link">Back to Home</a></div>
         </div>
     </nav>
 

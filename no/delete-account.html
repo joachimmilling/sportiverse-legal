@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slett kontoen din - Sportiverse</title>
+    <meta name="description" content="Slik sletter du Sportiverse-kontoen din og tilhørende data.">
+    <link rel="canonical" href="https://sportiverse.no/no/delete-account.html">
+    <link rel="alternate" hreflang="en" href="https://sportiverse.no/delete-account.html">
+    <link rel="alternate" hreflang="nb" href="https://sportiverse.no/no/delete-account.html">
+    <link rel="alternate" hreflang="x-default" href="https://sportiverse.no/delete-account.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="view-transition" content="same-origin">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oxanium:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        nav {
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 20px 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-bottom: 1px solid transparent;
+        }
+        nav.scrolled { padding: 14px 0; background: rgba(0, 0, 0, 0.97); border-bottom-color: rgba(255, 255, 255, 0.07); }
+
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; align-items: center; }
+
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo img { width: 32px; height: 32px; }
+        .logo-text { font-family: 'Oxanium', sans-serif; font-size: 22px; font-weight: 600; color: #ffffff; letter-spacing: -0.3px; }
+
+        .back-link { color: rgba(255, 255, 255, 0.55); text-decoration: none; transition: color 0.3s; font-weight: 400; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; }
+        .back-link:hover { color: #ffffff; }
+
+        .hero { padding: 150px 32px 60px; position: relative; }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        h1 { font-family: 'Oxanium', sans-serif; font-size: clamp(36px, 5vw, 52px); font-weight: 700; margin-bottom: 14px; color: #ffffff; line-height: 1.1; letter-spacing: -0.03em; }
+        .subtitle { color: rgba(255, 255, 255, 0.45); font-size: 15px; font-weight: 300; }
+
+        .content { padding: 60px 32px 80px; max-width: 900px; margin: 0 auto; }
+        .section { margin-bottom: 48px; }
+
+        h2 { font-family: 'Oxanium', sans-serif; color: #ffffff; font-size: 22px; font-weight: 600; margin-bottom: 18px; letter-spacing: -0.01em; }
+        h3 { font-family: 'Oxanium', sans-serif; color: rgba(255, 255, 255, 0.85); font-size: 17px; font-weight: 600; margin-top: 28px; margin-bottom: 12px; }
+
+        p { color: rgba(255, 255, 255, 0.6); margin-bottom: 14px; font-size: 15px; line-height: 1.75; font-weight: 300; }
+        ul, ol { margin: 16px 0 16px 20px; }
+        li { color: rgba(255, 255, 255, 0.6); margin-bottom: 8px; font-size: 15px; font-weight: 300; line-height: 1.65; }
+        li::marker { color: rgba(255, 255, 255, 0.2); }
+        li strong { color: rgba(255, 255, 255, 0.85); font-weight: 500; }
+
+        .important {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 10px;
+            padding: 22px 24px;
+            margin: 20px 0;
+        }
+        .important strong { color: rgba(255, 255, 255, 0.85); font-weight: 500; }
+
+        table { width: 100%; margin: 24px 0; border-collapse: collapse; overflow: hidden; border-radius: 8px; background: rgba(255, 255, 255, 0.02); }
+        th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.06); vertical-align: top; }
+        th { background: rgba(255, 255, 255, 0.04); color: rgba(255, 255, 255, 0.85); font-weight: 500; font-size: 14px; }
+        td { color: rgba(255, 255, 255, 0.6); font-size: 14px; font-weight: 300; }
+        tr:last-child td { border-bottom: none; }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 14px;
+            padding: 36px;
+            margin-top: 48px;
+            text-align: center;
+        }
+        .contact-info h2 { color: #ffffff; margin-bottom: 16px; }
+        .contact-info p { color: rgba(255, 255, 255, 0.6); font-size: 15px; }
+        .contact-info strong { color: rgba(255, 255, 255, 0.85); }
+
+        a { color: #087F8C; text-decoration: none; transition: color 0.3s; }
+        a:hover { color: #0A9DAD; }
+
+        footer { background: #000000; padding: 48px 32px 24px; border-top: 1px solid rgba(255, 255, 255, 0.07); text-align: center; }
+        .footer-content { max-width: 900px; margin: 0 auto; color: rgba(255, 255, 255, 0.3); font-size: 13px; font-weight: 300; }
+
+        @media (max-width: 768px) {
+            .hero { padding: 120px 20px 40px; }
+            .content { padding: 40px 20px 60px; }
+            .contact-info { padding: 28px 20px; }
+            th, td { padding: 10px 8px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="/no/" class="logo">
+                <img src="/assets/icon.png" alt="Sportiverse" />
+                <span class="logo-text">sportiverse</span>
+            </a>
+            <div style="display: flex; gap: 24px; align-items: center;"><a href="/delete-account.html" class="back-link" hreflang="en" onclick="try{localStorage.setItem('lang','en')}catch(e){}">English</a><a href="/no/" class="back-link">Tilbake til forsiden</a></div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Slett dataene dine</h1>
+            <p class="subtitle">Slik sletter du bestemte data eller hele Sportiverse-kontoen din</p>
+        </div>
+    </section>
+
+    <div class="content">
+        <div class="section">
+            <h2>Slett bestemte data (uten å slette kontoen din)</h2>
+            <p>Du trenger ikke å slette hele kontoen din for å fjerne data du har opprettet i Sportiverse. Følgende kan slettes enkeltvis direkte i appen:</p>
+            <ul>
+                <li><strong>Kommentarer:</strong> hold inne på kommentaren din → <em>Slett</em></li>
+                <li><strong>Direktemeldinger:</strong> hold inne på meldingen → <em>Slett</em></li>
+                <li><strong>Varsler:</strong> sveip for å slette i varselskjermen</li>
+                <li><strong>Profilbilde og biografi:</strong> Innstillinger → Profil → tøm eller erstatt feltet</li>
+                <li><strong>Kampoppstillinger og hendelser du har opprettet:</strong> åpne kampen → rediger oppstilling eller hendelser (innenfor ditt administratoromfang)</li>
+                <li><strong>Medlemskap i klubb, liga eller lag:</strong> forlat enheten fra dens detaljskjerm</li>
+            </ul>
+            <p>Enkeltvise slettinger trer i kraft umiddelbart. Aggregerte ligatabeller og historiske kampresultater forblir knyttet til spillerprofilen inntil selve kontoen slettes.</p>
+            <p>Hvis du ønsker å få fjernet data som ikke kan slettes fra appen, send en e-post til <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> fra din registrerte adresse med emnet <strong>"Data deletion request"</strong> og beskriv hva du ønsker fjernet.</p>
+        </div>
+
+        <div class="section">
+            <h2>Slett hele kontoen din — Alternativ 1: direkte i appen (anbefalt)</h2>
+            <p>Den raskeste måten å slette kontoen din på er direkte i Sportiverse-appen:</p>
+            <ol>
+                <li>Åpne Sportiverse-appen og logg inn</li>
+                <li>Gå til <strong>Innstillinger</strong></li>
+                <li>Trykk på <strong>Kontosenter</strong></li>
+                <li>Trykk på <strong>Slett konto</strong></li>
+                <li>Bekreft slettingen når du blir bedt om det</li>
+            </ol>
+
+            <div class="important">
+                <p><strong>30 dagers angrefrist:</strong> Kontoen din går inn i en gjenopprettbar tilstand i 30 dager. Hvis du logger inn igjen i løpet av denne perioden, blir kontoen din gjenopprettet. Etter 30 dager er slettingen permanent og kan ikke angres.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Slett hele kontoen din — Alternativ 2: via e-post</h2>
+            <p>Hvis du ikke lenger har tilgang til appen eller enheten din, send en sletteforespørsel til <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> fra e-postadressen som er registrert på kontoen din.</p>
+            <p>Vennligst inkluder:</p>
+            <ul>
+                <li>Emne: <strong>Account deletion request</strong></li>
+                <li>E-postadressen som ble brukt ved registrering</li>
+                <li>Ditt fulle navn slik det vises på profilen din (hjelper oss med å finne kontoen)</li>
+            </ul>
+            <p>Vi bekrefter mottak innen 7 dager og fullfører slettingen innen 30 dager, i tråd med våre forpliktelser etter GDPR.</p>
+        </div>
+
+        <div class="section">
+            <h2>Hva som slettes</h2>
+            <p>Når kontoen din slettes permanent, fjernes følgende data fra våre systemer:</p>
+            <ul>
+                <li>Profilen din (navn, e-post, fødselsdato, nasjonalitet, profilbilde, biografi)</li>
+                <li>Kommentarer og likerklikk du har opprettet</li>
+                <li>Direktemeldinger du har sendt</li>
+                <li>Opplastede bilder og medier</li>
+                <li>Kampoppstillinger, hendelser og vurderinger du har opprettet</li>
+                <li>Medlemskap i klubber, ligaer og lag</li>
+                <li>Varslingsinnstillinger og enhetstokener</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Hva som beholdes, og hvorfor</h2>
+            <p>Enkelte data beholdes etter at kontoen er slettet. Der oppbevaring er nødvendig av legitime formål, fjernes personlige identifikatorer eller dataene anonymiseres — med unntak av administrative revisjonslogger, som (der du utførte eller var gjenstand for en slik handling mens kontoen din eksisterte) beholder din bruker-ID og visningsnavnet registrert på tidspunktet for hver handling i en kort, fast periode før automatisk sletting (se personvernerklæringen, punkt 4b).</p>
+
+            <table>
+                <tr>
+                    <th>Data</th>
+                    <th>Oppbevaring</th>
+                    <th>Begrunnelse</th>
+                </tr>
+                <tr>
+                    <td>Kampresultater, ligatabeller, historisk statistikk</td>
+                    <td>Ubegrenset (anonymisert — navnet ditt erstattes med "Tidligere spiller")</td>
+                    <td>Bevarer integriteten til den sportslige historikken for klubber og ligaer du har deltatt i</td>
+                </tr>
+                <tr>
+                    <td>Administrative revisjonslogger (din UID, samt visningsnavnet slik det var på handlingstidspunktet der det er aktuelt, hvis du utførte eller var gjenstand for en av de registrerte handlingene — å legge til, forfremme, degradere eller fjerne et medlem; å forlate en klubb; å redigere klubbinnstillinger; å rotere en klubbs invitasjonskode; eller å slette en klubb)</td>
+                    <td>90 dager fra handlingen (slettes automatisk av Firestore TTL)</td>
+                    <td>Forebygging av svindel, tvisteløsning, plattformintegritet — se <a href="/no/privacy.html#section-4b">personvernerklæringen §4b</a></td>
+                </tr>
+                <tr>
+                    <td>Andre registreringer knyttet til sikkerhet og forebygging av misbruk</td>
+                    <td>Begrenset oppbevaringsperiode (se personvernerklæringen)</td>
+                    <td>Forebygging av svindel og etterforskning av misbruk</td>
+                </tr>
+                <tr>
+                    <td>Opplysninger som kreves ved lov (f.eks. skatt, rettskrav)</td>
+                    <td>Så lenge gjeldende lov krever det</td>
+                    <td>Overholdelse av lovkrav</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Eksporter dataene dine først (valgfritt)</h2>
+            <p>Før du sletter kontoen din, kan du laste ned en kopi av personopplysningene dine. I appen går du til <strong>Innstillinger → Kontosenter → Eksporter mine data</strong>. Du mottar en nedlastingslenke på e-post innen 14 dager.</p>
+        </div>
+
+        <div class="contact-info">
+            <h2>Spørsmål?</h2>
+            <p>Hvis du har spørsmål om sletting av konto eller hvordan vi behandler dataene dine, kan du kontakte oss:</p>
+            <p style="margin-top: 16px;">
+                E-post: <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a><br>
+                Se også: <a href="/no/privacy.html">Personvernerklæring</a>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Sportiverse. Med enerett.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+    <script data-goatcounter="https://joachim.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

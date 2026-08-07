@@ -41,6 +41,24 @@
       }
     }
     </script>
+    <script>
+    (function () {
+        try {
+            var pref = localStorage.getItem('lang');
+            if (pref === 'en') return;
+            var langs = { nb: { match: /^(nb|nn|no)/, prefix: '/no' } };
+            var first = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+            for (var code in langs) {
+                if (pref === code || (!pref && langs[code].match.test(first))) {
+                    var map = { '/': '/', '/index.html': '/', '/privacy.html': '/privacy.html', '/terms.html': '/terms.html', '/delete-account.html': '/delete-account.html' };
+                    var t = map[location.pathname];
+                    if (t !== undefined) location.replace(langs[code].prefix + t);
+                    return;
+                }
+            }
+        } catch (e) {}
+    })();
+    </script>
     <meta name="view-transition" content="same-origin">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1343,7 +1361,7 @@
                 <a href="#vision">About</a>
                 <a href="#features">Features</a>
                 <a href="#audience">For You</a>
-                <a href="/no/" hreflang="nb">Norsk</a>
+                <a href="/no/" hreflang="nb" onclick="try{localStorage.setItem('lang','nb')}catch(e){}">Norsk</a>
             </div>
             <div class="mobile-menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
                 <span></span>

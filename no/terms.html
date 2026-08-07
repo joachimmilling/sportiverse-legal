@@ -1,34 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nb">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms & Conditions - Sportiverse</title>
-    <meta name="description" content="Read the Sportiverse terms and conditions for using the app and services.">
-    <link rel="canonical" href="https://sportiverse.no/terms.html">
+    <title>Vilkår og betingelser - Sportiverse</title>
+    <meta name="description" content="Les Sportiverses vilkår og betingelser for bruk av appen og tjenestene.">
+    <link rel="canonical" href="https://sportiverse.no/no/terms.html">
     <link rel="alternate" hreflang="en" href="https://sportiverse.no/terms.html">
     <link rel="alternate" hreflang="nb" href="https://sportiverse.no/no/terms.html">
     <link rel="alternate" hreflang="x-default" href="https://sportiverse.no/terms.html">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <script>
-    (function () {
-        try {
-            var pref = localStorage.getItem('lang');
-            if (pref === 'en') return;
-            var langs = { nb: { match: /^(nb|nn|no)/, prefix: '/no' } };
-            var first = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
-            for (var code in langs) {
-                if (pref === code || (!pref && langs[code].match.test(first))) {
-                    var map = { '/': '/', '/index.html': '/', '/privacy.html': '/privacy.html', '/terms.html': '/terms.html', '/delete-account.html': '/delete-account.html' };
-                    var t = map[location.pathname];
-                    if (t !== undefined) location.replace(langs[code].prefix + t);
-                    return;
-                }
-            }
-        } catch (e) {}
-    })();
-    </script>
     <meta name="view-transition" content="same-origin">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -261,145 +243,146 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="assets/icon.png" alt="Sportiverse" />
+            <a href="/no/" class="logo">
+                <img src="/assets/icon.png" alt="Sportiverse" />
                 <span class="logo-text">sportiverse</span>
             </a>
-            <div style="display: flex; gap: 24px; align-items: center;"><a href="/no/terms.html" class="back-link" hreflang="nb" onclick="try{localStorage.setItem('lang','nb')}catch(e){}">Norsk</a><a href="index.html" class="back-link">Back to Home</a></div>
+            <div style="display: flex; gap: 24px; align-items: center;"><a href="/terms.html" class="back-link" hreflang="en" onclick="try{localStorage.setItem('lang','en')}catch(e){}">English</a><a href="/no/" class="back-link">Tilbake til forsiden</a></div>
         </div>
     </nav>
-    
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Terms & Conditions</h1>
-            <p class="effective-date">Effective Date: September 1, 2025</p>
+            <h1>Vilkår og betingelser</h1>
+            <p class="effective-date">Gjelder fra: 1. september 2025</p>
+            <p class="effective-date" style="margin-top: 6px;">Denne oversettelsen er kun til informasjon. Ved motstrid gjelder den engelske versjonen.</p>
         </div>
     </section>
-    
+
     <!-- Content -->
     <div class="content">
         <div class="section">
-            <h2>1. Acceptance of Terms</h2>
-            <p>By accessing and using Sportiverse ("the App"), you agree to be bound by these Terms & Conditions. If you do not agree to these terms, please do not use the App.</p>
-            
+            <h2>1. Aksept av vilkårene</h2>
+            <p>Ved å få tilgang til og bruke Sportiverse («Appen») godtar du å være bundet av disse vilkårene og betingelsene. Hvis du ikke godtar disse vilkårene, ber vi deg om ikke å bruke Appen.</p>
+
             <div class="important">
-                <p><strong>Age Requirement:</strong> You must be at least 13 years old to use Sportiverse. Users under 18 require parental consent.</p>
+                <p><strong>Alderskrav:</strong> Du må være minst 13 år gammel for å bruke Sportiverse. Brukere under 18 år trenger samtykke fra foresatte.</p>
             </div>
         </div>
-        
+
         <div class="section">
-            <h2>2. Account Registration</h2>
-            <p>To use Sportiverse, you must:</p>
+            <h2>2. Registrering av konto</h2>
+            <p>For å bruke Sportiverse må du:</p>
             <ul>
-                <li>Provide accurate and complete registration information</li>
-                <li>Maintain the security of your account credentials</li>
-                <li>Notify us immediately of any unauthorized use</li>
-                <li>Be responsible for all activities under your account</li>
+                <li>Oppgi nøyaktig og fullstendig registreringsinformasjon</li>
+                <li>Ivareta sikkerheten til påloggingsinformasjonen din</li>
+                <li>Varsle oss umiddelbart ved uautorisert bruk</li>
+                <li>Være ansvarlig for all aktivitet på kontoen din</li>
             </ul>
         </div>
-        
+
         <div class="section">
-            <h2>3. User Conduct</h2>
-            <h3>Acceptable Use</h3>
-            <p>You agree to use Sportiverse for lawful purposes and in accordance with these Terms. You may:</p>
+            <h2>3. Brukeradferd</h2>
+            <h3>Akseptabel bruk</h3>
+            <p>Du samtykker i å bruke Sportiverse til lovlige formål og i samsvar med disse vilkårene. Du kan:</p>
             <ul>
-                <li>Create and manage sports clubs and leagues</li>
-                <li>Organize matches and training sessions</li>
-                <li>Track statistics and performance</li>
-                <li>Connect with other sports enthusiasts</li>
+                <li>Opprette og administrere idrettsklubber og ligaer</li>
+                <li>Organisere kamper og treningsøkter</li>
+                <li>Følge med på statistikk og prestasjoner</li>
+                <li>Knytte kontakt med andre idrettsentusiaster</li>
             </ul>
-            
-            <h3>Prohibited Activities</h3>
-            <p>You may not:</p>
+
+            <h3>Forbudte aktiviteter</h3>
+            <p>Du kan ikke:</p>
             <ul>
-                <li>Post false, misleading, or fraudulent information</li>
-                <li>Harass, abuse, or harm other users</li>
-                <li>Violate any laws or regulations</li>
-                <li>Attempt to gain unauthorized access to the App</li>
-                <li>Use the App for commercial purposes without permission</li>
-                <li>Share inappropriate or offensive content</li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h2>4. Content and Intellectual Property</h2>
-            <h3>Your Content</h3>
-            <p>You retain ownership of content you post on Sportiverse. By posting content, you grant us a worldwide, non-exclusive license to use, display, and distribute your content within the App.</p>
-            
-            <h3>Our Content</h3>
-            <p>The Sportiverse name, logo, and all related intellectual property are owned by Sportiverse. You may not use our intellectual property without written permission.</p>
-        </div>
-        
-        <div class="section">
-            <h2>5. Privacy and Data Protection</h2>
-            <p>Your use of Sportiverse is also governed by our <a href="privacy.html">Privacy Policy</a>, which explains how we collect, use, and protect your personal information.</p>
-            
-            <h3>GDPR Compliance</h3>
-            <p>For users in the European Union, we comply with GDPR requirements including:</p>
-            <ul>
-                <li>Right to access your data</li>
-                <li>Right to correct inaccurate data</li>
-                <li>Right to delete your data</li>
-                <li>Right to data portability</li>
-                <li>Right to object to data processing</li>
+                <li>Publisere falsk, villedende eller bedragersk informasjon</li>
+                <li>Trakassere, misbruke eller skade andre brukere</li>
+                <li>Bryte lover eller forskrifter</li>
+                <li>Forsøke å skaffe deg uautorisert tilgang til Appen</li>
+                <li>Bruke Appen til kommersielle formål uten tillatelse</li>
+                <li>Dele upassende eller støtende innhold</li>
             </ul>
         </div>
-        
+
         <div class="section">
-            <h2>6. Club and League Management</h2>
-            <p>As a club or league administrator, you are responsible for:</p>
+            <h2>4. Innhold og immaterielle rettigheter</h2>
+            <h3>Ditt innhold</h3>
+            <p>Du beholder eierskapet til innhold du publiserer på Sportiverse. Ved å publisere innhold gir du oss en verdensomspennende, ikke-eksklusiv lisens til å bruke, vise og distribuere innholdet ditt i Appen.</p>
+
+            <h3>Vårt innhold</h3>
+            <p>Sportiverse-navnet, logoen og alle tilhørende immaterielle rettigheter eies av Sportiverse. Du kan ikke bruke våre immaterielle rettigheter uten skriftlig tillatelse.</p>
+        </div>
+
+        <div class="section">
+            <h2>5. Personvern og databeskyttelse</h2>
+            <p>Din bruk av Sportiverse reguleres også av vår <a href="/no/privacy.html">personvernerklæring</a>, som forklarer hvordan vi samler inn, bruker og beskytter personopplysningene dine.</p>
+
+            <h3>Overholdelse av GDPR</h3>
+            <p>For brukere i EU overholder vi GDPR-kravene, inkludert:</p>
             <ul>
-                <li>Ensuring accurate match results and statistics</li>
-                <li>Managing member permissions appropriately</li>
-                <li>Maintaining fair play and sportsmanship</li>
-                <li>Resolving disputes within your organization</li>
+                <li>Rett til innsyn i dine data</li>
+                <li>Rett til å korrigere uriktige data</li>
+                <li>Rett til å slette dine data</li>
+                <li>Rett til dataportabilitet</li>
+                <li>Rett til å protestere mot databehandling</li>
             </ul>
         </div>
-        
+
         <div class="section">
-            <h2>7. Limitation of Liability</h2>
-            <p>Sportiverse is provided "as is" without warranties of any kind. We are not liable for:</p>
+            <h2>6. Administrasjon av klubber og ligaer</h2>
+            <p>Som administrator for en klubb eller liga er du ansvarlig for å:</p>
             <ul>
-                <li>Indirect, incidental, or consequential damages</li>
-                <li>Loss of data or profits</li>
-                <li>Service interruptions or errors</li>
-                <li>Actions of other users</li>
+                <li>Sikre nøyaktige kampresultater og statistikk</li>
+                <li>Administrere medlemstillatelser på en forsvarlig måte</li>
+                <li>Opprettholde fair play og god sportsånd</li>
+                <li>Løse tvister innad i organisasjonen din</li>
             </ul>
         </div>
-        
+
         <div class="section">
-            <h2>8. Termination</h2>
-            <p>We reserve the right to suspend or terminate accounts that violate these Terms. You may delete your account at any time through the App settings.</p>
+            <h2>7. Ansvarsbegrensning</h2>
+            <p>Sportiverse leveres «som den er» uten noen form for garantier. Vi er ikke ansvarlige for:</p>
+            <ul>
+                <li>Indirekte, tilfeldige eller følgeskader</li>
+                <li>Tap av data eller fortjeneste</li>
+                <li>Tjenesteavbrudd eller feil</li>
+                <li>Andre brukeres handlinger</li>
+            </ul>
         </div>
-        
+
         <div class="section">
-            <h2>9. Changes to Terms</h2>
-            <p>We may update these Terms from time to time. We will notify you of significant changes through the App or via email.</p>
+            <h2>8. Oppsigelse</h2>
+            <p>Vi forbeholder oss retten til å suspendere eller avslutte kontoer som bryter disse vilkårene. Du kan når som helst slette kontoen din via innstillingene i Appen.</p>
         </div>
-        
+
         <div class="section">
-            <h2>10. Governing Law</h2>
-            <p>These Terms are governed by the laws of Norway. Any disputes shall be resolved in the courts of Oslo, Norway.</p>
+            <h2>9. Endringer i vilkårene</h2>
+            <p>Vi kan oppdatere disse vilkårene fra tid til annen. Vi vil varsle deg om vesentlige endringer gjennom Appen eller via e-post.</p>
         </div>
-        
+
+        <div class="section">
+            <h2>10. Gjeldende lov</h2>
+            <p>Disse vilkårene er underlagt norsk lov. Eventuelle tvister skal løses ved domstolene i Oslo, Norge.</p>
+        </div>
+
         <div class="contact-info">
-            <h2>Contact Us</h2>
-            <p>If you have questions about these Terms & Conditions, please contact us at:</p>
+            <h2>Kontakt oss</h2>
+            <p>Hvis du har spørsmål om disse vilkårene og betingelsene, kan du kontakte oss på:</p>
             <p style="margin-top: 20px;">
-                <strong>Email:</strong> privacy@sportiverse.no<br>
-                <strong>Address:</strong> Hagegata 1A, Oslo, Norway
+                <strong>E-post:</strong> privacy@sportiverse.no<br>
+                <strong>Adresse:</strong> Hagegata 1A, Oslo, Norge
             </p>
         </div>
     </div>
-    
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>© 2025 Sportiverse. All rights reserved.</p>
+            <p>© 2025 Sportiverse. Alle rettigheter forbeholdt.</p>
         </div>
     </footer>
-    
+
     <script>
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
