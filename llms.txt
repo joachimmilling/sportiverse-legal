@@ -1,0 +1,12 @@
+# Sportiverse
+
+> Sportiverse is an all-in-one sports app for clubs, leagues, and players. Manage your club, run your league, and track every match — built for the people who live and breathe sport. Available on iOS (TestFlight beta) and Android (beta access).
+
+Website: https://sportiverse.no/
+
+## Pages
+
+- [Home](https://sportiverse.no/): Product overview, features, and beta access
+- [Privacy Policy](https://sportiverse.no/privacy.html): How Sportiverse collects, uses, and protects data
+- [Terms & Conditions](https://sportiverse.no/terms.html): Terms for using the app and services
+- [Delete Account](https://sportiverse.no/delete-account.html): How to delete your Sportiverse account and data
