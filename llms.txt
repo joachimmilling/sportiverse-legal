@@ -6,7 +6,7 @@ Website: https://sportiverse.no/
 
 ## Pages
 
-- [Home](https://sportiverse.no/): Product overview, features, and beta access
+- [Home](https://sportiverse.no/): Product overview, features, FAQ, and beta access
 - [Hjem (norsk)](https://sportiverse.no/no/): Norwegian version of the homepage
 - [Privacy Policy](https://sportiverse.no/privacy.html): How Sportiverse collects, uses, and protects data ([norsk](https://sportiverse.no/no/privacy.html))
 - [Terms & Conditions](https://sportiverse.no/terms.html): Terms for using the app and services ([norsk](https://sportiverse.no/no/terms.html))

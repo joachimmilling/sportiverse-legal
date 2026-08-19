@@ -44,6 +44,78 @@
       }
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Sportiverse",
+      "legalName": "Sportiverse AS",
+      "url": "https://sportiverse.no/",
+      "logo": "https://sportiverse.no/assets/icon.png",
+      "email": "support@sportiverse.no",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Oslo",
+        "addressCountry": "NO"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Sportiverse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sportiverse is an all-in-one sports app for clubs, leagues, and players. Create a club, schedule matches, score them live, and follow standings that update automatically — all in one place."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Sportiverse free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Sportiverse is free to download and use during the beta."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which sports does Sportiverse support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Football, starting with Norwegian grassroots football. The ambition is every sport, everywhere."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is Sportiverse for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Coaches, players, and fans — three audiences, equally served. Coaches organize squads and matchdays, players follow their stats and career, and fans track live scores and standings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get the app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On iOS, join the beta through TestFlight. On Android, request access by emailing support@sportiverse.no and we'll add you to the test group."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I delete my account or data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can delete individual content and your entire account directly in the app, under Settings → Account Center. The delete account page at sportiverse.no/delete-account.html covers all options, including deletion by email."
+          }
+        }
+      ]
+    }
+    </script>
     <script>
     (function () {
         try {
@@ -213,7 +285,8 @@
             text-align: left;
         }
 
-        .hero h1 {
+        .hero-wordmark {
+            display: block;
             font-family: 'Oxanium', sans-serif;
             font-size: clamp(40px, 5.5vw, 72px);
             font-weight: 700;
@@ -224,6 +297,7 @@
         }
 
         .hero-tagline {
+            display: block;
             font-family: 'Oxanium', sans-serif;
             font-size: clamp(14px, 2vw, 18px);
             color: var(--primary);
@@ -1017,6 +1091,81 @@
             text-align: center;
         }
 
+        /* ── FAQ ── */
+        .faq-section {
+            padding: 120px 32px;
+            max-width: 840px;
+            margin: 0 auto;
+        }
+
+        .faq-list {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-hover);
+            background: var(--glass-hover);
+        }
+
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 24px;
+            font-family: 'Oxanium', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 300;
+            line-height: 1;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-item p {
+            padding: 0 24px 20px;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .faq-item a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .faq-item a:hover {
+            text-decoration: underline;
+        }
+
         /* ── Footer ── */
         footer {
             background: var(--bg);
@@ -1379,8 +1528,10 @@
         <canvas id="hero-canvas"></canvas>
         <div class="hero-inner">
             <div class="hero-content">
-                <h1>sportiverse</h1>
-                <p class="hero-tagline">Explore Your Passion</p>
+                <h1>
+                    <span class="hero-wordmark">sportiverse</span>
+                    <span class="hero-tagline">Explore Your Passion</span>
+                </h1>
                 <p class="hero-description">
                     Manage your club. Run your league. Track every match. All in one app — built for the people who live and breathe sport.
                 </p>
@@ -1581,6 +1732,40 @@
 
     <div class="section-divider"></div>
 
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+        <p class="section-label">FAQ</p>
+        <h2 class="section-heading">Questions, answered</h2>
+        <div class="faq-list">
+            <details class="faq-item">
+                <summary>What is Sportiverse?</summary>
+                <p>Sportiverse is an all-in-one sports app for clubs, leagues, and players. Create a club, schedule matches, score them live, and follow standings that update automatically — all in one place.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is Sportiverse free?</summary>
+                <p>Yes. Sportiverse is free to download and use during the beta.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Which sports does Sportiverse support?</summary>
+                <p>Football, starting with Norwegian grassroots football. The ambition is every sport, everywhere.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Who is Sportiverse for?</summary>
+                <p>Coaches, players, and fans — three audiences, equally served. Coaches organize squads and matchdays, players follow their stats and career, and fans track live scores and standings.</p>
+            </details>
+            <details class="faq-item">
+                <summary>How do I get the app?</summary>
+                <p>On iOS, join the beta through <a href="https://testflight.apple.com/join/ctAMPGn9" target="_blank" rel="noopener">TestFlight</a>. On Android, <a href="mailto:support@sportiverse.no?subject=Join%20Android%20Beta&body=Hi%2C%20I%27d%20like%20to%20join%20the%20Sportiverse%20Android%20beta.%20Please%20add%20this%20email%20to%20the%20test%20group.">request access</a> and we'll add you to the test group.</p>
+            </details>
+            <details class="faq-item">
+                <summary>How do I delete my account or data?</summary>
+                <p>You can delete individual content and your entire account directly in the app, under Settings &rarr; Account Center. The <a href="delete-account.html">delete account page</a> covers all options, including deletion by email.</p>
+            </details>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
     <!-- CTA -->
     <section class="cta-section">
         <div class="cta-content">
@@ -1669,7 +1854,7 @@
 
         // ── SplitType text animations ──
         // Hero title — character stagger
-        const heroTitle = new SplitType('.hero h1', { types: 'chars' });
+        const heroTitle = new SplitType('.hero-wordmark', { types: 'chars' });
         gsap.from(heroTitle.chars, {
             y: 40,
             opacity: 0,

@@ -44,6 +44,79 @@
       }
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Sportiverse",
+      "legalName": "Sportiverse AS",
+      "url": "https://sportiverse.no/",
+      "logo": "https://sportiverse.no/assets/icon.png",
+      "email": "support@sportiverse.no",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Oslo",
+        "addressCountry": "NO"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "inLanguage": "nb",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Hva er Sportiverse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sportiverse er en alt-i-ett-app for klubber, ligaer og spillere. Opprett en klubb, planlegg kamper, før dem live, og følg tabeller som oppdateres automatisk — alt på ett sted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Er Sportiverse gratis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Sportiverse er gratis å laste ned og bruke i betaperioden."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvilke idretter støtter Sportiverse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fotball, med norsk breddefotball som startpunkt. Ambisjonen er all idrett, overalt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvem er Sportiverse for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Trenere, spillere og fans — tre målgrupper, likt ivaretatt. Trenere organiserer tropp og kampdager, spillere følger egen statistikk og karriere, og fans følger livescore og tabeller."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvordan får jeg appen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "På iOS blir du med i betaen via TestFlight. På Android ber du om tilgang ved å sende e-post til support@sportiverse.no, så legger vi deg til i testgruppen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvordan sletter jeg kontoen eller dataene mine?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Du kan slette enkeltinnhold og hele kontoen direkte i appen, under Innstillinger → Kontosenter. Siden for kontosletting på sportiverse.no/no/delete-account.html dekker alle alternativer, inkludert sletting via e-post."
+          }
+        }
+      ]
+    }
+    </script>
     <meta name="view-transition" content="same-origin">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -195,7 +268,8 @@
             text-align: left;
         }
 
-        .hero h1 {
+        .hero-wordmark {
+            display: block;
             font-family: 'Oxanium', sans-serif;
             font-size: clamp(40px, 5.5vw, 72px);
             font-weight: 700;
@@ -206,6 +280,7 @@
         }
 
         .hero-tagline {
+            display: block;
             font-family: 'Oxanium', sans-serif;
             font-size: clamp(14px, 2vw, 18px);
             color: var(--primary);
@@ -999,6 +1074,81 @@
             text-align: center;
         }
 
+        /* ── FAQ ── */
+        .faq-section {
+            padding: 120px 32px;
+            max-width: 840px;
+            margin: 0 auto;
+        }
+
+        .faq-list {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-hover);
+            background: var(--glass-hover);
+        }
+
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 24px;
+            font-family: 'Oxanium', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 300;
+            line-height: 1;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-item p {
+            padding: 0 24px 20px;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .faq-item a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .faq-item a:hover {
+            text-decoration: underline;
+        }
+
         /* ── Footer ── */
         footer {
             background: var(--bg);
@@ -1361,8 +1511,10 @@
         <canvas id="hero-canvas"></canvas>
         <div class="hero-inner">
             <div class="hero-content">
-                <h1>sportiverse</h1>
-                <p class="hero-tagline">Utforsk lidenskapen din</p>
+                <h1>
+                    <span class="hero-wordmark">sportiverse</span>
+                    <span class="hero-tagline">Utforsk lidenskapen din</span>
+                </h1>
                 <p class="hero-description">
                     Administrer klubben din. Driv ligaen din. Følg hver kamp. Alt i én app — bygget for folk som lever og ånder for idrett.
                 </p>
@@ -1563,6 +1715,40 @@
 
     <div class="section-divider"></div>
 
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+        <p class="section-label">FAQ</p>
+        <h2 class="section-heading">Spørsmål og svar</h2>
+        <div class="faq-list">
+            <details class="faq-item">
+                <summary>Hva er Sportiverse?</summary>
+                <p>Sportiverse er en alt-i-ett-app for klubber, ligaer og spillere. Opprett en klubb, planlegg kamper, før dem live, og følg tabeller som oppdateres automatisk — alt på ett sted.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Er Sportiverse gratis?</summary>
+                <p>Ja. Sportiverse er gratis å laste ned og bruke i betaperioden.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Hvilke idretter støtter Sportiverse?</summary>
+                <p>Fotball, med norsk breddefotball som startpunkt. Ambisjonen er all idrett, overalt.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Hvem er Sportiverse for?</summary>
+                <p>Trenere, spillere og fans — tre målgrupper, likt ivaretatt. Trenere organiserer tropp og kampdager, spillere følger egen statistikk og karriere, og fans følger livescore og tabeller.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Hvordan får jeg appen?</summary>
+                <p>På iOS blir du med i betaen via <a href="https://testflight.apple.com/join/ctAMPGn9" target="_blank" rel="noopener">TestFlight</a>. På Android <a href="mailto:support@sportiverse.no?subject=Join%20Android%20Beta&body=Hi%2C%20I%27d%20like%20to%20join%20the%20Sportiverse%20Android%20beta.%20Please%20add%20this%20email%20to%20the%20test%20group.">ber du om tilgang</a>, så legger vi deg til i testgruppen.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Hvordan sletter jeg kontoen eller dataene mine?</summary>
+                <p>Du kan slette enkeltinnhold og hele kontoen direkte i appen, under Innstillinger &rarr; Kontosenter. <a href="delete-account.html">Siden for kontosletting</a> dekker alle alternativer, inkludert sletting via e-post.</p>
+            </details>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
     <!-- CTA -->
     <section class="cta-section">
         <div class="cta-content">
@@ -1651,7 +1837,7 @@
 
         // ── SplitType text animations ──
         // Hero title — character stagger
-        const heroTitle = new SplitType('.hero h1', { types: 'chars' });
+        const heroTitle = new SplitType('.hero-wordmark', { types: 'chars' });
         gsap.from(heroTitle.chars, {
             y: 40,
             opacity: 0,
