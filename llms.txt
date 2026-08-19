@@ -4,6 +4,20 @@
 
 Website: https://sportiverse.no/
 
+## Capabilities
+
+- Live match scoring with real-time events (goals, cards, substitutions) — score and event updates, not video
+- Automatic player and team statistics derived from recorded match events (goals, assists, minutes, career totals, club records)
+- Data-driven player ratings calculated from match events, not votes or opinions
+- League management with automatic standings, configurable point systems, and multiple divisions
+- Training session scheduling and attendance tracking
+- Social feed with automatically shared match highlights, results, and milestones; likes and comments
+- Club management: members, roles, teams, drills
+- Cross-platform: iOS and Android with real-time sync; no web version yet
+- Languages: English, Norwegian, Danish, Swedish
+- Free during beta; GDPR-compliant, EU data storage for EU users; users must be 13+, under 18 requires parental consent
+- Focus: grassroots football (starting in Norway), with the ambition of every sport
+
 ## Pages
 
 - [Home](https://sportiverse.no/): Product overview, features, FAQ, and beta access
