@@ -35,7 +35,7 @@
             var first = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
             for (var code in langs) {
                 if (pref === code || (!pref && langs[code].match.test(first))) {
-                    var map = { '/': '/', '/index.html': '/', '/privacy.html': '/privacy.html', '/terms.html': '/terms.html', '/delete-account.html': '/delete-account.html' };
+                    var map = { '/': '/', '/index.html': '/', '/privacy.html': '/privacy.html', '/terms.html': '/terms.html', '/delete-account.html': '/delete-account.html', '/faq.html': '/faq.html' };
                     var t = map[location.pathname];
                     if (t !== undefined) location.replace(langs[code].prefix + t);
                     return;
