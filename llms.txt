@@ -7,7 +7,7 @@ Website: https://sportiverse.no/
 ## Capabilities
 
 - Live match scoring with real-time events (goals, cards, substitutions) — score and event updates, not video
-- Automatic player and team statistics derived from recorded match events: goals, assists, cards, free kicks, corners, penalties, minutes — essentially everything the referee whistles, plus career totals and club records
+- Automatic player and team statistics: record match events (goals, assists, cards, free kicks, corners, penalties — essentially everything the referee whistles) and everything else follows automatically — minutes played, career totals, club records
 - Data-driven player ratings calculated from match events, not votes or opinions
 - League management with automatic standings, configurable point systems, and multiple divisions
 - Training session scheduling and attendance tracking
