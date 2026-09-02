@@ -5,6 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found - Sportiverse</title>
     <meta name="robots" content="noindex">
+    <script>
+        /*
+         * Deep-link fallback.
+         *
+         * App Links (Android) and Universal Links (iOS) hand /match/<id> to the
+         * app when it is installed — the web is never reached. When it is NOT
+         * installed the OS falls through to the browser, and GitHub Pages has no
+         * file at /match/<id>, so it serves THIS page. Without the redirect below
+         * a shared match link is a dead end reading "Page not found".
+         *
+         * Runs before <body> parses, so there is no visible 404 flash.
+         * To cover /club, /league, /profile or /session later: create the matching
+         * landing page and add its prefix to the array.
+         */
+        (function () {
+            var prefixes = ['/match/'];
+            var path = window.location.pathname;
+            for (var i = 0; i < prefixes.length; i++) {
+                // Only redirect a deeper path (/match/abc), never the landing page itself.
+                if (path.indexOf(prefixes[i]) === 0 && path.length > prefixes[i].length) {
+                    window.location.replace(prefixes[i]);
+                    return;
+                }
+            }
+        })();
+    </script>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
