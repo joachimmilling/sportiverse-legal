@@ -1,0 +1,223 @@
+/*
+ * Shared styles for the deep-link fallback pages
+ * (/match, /club, /league, /profile, /session).
+ *
+ * These pages are what a shared Sportiverse link resolves to when the app is
+ * NOT installed — App Links and Universal Links hand the URL straight to the
+ * app when it is. Their whole job is: explain that, and offer the install.
+ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary: #087F8C;
+    --primary-dim: #0A6A75;
+    --bg: #000000;
+    --bg-elevated: #0A1628;
+    --text: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.55);
+    --text-secondary: rgba(255, 255, 255, 0.75);
+    --border: rgba(255, 255, 255, 0.07);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Layered ambient gradients — depth rather than a flat panel */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+body::before {
+    width: 80vw; height: 80vw;
+    max-width: 900px; max-height: 900px;
+    top: -30vw; left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(8, 127, 140, 0.20) 0%, rgba(8, 127, 140, 0) 65%);
+}
+body::after {
+    width: 60vw; height: 60vw;
+    max-width: 700px; max-height: 700px;
+    bottom: -25vw; right: -15vw;
+    background: radial-gradient(circle, rgba(10, 22, 40, 0.9) 0%, rgba(10, 22, 40, 0) 70%);
+}
+
+.wrap {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 24px 56px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    margin-bottom: 40px;
+}
+.logo img { width: 36px; height: 36px; }
+.logo-text {
+    font-family: 'Oxanium', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.3px;
+}
+
+.content {
+    text-align: center;
+    max-width: 520px;
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Device frame — used where a screenshot genuinely sells the screen. */
+.device {
+    width: 190px;
+    margin-bottom: 36px;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75),
+                0 0 90px rgba(8, 127, 140, 0.16);
+    animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both,
+               float 7s ease-in-out 0.7s infinite;
+}
+.device img { display: block; width: 100%; height: auto; }
+
+/*
+ * App-icon treatment — used on pages where the only available screenshot is an
+ * empty state. Showing "0 0 0 0" tables would undersell the app, so these pages
+ * lead with the mark instead until real captures exist.
+ */
+.appmark {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 32px;
+    border-radius: 22px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(160deg, rgba(8, 127, 140, 0.22) 0%, rgba(10, 22, 40, 0.9) 100%);
+    border: 1px solid rgba(8, 127, 140, 0.35);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7),
+                0 0 70px rgba(8, 127, 140, 0.18);
+    animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both,
+               float 7s ease-in-out 0.7s infinite;
+}
+.appmark img { width: 56px; height: 56px; display: block; }
+
+@keyframes rise {
+    from { opacity: 0; transform: translateY(18px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-9px); }
+}
+
+h1 {
+    font-family: 'Oxanium', sans-serif;
+    font-size: clamp(26px, 5.5vw, 38px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.lede {
+    color: var(--text-secondary);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-top: 14px;
+    max-width: 430px;
+}
+
+.store-badges-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 34px;
+}
+.store-badges {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.store-badge {
+    display: inline-block;
+    transition: all 0.3s;
+    opacity: 0.9;
+}
+.store-badge:hover { opacity: 1; transform: translateY(-2px); }
+.store-badge img { height: 48px; width: auto; }
+
+/* The viewer's own platform leads; the other stays available. */
+.store-badges.ios-first .badge-ios { order: 1; }
+.store-badges.ios-first .badge-android { order: 2; }
+.store-badges.android-first .badge-android { order: 1; }
+.store-badges.android-first .badge-ios { order: 2; }
+.store-badges.ios-first .badge-android,
+.store-badges.android-first .badge-ios { opacity: 0.5; }
+.store-badges.ios-first .badge-android:hover,
+.store-badges.android-first .badge-ios:hover { opacity: 0.85; }
+
+.store-beta-note {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.03em;
+    text-align: center;
+    max-width: 340px;
+    line-height: 1.6;
+}
+.store-beta-note a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.store-beta-note a:hover { color: rgba(255, 255, 255, 0.85); }
+
+.hint {
+    margin-top: 30px;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 400px;
+}
+
+.home-link {
+    margin-top: 40px;
+    font-size: 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
+}
+.home-link:hover {
+    color: var(--text);
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .device, .appmark { animation: none; }
+    .store-badge, .home-link { transition: none; }
+}

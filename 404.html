@@ -16,11 +16,12 @@
          * a shared match link is a dead end reading "Page not found".
          *
          * Runs before <body> parses, so there is no visible 404 flash.
-         * To cover /club, /league, /profile or /session later: create the matching
-         * landing page and add its prefix to the array.
+         * Every prefix here must have a matching landing page, and must mirror the
+         * autoVerify intentFilters in the app's app.config.js — a path declared
+         * there but missing here is a dead end again.
          */
         (function () {
-            var prefixes = ['/match/'];
+            var prefixes = ['/match/', '/club/', '/league/', '/profile/', '/session/'];
             var path = window.location.pathname;
             for (var i = 0; i < prefixes.length; i++) {
                 // Only redirect a deeper path (/match/abc), never the landing page itself.
