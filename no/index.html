@@ -271,61 +271,24 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 1000px;
         }
 
+        /* Flat, front-on phone: no tilt, bevel, glare or motion.
+           The screenshot carries its own Dynamic Island. */
         .device-frame {
-            position: relative;
-            width: 280px;
-            transform: rotateY(-20deg) rotateX(5deg) rotateZ(3deg);
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .device-frame:hover {
-            transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);
-        }
-
-        .device-bezel {
-            background: linear-gradient(145deg, #2a2a2e, #1a1a1d, #2a2a2e);
-            border-radius: 44px;
-            padding: 10px;
+            width: 300px;
+            padding: 9px;
+            border-radius: 48px;
+            background: #111113;
             box-shadow:
-                0 40px 80px rgba(0, 0, 0, 0.6),
-                0 15px 35px rgba(8, 127, 140, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-
-        /* Side buttons */
-        .device-bezel::before {
-            content: '';
-            position: absolute;
-            right: -2px;
-            top: 120px;
-            width: 3px;
-            height: 40px;
-            background: linear-gradient(180deg, #3a3a3e, #2a2a2e, #3a3a3e);
-            border-radius: 0 2px 2px 0;
-        }
-
-        .device-bezel::after {
-            content: '';
-            position: absolute;
-            left: -2px;
-            top: 100px;
-            width: 3px;
-            height: 28px;
-            background: linear-gradient(180deg, #3a3a3e, #2a2a2e, #3a3a3e);
-            border-radius: 2px 0 0 2px;
-            box-shadow: 0 40px 0 0 #2e2e32, 0 52px 0 0 #2e2e32;
+                0 0 0 1px rgba(255, 255, 255, 0.14),
+                0 40px 80px -24px rgba(0, 0, 0, 0.75),
+                0 0 90px rgba(8, 127, 140, 0.16);
         }
 
         .device-screen {
-            border-radius: 36px;
+            border-radius: 39px;
             overflow: hidden;
-            position: relative;
             background: #000;
         }
 
@@ -333,34 +296,6 @@
             width: 100%;
             height: auto;
             display: block;
-        }
-
-        /* Dynamic Island */
-        .device-island {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90px;
-            height: 26px;
-            background: #000;
-            border-radius: 20px;
-            z-index: 3;
-        }
-
-        /* Screen reflection */
-        .device-glare {
-            position: absolute;
-            inset: 0;
-            border-radius: 36px;
-            background: linear-gradient(
-                125deg,
-                rgba(255, 255, 255, 0.12) 0%,
-                rgba(255, 255, 255, 0.04) 30%,
-                transparent 50%
-            );
-            pointer-events: none;
-            z-index: 4;
         }
 
         .store-badges-wrap {
@@ -1165,7 +1100,8 @@
             .hero-inner { grid-template-columns: 1fr; text-align: center; }
             .hero-content { text-align: center; }
             .hero-description { margin: 0 auto 48px; }
-            .device-frame { width: 230px; }
+            .device-frame { width: 250px; padding: 8px; border-radius: 41px; }
+            .device-screen { border-radius: 33px; }
             .store-badges { justify-content: center; }
             .hero-logo { width: 64px; height: 64px; margin-bottom: 32px; }
 
@@ -1422,12 +1358,8 @@
             </div>
             <div class="hero-device">
                 <div class="device-frame">
-                    <div class="device-bezel">
-                        <div class="device-screen">
-                            <div class="device-island"></div>
-                            <img src="/assets/app-match.png" alt="Sportiverse live match screen" />
-                            <div class="device-glare"></div>
-                        </div>
+                    <div class="device-screen">
+                        <img src="/assets/hero-lineup.png" width="920" height="2000" alt="Kampbilde i Sportiverse: laguttaket med spillerkarakterer og kampens spiller" />
                     </div>
                 </div>
             </div>
@@ -1730,14 +1662,6 @@
             ease: 'power2.out',
         });
 
-        gsap.from('.hero-device', {
-            y: 60,
-            opacity: 0,
-            duration: 1.2,
-            delay: 0.3,
-            ease: 'power3.out',
-        });
-
         // Section headings — split and stagger on scroll
         gsap.utils.toArray('.section-heading').forEach(heading => {
             // Skip if inside hero
@@ -1984,17 +1908,6 @@
         gsap.to('.hero-content', {
             y: -120,
             opacity: 0,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true,
-            },
-        });
-
-        gsap.to('.hero-device', {
-            y: -60,
             ease: 'none',
             scrollTrigger: {
                 trigger: '.hero',
