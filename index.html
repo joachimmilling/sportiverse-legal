@@ -291,24 +291,52 @@
             align-items: center;
         }
 
-        /* Flat, front-on phone: no tilt, bevel, glare or motion.
-           The screenshot carries its own Dynamic Island. */
+        /* Front-on iPhone 17 Pro: a thin titanium rim around a black glass
+           border, side buttons standing proud of the rim. No tilt, glare or
+           motion; the screenshot carries its own Dynamic Island. Every
+           measure scales from --w, the device width. */
         .device-frame {
-            width: 300px;
-            padding: 9px;
-            border-radius: 48px;
-            background: #111113;
+            --w: 302px;
+            position: relative;
+            width: var(--w);
+            padding: calc(var(--w) * 0.023);
+            border: calc(var(--w) * 0.01) solid transparent;
+            border-radius: calc(var(--w) * 0.1755);
+            background:
+                linear-gradient(#000, #000) padding-box,
+                linear-gradient(90deg, #232427, #5a5c61 5%, #3b3c40 16%, #36373b 84%, #5a5c61 95%, #232427) border-box;
             box-shadow:
-                0 0 0 1px rgba(255, 255, 255, 0.14),
-                0 40px 80px -24px rgba(0, 0, 0, 0.75),
-                0 0 90px rgba(8, 127, 140, 0.16);
+                0 0 0 1px rgba(0, 0, 0, 0.7),
+                0 40px 70px -30px rgba(0, 0, 0, 0.9);
         }
 
         .device-screen {
-            border-radius: 39px;
+            border-radius: calc(var(--w) * 0.1424);
             overflow: hidden;
             background: #000;
         }
+
+        .device-button {
+            position: absolute;
+            width: calc(var(--w) * 0.009);
+            background: #3b3c40;
+        }
+
+        .device-button.left {
+            left: calc(var(--w) * -0.019);
+            border-radius: 2px 0 0 2px;
+        }
+
+        .device-button.right {
+            right: calc(var(--w) * -0.019);
+            border-radius: 0 2px 2px 0;
+        }
+
+        .device-button.action { top: 17%; height: 4.5%; }
+        .device-button.volume-up { top: 25%; height: 7.5%; }
+        .device-button.volume-down { top: 34.5%; height: 7.5%; }
+        .device-button.side { top: 27%; height: 11.5%; }
+        .device-button.camera { top: 58%; height: 6.5%; }
 
         .device-screen img {
             width: 100%;
@@ -1118,8 +1146,7 @@
             .hero-inner { grid-template-columns: 1fr; text-align: center; }
             .hero-content { text-align: center; }
             .hero-description { margin: 0 auto 48px; }
-            .device-frame { width: 250px; padding: 8px; border-radius: 41px; }
-            .device-screen { border-radius: 33px; }
+            .device-frame { --w: 252px; }
             .store-badges { justify-content: center; }
             .hero-logo { width: 64px; height: 64px; margin-bottom: 32px; }
 
@@ -1376,6 +1403,11 @@
             </div>
             <div class="hero-device">
                 <div class="device-frame">
+                    <span class="device-button left action" aria-hidden="true"></span>
+                    <span class="device-button left volume-up" aria-hidden="true"></span>
+                    <span class="device-button left volume-down" aria-hidden="true"></span>
+                    <span class="device-button right side" aria-hidden="true"></span>
+                    <span class="device-button right camera" aria-hidden="true"></span>
                     <div class="device-screen">
                         <img src="assets/hero-lineup.png" width="920" height="2000" alt="Sportiverse match screen: the lineup with player ratings and the player of the match" />
                     </div>
