@@ -301,7 +301,7 @@
         <!-- See ADR-016 in sportiverse repo docs/DECISIONS.md -->
         <div class="section" id="section-4b">
             <h2>4b. Administrative Audit Logs</h2>
-            <p>When an action that affects who can govern a club is taken — an admin adding, promoting, demoting, or removing a member, a member (including an admin) leaving a club they belong to, an admin editing club settings, generating or rotating the invite code, or deleting the club, or a user claiming a placeholder club or merging one into their own club — we write a short record to an internal audit log. This section explains what is captured, why, and how long it is kept.</p>
+            <p>When an action that affects who can govern a club is taken — an admin adding, promoting, demoting, or removing a member, a member (including an admin) leaving a club they belong to, an admin editing club settings or rotating the invite code, the club's creator or an admin generating the invite code, an admin deleting the club, or a user claiming a placeholder club or merging one into their own club — we write a short record to an internal audit log. This section explains what is captured, why, and how long it is kept.</p>
 
             <h3>What we log</h3>
             <p>For <strong>member-level actions</strong> (a member added, promoted, demoted, removed, or leaving):</p>
@@ -314,7 +314,7 @@
             </ul>
             <p>For <strong>club-level actions</strong> (settings changes, invite-code generation or rotation, club deletion):</p>
             <ul>
-                <li>The UID of the acting admin</li>
+                <li>The UID of the acting admin (or, for invite-code generation, the club's creator)</li>
                 <li>The acting admin's display name (captured at the time of the action) — only for club deletion; club-settings edits and invite-code generation or rotation record only the UID</li>
                 <li>The action type — one of <em>club-updated</em>, <em>club-invite-code-issued</em>, <em>club-invite-code-rotated</em>, <em>club-deleted</em></li>
                 <li>For <em>club-updated</em>, the names of the fields that changed (e.g. "name", "description", "colors") — never the field values themselves</li>
