@@ -320,7 +320,7 @@
                 <li>For <em>club-updated</em>, the names of the fields that changed (e.g. "name", "description", "colors") — never the field values themselves</li>
                 <li>The club ID and a timestamp</li>
             </ul>
-            <p>We do <strong>not</strong> capture email addresses, profile content, free-form notes, the actual contents of changed club settings, or any other personal data in audit logs. Where display names are captured, they are captured only as they were at the time of the action, so the entry remains readable for dispute resolution if the people involved later delete their accounts or change their names. While your account remains active, the audit-log viewer displays your <em>current</em> display name from your live profile — the captured name is shown only as a fallback after the original user record is no longer available.</p>
+            <p>We do <strong>not</strong> capture email addresses, profile content, free-form notes, the actual contents of changed club settings, or any other personal data in audit logs. Where display names are captured, they are captured only as they were at the time of the action, so the entry remains readable for dispute resolution if a participant later changes their name, or if the <em>other</em> party deletes their account. Your own display name is anonymized in these entries when you delete your account (see "Account deletion and this log" below). While your account remains active, the audit-log viewer displays your <em>current</em> display name from your live profile — the captured name is shown only as a fallback after the original user record is no longer available.</p>
 
             <h3>Why we log this</h3>
             <p>The audit log exists purely to allow us to investigate disputes — for example, if a user reports they were kicked or demoted unfairly, or if we need to investigate coordinated abuse of admin powers. It is not a user-facing feature and is not used for profiling, analytics, advertising, or product development.</p>
@@ -331,7 +331,7 @@
             <h3>Legal basis</h3>
             <p>The processing relies on GDPR Article 6(1)(f) — legitimate interests pursued by Sportiverse (fraud prevention, dispute resolution, and platform integrity). We have balanced this against your rights and freedoms:</p>
             <ul>
-                <li><strong>Necessity:</strong> the captured display names are needed so that entries about a member leaving or being removed remain readable after that person's account is deleted; without them, the most relevant rows for a dispute would render as "unknown user."</li>
+                <li><strong>Necessity:</strong> the captured display names are needed so that an entry stays readable for the remaining party in a dispute — for example, a removed member contesting the action after the admin who removed them has deleted their account, or after either party has changed their name; without them, the most relevant rows would render as "unknown user." The deleting user's own name is anonymized at deletion.</li>
                 <li><strong>Data minimization:</strong> the log is limited to UIDs, action metadata, and (where applicable) the display names of the acting user and the affected user. No emails, profile content, free-form notes, or club-settings values are captured. Club-settings edits record only the names of fields that changed, not their contents.</li>
                 <li><strong>Live-name preference:</strong> while a user's account exists, the audit-log viewer shows that user's <em>current</em> display name from their live profile. The captured name is read only as a fallback when the original user record is no longer available.</li>
                 <li><strong>Short retention:</strong> 90 days from the action, enforced by a Firestore time-to-live policy.</li>
@@ -373,14 +373,14 @@
             <p>Under GDPR, you have the following rights:</p>
             
             <h3>Right to Access</h3>
-            <p>Request a copy of your personal data we hold. In the app, go to <strong>Settings → Account Center → Request Personal Data</strong>. The export includes, among other things:</p>
+            <p>Request a copy of your personal data we hold — we provide it within one month. In the app, go to <strong>Settings → Account Center → Request Personal Data</strong>. The export includes, among other things:</p>
             <ul>
                 <li>Your profile and profile pictures</li>
                 <li>Clubs you belong to, and placeholder clubs you created for opponents not yet on Sportiverse</li>
                 <li>Matches you played in, match events involving you, and your statistics</li>
                 <li>Feed events about you</li>
                 <li>Club board posts, poll votes, comments and likes you created</li>
-                <li>Direct messages you sent, training sessions you created or were invited to, and their chat messages</li>
+                <li>Direct messages you sent, training sessions you created or were invited to, and your messages in their chats</li>
                 <li>Leagues you created, clubs, leagues and players you follow, and your club membership requests</li>
                 <li>People you have blocked, and whether you subscribe to the training calendar feed</li>
                 <li>Notifications you received (kept for 30 days) and items delivered to your personal feed (kept for 30 days)</li>
@@ -433,8 +433,8 @@
             <p>Deleting your account removes your profile and personal data. Some things you shared with other people are part of their clubs, matches and conversations, and stay visible to them without your profile attached. This list gives the main examples; it is not exhaustive.</p>
             <ul>
                 <li><strong>Club board posts and comments</strong> you wrote, including attached photos and files, stay on the board for that club's members, shown as "Deleted user". While you are still a member you can delete them yourself; after your account is deleted, only a club admin can remove them.</li>
-                <li><strong>Comments on feed events</strong> stay, with your name replaced by "Deleted user".</li>
-                <li><strong>Your name in match history</strong> — match lineups and feed events about matches you played in keep the player name, so results and match reports stay intact. The link to your account and your portrait are removed.</li>
+                <li><strong>Comments on feed events</strong> stay, with your name replaced by "Deleted User".</li>
+                <li><strong>Your name in match history</strong> — match lineups and feed events about matches you played in keep the player name, so results and match events stay intact. The link to your account and your portrait are removed.</li>
                 <li><strong>Direct messages</strong> you sent stay in the recipients' conversations, with the link to your account removed.</li>
                 <li><strong>Notifications other members already received</strong> about you — for example a fan or membership request, or a new club board post — may still show your name, account identifier, profile photo or a short preview of your post. We do not separately search every other member's notifications at deletion, because each copy is automatically deleted within 30 days of delivery (section 7).</li>
                 <li><strong>Administrative audit logs</strong>, as described in section 4b.</li>

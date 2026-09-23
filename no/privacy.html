@@ -303,7 +303,7 @@
                 <li>For <em>club-updated</em>, navnene på feltene som ble endret (f.eks. "name", "description", "colors") — aldri selve feltverdiene</li>
                 <li>Klubb-ID-en og et tidsstempel</li>
             </ul>
-            <p>Vi registrerer <strong>ikke</strong> e-postadresser, profilinnhold, fritekstnotater, det faktiske innholdet i endrede klubbinnstillinger eller andre personopplysninger i revisjonslogger. Der visningsnavn registreres, registreres de kun slik de var på tidspunktet for handlingen, slik at oppføringen forblir lesbar for tvisteløsning dersom de involverte personene senere sletter kontoene sine eller endrer navn. Så lenge kontoen din er aktiv, viser revisjonslogg-visningen ditt <em>gjeldende</em> visningsnavn fra den aktive profilen din — det registrerte navnet vises kun som en reserveløsning etter at den opprinnelige brukeroppføringen ikke lenger er tilgjengelig.</p>
+            <p>Vi registrerer <strong>ikke</strong> e-postadresser, profilinnhold, fritekstnotater, det faktiske innholdet i endrede klubbinnstillinger eller andre personopplysninger i revisjonslogger. Der visningsnavn registreres, registreres de kun slik de var på tidspunktet for handlingen, slik at oppføringen forblir lesbar for tvisteløsning dersom en deltaker senere endrer navn, eller dersom den <em>andre</em> parten sletter kontoen sin. Ditt eget visningsnavn anonymiseres i disse oppføringene når du sletter kontoen din (se "Kontosletting og denne loggen" nedenfor). Så lenge kontoen din er aktiv, viser revisjonslogg-visningen ditt <em>gjeldende</em> visningsnavn fra den aktive profilen din — det registrerte navnet vises kun som en reserveløsning etter at den opprinnelige brukeroppføringen ikke lenger er tilgjengelig.</p>
 
             <h3>Hvorfor vi logger dette</h3>
             <p>Revisjonsloggen finnes utelukkende for at vi skal kunne undersøke tvister — for eksempel hvis en bruker rapporterer å ha blitt kastet ut eller degradert urettmessig, eller hvis vi må undersøke koordinert misbruk av administratorrettigheter. Den er ikke en brukervendt funksjon og brukes ikke til profilering, analyse, annonsering eller produktutvikling.</p>
@@ -314,7 +314,7 @@
             <h3>Rettslig grunnlag</h3>
             <p>Behandlingen bygger på GDPR artikkel 6 nr. 1 bokstav f — berettigede interesser som forfølges av Sportiverse (svindelforebygging, tvisteløsning og plattformintegritet). Vi har veid dette opp mot dine rettigheter og friheter:</p>
             <ul>
-                <li><strong>Nødvendighet:</strong> de registrerte visningsnavnene er nødvendige for at oppføringer om et medlem som forlater eller blir fjernet skal forbli lesbare etter at vedkommendes konto er slettet; uten dem ville de mest relevante radene i en tvist vises som "ukjent bruker".</li>
+                <li><strong>Nødvendighet:</strong> de registrerte visningsnavnene er nødvendige for at en oppføring skal forbli lesbar for den gjenværende parten i en tvist — for eksempel et fjernet medlem som bestrider handlingen etter at administratoren som fjernet vedkommende har slettet kontoen sin, eller etter at en av partene har endret navn; uten dem ville de mest relevante radene vises som "ukjent bruker". Den slettende brukerens eget navn anonymiseres ved slettingen.</li>
                 <li><strong>Dataminimering:</strong> loggen er begrenset til UID-er, metadata om handlingen og (der det er aktuelt) visningsnavnene til den handlende brukeren og den berørte brukeren. Ingen e-postadresser, profilinnhold, fritekstnotater eller verdier fra klubbinnstillinger registreres. Endringer av klubbinnstillinger registrerer kun navnene på feltene som ble endret, ikke innholdet i dem.</li>
                 <li><strong>Foretrukket bruk av gjeldende navn:</strong> så lenge en brukers konto eksisterer, viser revisjonslogg-visningen den brukerens <em>gjeldende</em> visningsnavn fra den aktive profilen. Det registrerte navnet leses kun som en reserveløsning når den opprinnelige brukeroppføringen ikke lenger er tilgjengelig.</li>
                 <li><strong>Kort oppbevaringstid:</strong> 90 dager fra handlingen, håndhevet av en time-to-live-policy i Firestore.</li>
@@ -356,14 +356,14 @@
             <p>Etter GDPR har du følgende rettigheter:</p>
 
             <h3>Rett til innsyn</h3>
-            <p>Be om en kopi av personopplysningene vi har om deg. I appen går du til <strong>Innstillinger → Kontosenter → Be om personlige data</strong>. Eksporten inneholder blant annet:</p>
+            <p>Be om en kopi av personopplysningene vi har om deg — vi utleverer den innen én måned. I appen går du til <strong>Innstillinger → Kontosenter → Be om personlige data</strong>. Eksporten inneholder blant annet:</p>
             <ul>
                 <li>Profilen din og profilbildene dine</li>
                 <li>Klubber du er medlem av, og plassholderklubber du har opprettet for motstandere som ennå ikke er på Sportiverse</li>
                 <li>Kamper du har spilt, kamphendelser som involverer deg, og statistikken din</li>
                 <li>Feed-hendelser om deg</li>
                 <li>Innlegg på klubbtavlen, stemmer i avstemninger, kommentarer og likerklikk du har opprettet</li>
-                <li>Direktemeldinger du har sendt, treningsøkter du har opprettet eller blitt invitert til, og meldingene i dem</li>
+                <li>Direktemeldinger du har sendt, treningsøkter du har opprettet eller blitt invitert til, og meldingene dine i chattene deres</li>
                 <li>Ligaer du har opprettet, klubber, ligaer og spillere du følger, og medlemsforespørslene dine</li>
                 <li>Personer du har blokkert, og om du abonnerer på treningskalenderen</li>
                 <li>Varsler du har mottatt (oppbevares i 30 dager) og elementer levert til din personlige feed (oppbevares i 30 dager)</li>
@@ -416,8 +416,8 @@
             <p>Når du sletter kontoen din, fjernes profilen din og personopplysningene dine. Noe av det du har delt med andre, er en del av deres klubber, kamper og samtaler, og forblir synlig for dem uten at profilen din er knyttet til det. Listen gir de viktigste eksemplene; den er ikke uttømmende.</p>
             <ul>
                 <li><strong>Innlegg og kommentarer på klubbtavlen</strong> du har skrevet, inkludert vedlagte bilder og filer, blir liggende for klubbens medlemmer, vist som "Slettet bruker". Så lenge du er medlem, kan du slette dem selv; etter at kontoen er slettet, kan bare en klubbadministrator fjerne dem.</li>
-                <li><strong>Kommentarer på feed-hendelser</strong> blir liggende, med navnet ditt erstattet av "Slettet bruker".</li>
-                <li><strong>Navnet ditt i kamphistorikken</strong> — kampoppstillinger og feed-hendelser om kamper du har spilt, beholder spillernavnet, slik at resultater og kamprapporter forblir intakte. Koblingen til kontoen din og portrettet ditt fjernes.</li>
+                <li><strong>Kommentarer på feed-hendelser</strong> blir liggende, med navnet ditt erstattet av "Deleted User".</li>
+                <li><strong>Navnet ditt i kamphistorikken</strong> — kampoppstillinger og feed-hendelser om kamper du har spilt, beholder spillernavnet, slik at resultater og kamphendelser forblir intakte. Koblingen til kontoen din og portrettet ditt fjernes.</li>
                 <li><strong>Direktemeldinger</strong> du har sendt, blir liggende i mottakernes samtaler, med koblingen til kontoen din fjernet.</li>
                 <li><strong>Varsler andre medlemmer allerede har mottatt</strong> om deg — for eksempel en fan- eller medlemsforespørsel, eller et nytt innlegg på klubbtavlen — kan fortsatt vise navnet ditt, konto-ID-en din, profilbildet ditt eller et kort utdrag av innlegget ditt. Vi søker ikke gjennom alle andre medlemmers varsler ved sletting, fordi hver kopi slettes automatisk innen 30 dager etter levering (punkt 7).</li>
                 <li><strong>Administrative revisjonslogger</strong>, som beskrevet i punkt 4b.</li>
