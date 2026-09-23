@@ -166,8 +166,9 @@
     <section class="hero">
         <div class="container">
             <h1>Privacy Policy</h1>
-            <p class="effective-date">Effective Date: April 25, 2026</p>
-            <p style="opacity: 0.85; font-size: 0.95em; margin-top: 8px;"><em>Updated April 25, 2026: clarified that administrative audit logs include the display name recorded at the time of each action, in addition to UIDs (see section 4b).</em></p>
+            <p class="effective-date">Effective Date: September 23, 2026</p>
+            <p style="opacity: 0.85; font-size: 0.95em; margin-top: 8px;"><em>Updated September 23, 2026: listed what a data export contains, including audit-log entries about your account with other members' identities withheld (sections 4b and 6); corrected how audit-log names are handled on account deletion (section 4b); added the 30-day retention period for notifications and personal feed items (section 7); and described what stays visible to other members after you delete your account (section 7a).</em></p>
+            <p style="opacity: 0.85; font-size: 0.95em; margin-top: 4px;"><em>Updated April 25, 2026: clarified that administrative audit logs include the display name recorded at the time of each action, in addition to UIDs (see section 4b).</em></p>
         </div>
     </section>
     
@@ -337,8 +338,11 @@
                 <li><strong>No secondary use:</strong> the data is not shared with third parties and is not combined with your profile for any other purpose (no profiling, analytics, advertising, or product development).</li>
             </ul>
 
+            <h3>Your access to entries about you</h3>
+            <p>Audit-log entries in which you are the acting or the affected user <strong>are included</strong> in your data export (see section 6). Each exported entry shows the club, the action, whether you were the one acting or the one affected, when it happened, and whether the other party was you, a club administrator, or another user. The <strong>identities of other members</strong> — their names and user IDs — are <strong>withheld</strong> from exported entries, and where an action displaced several members, only the number of members is shown. To contest an action in which the other party's identity is withheld, email <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> within the 90-day retention window; we will review the entry and resolve the dispute with you.</p>
+
             <h3>Account deletion and this log</h3>
-            <p>If you exercise your right to erasure (delete your account), we remove your personal data from our systems as described in sections 6 and 7. However, any UID of yours, and the display name as it was at the time of the action, <em>already captured</em> in audit-log entries before deletion will remain in those entries for the remainder of their individual 90-day windows, and will then be auto-deleted along with each entry. We cannot remove individual entries on request.</p>
+            <p>If you exercise your right to erasure (delete your account), we remove your personal data from our systems as described in sections 6, 7 and 7a. Your display name is <strong>anonymized</strong> in existing audit-log entries at deletion; your UID remains in those entries until each is auto-deleted at the end of its 90-day window. A narrow processing window during deletion may leave some residual entries — for example, the record of your leaving each club, written as your memberships are removed — that still carry your display name; these are auto-deleted at the end of their own 90-day windows. We cannot remove individual entries on request.</p>
 
             <h3>Right to object</h3>
             <p>You can object to this processing by emailing <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> and citing the specific audit-log entries or timeframe. Because this processing serves fraud-prevention and dispute-resolution interests that may override an individual objection, we cannot guarantee immediate deletion within the 90-day window; we will, however, review each request on its merits. Regardless of the outcome, every entry is auto-deleted once its 90 days elapse.</p>
@@ -369,13 +373,26 @@
             <p>Under GDPR, you have the following rights:</p>
             
             <h3>Right to Access</h3>
-            <p>Request a copy of your personal data we hold</p>
+            <p>Request a copy of your personal data we hold. In the app, go to <strong>Settings → Account Center → Request Personal Data</strong>. The export contains:</p>
+            <ul>
+                <li>Your profile and profile pictures</li>
+                <li>Clubs you belong to, and placeholder clubs you created for opponents not yet on Sportiverse</li>
+                <li>Matches you played in, match events involving you, and your statistics</li>
+                <li>Feed events about you, and match stories you reviewed</li>
+                <li>Club board posts, poll votes, comments and likes you created</li>
+                <li>Direct messages you sent, training sessions you created or were invited to, and their chat messages</li>
+                <li>Leagues you created, clubs and leagues you follow, and your club membership requests</li>
+                <li>Notifications you received (kept for 30 days) and items delivered to your personal feed (kept for 30 days)</li>
+                <li>Administrative audit-log entries about your account, with other members' identities withheld (see section 4b)</li>
+                <li>Live Activity update tokens for your devices, if you use them (kept for up to 13 hours)</li>
+            </ul>
+            <p>The export also tells you which categories were collected in full, and the storage period of each category that is automatically deleted.</p>
             
             <h3>Right to Rectification</h3>
             <p>Correct inaccurate or incomplete personal data</p>
             
             <h3>Right to Erasure ("Right to be Forgotten")</h3>
-            <p>Request deletion of your personal data (with 30-day grace period). Note: administrative audit logs containing your UID and the display name recorded at the time of each action remain for up to 90 days from the original action and are then auto-deleted; we cannot remove individual entries on request (see section 4b).</p>
+            <p>Request deletion of your personal data (with 30-day grace period). Some things you shared with others stay visible to them after deletion, without your profile attached — see section 7a. Note: administrative audit logs containing your UID remain for up to 90 days from the original action and are then auto-deleted; your display name is anonymized in them at deletion, though a narrow processing window may leave residual entries carrying it for up to 90 days (see section 4b). We cannot remove individual entries on request.</p>
             
             <h3>Right to Restrict Processing</h3>
             <p>Limit how we use your personal data</p>
@@ -402,8 +419,26 @@
                 <li><strong>Match Statistics:</strong> Indefinitely for historical records (anonymized after account deletion)</li>
                 <li><strong>Analytics Data:</strong> 2 years</li>
                 <li><strong>Logs and Security Data:</strong> 90 days</li>
-                <li><strong>Administrative Audit Logs:</strong> UID, action metadata, and the display names of the people directly involved (captured at the time of each action) — 90 days from the action, auto-deleted by Firestore TTL. Retained through account deletion until each entry's window elapses (see section 4b).</li>
+                <li><strong>Administrative Audit Logs:</strong> UID, action metadata, and the display names of the people directly involved (captured at the time of each action) — 90 days from the action, auto-deleted by Firestore TTL. Retained through account deletion until each entry's window elapses; your display name is anonymized in them at deletion (see section 4b).</li>
+                <li><strong>Notifications:</strong> 30 days from delivery, auto-deleted by Firestore TTL. The expiry date is set by our servers and cannot be extended from the app.</li>
+                <li><strong>Personal Feed Items:</strong> the copies of activity delivered to your personal feed — 30 days from delivery, auto-deleted by Firestore TTL.</li>
+                <li><strong>Live Activity Update Tokens:</strong> up to 13 hours from the last update, auto-deleted by Firestore TTL.</li>
             </ul>
+            <p>Automatic deletion runs on a schedule, so a record may remain for a short time — usually less than a day — after its deletion date. Deleted data may also persist for a limited additional period in backups that are not accessible to users.</p>
+        </div>
+
+        <div class="section" id="section-7a">
+            <h2>7a. What Stays Visible to Others After You Delete Your Account</h2>
+            <p>Deleting your account removes your profile and personal data. Some things you shared with other people are part of their clubs, matches and conversations, and stay visible to them without your profile attached. This list gives the main examples; it is not exhaustive.</p>
+            <ul>
+                <li><strong>Club board posts and comments</strong> you wrote, including attached photos and files, stay on the board for that club's members, shown as "Deleted user". While you are still a member you can delete them yourself; after your account is deleted, only a club admin can remove them.</li>
+                <li><strong>Comments on feed events and match stories</strong> stay, with your name replaced by "Deleted user".</li>
+                <li><strong>Your name in match history</strong> — match lineups and feed events about matches you played in keep the player name, so results and match reports stay intact. The link to your account and your portrait are removed.</li>
+                <li><strong>Direct messages</strong> you sent stay in the recipients' conversations, with the link to your account removed.</li>
+                <li><strong>Notifications other members already received</strong> about you — for example a fan or membership request, or a new club board post — may still show your name, account identifier, profile photo or a short preview of your post. We do not separately search every other member's notifications at deletion, because each copy is automatically deleted within 30 days of delivery (section 7).</li>
+                <li><strong>Administrative audit logs</strong>, as described in section 4b.</li>
+            </ul>
+            <p>If you want something specific removed, email <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a>.</p>
         </div>
         
         <div class="section">
