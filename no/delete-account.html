@@ -187,7 +187,7 @@
             <p>Når kontoen din slettes permanent, fjernes følgende data fra våre systemer:</p>
             <ul>
                 <li>Profilen din (navn, e-post, fødselsdato, nasjonalitet, profilbilde, biografi)</li>
-                <li>Likerklikk og stemmer i avstemninger du har opprettet</li>
+                <li>Likerklikk, reaksjoner og stemmer du har avgitt i avstemninger</li>
                 <li>Meldinger du har sendt i chatter for treningsøkter</li>
                 <li>Profilbildene dine og andre medier lagret under kontoen din</li>
                 <li>Den personlige statistikken din</li>
@@ -213,7 +213,7 @@
                 </tr>
                 <tr>
                     <td>Innlegg og kommentarer du har skrevet på klubbtavlen (inkludert vedlagte bilder og filer), og kommentarer på feed-hendelser</td>
-                    <td>Til de fjernes — vist som "Slettet bruker". Etter slettingen kan bare en klubbadministrator fjerne innhold på klubbtavlen</td>
+                    <td>Til de fjernes — innhold på klubbtavlen vises som "Slettet bruker" og kan da bare fjernes av en klubbadministrator; kommentarer på feed-hendelser vises som "Deleted User"</td>
                     <td>Holder samtalene i klubben og med andre medlemmer intakte</td>
                 </tr>
                 <tr>
@@ -223,11 +223,11 @@
                 </tr>
                 <tr>
                     <td>Varsler andre medlemmer allerede har mottatt om deg (som kan vise navnet ditt, konto-ID-en din, en lenke til profilbildet ditt eller et kort utdrag av et innlegg på klubbtavlen)</td>
-                    <td>Innen 30 dager fra levering (slettes automatisk av Firestore TTL)</td>
+                    <td>Innen 30 dager fra levering (slettes automatisk av Firestore TTL; se personvernerklæringen §7)</td>
                     <td>Hver kopi er kortvarig og utløper automatisk — se <a href="/no/privacy.html#section-7a">personvernerklæringen §7a</a></td>
                 </tr>
                 <tr>
-                    <td>Administrative revisjonslogger om handlinger du utførte eller var gjenstand for (å legge til, forfremme, degradere eller fjerne et medlem; å forlate en klubb; å redigere klubbinnstillinger; å rotere en klubbs invitasjonskode; å slette en klubb; eller å overta en plassholderklubb). UID-en din blir værende i dem; visningsnavnet ditt anonymiseres ved slettingen, men et kort behandlingsvindu kan etterlate gjenværende oppføringer som fortsatt inneholder det</td>
+                    <td>Administrative revisjonslogger om handlinger du utførte eller var gjenstand for (å legge til, forfremme, degradere eller fjerne et medlem; å forlate en klubb; å redigere klubbinnstillinger; å rotere en klubbs invitasjonskode; å slette en klubb; eller å overta en plassholderklubb eller slå en sammen med klubben din). UID-en din blir værende i dem; visningsnavnet ditt anonymiseres ved slettingen, men et kort behandlingsvindu kan etterlate gjenværende oppføringer som fortsatt inneholder det</td>
                     <td>90 dager fra handlingen (slettes automatisk av Firestore TTL)</td>
                     <td>Forebygging av svindel, tvisteløsning, plattformintegritet — se <a href="/no/privacy.html#section-4b">personvernerklæringen §4b</a></td>
                 </tr>

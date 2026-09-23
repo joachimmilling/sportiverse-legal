@@ -268,7 +268,7 @@
             </ul>
 
             <h3>Persontilpassede kontra ikke-persontilpassede annonser</h3>
-            <p>Hvis du befinner deg i Det europeiske økonomiske samarbeidsområdet, Storbritannia eller Sveits, viser vi et samtykkeskjema ved første oppstart der du blir spurt om du tillater persontilpassede annonser. Du kan endre dette valget når som helst i Innstillinger → Personvern.</p>
+            <p>Hvis du befinner deg i Det europeiske økonomiske samarbeidsområdet, Storbritannia eller Sveits, viser vi et samtykkeskjema ved første oppstart der du blir spurt om du tillater persontilpassede annonser. Du kan endre dette valget når som helst i Innstillinger → Kontosenter.</p>
             <ul>
                 <li><strong>Med samtykke:</strong> AdMob kan bruke annonseidentifikatoren din til å vise annonser tilpasset dine interesser.</li>
                 <li><strong>Uten samtykke:</strong> Kun ikke-persontilpassede annonser vises, basert på kontekstuelle signaler i stedet for profilen din.</li>
@@ -284,7 +284,7 @@
         <!-- See ADR-016 in sportiverse repo docs/DECISIONS.md -->
         <div class="section" id="section-4b">
             <h2>4b. Administrative revisjonslogger</h2>
-            <p>Når det utføres en handling som påvirker hvem som kan styre en klubb — en administrator som legger til, forfremmer, degraderer eller fjerner et medlem, et medlem (inkludert en administrator) som forlater en klubb vedkommende tilhører, en administrator som endrer klubbinnstillinger eller roterer invitasjonskoden, eller en administrator som sletter klubben — skriver vi en kort oppføring til en intern revisjonslogg. Dette punktet forklarer hva som registreres, hvorfor, og hvor lenge det oppbevares.</p>
+            <p>Når det utføres en handling som påvirker hvem som kan styre en klubb — en administrator som legger til, forfremmer, degraderer eller fjerner et medlem, et medlem (inkludert en administrator) som forlater en klubb vedkommende tilhører, en administrator som endrer klubbinnstillinger, genererer eller roterer invitasjonskoden, eller sletter klubben, eller en bruker som overtar en plassholderklubb eller slår en sammen med sin egen klubb — skriver vi en kort oppføring til en intern revisjonslogg. Dette punktet forklarer hva som registreres, hvorfor, og hvor lenge det oppbevares.</p>
 
             <h3>Hva vi logger</h3>
             <p>For <strong>handlinger på medlemsnivå</strong> (et medlem som legges til, forfremmes, degraderes, fjernes eller forlater klubben):</p>
@@ -295,15 +295,16 @@
                 <li>Handlingstypen — én av <em>member-added</em>, <em>admin-promoted</em>, <em>admin-demoted</em>, <em>member-removed</em>, <em>member-left</em></li>
                 <li>Klubb-ID-en og et tidsstempel</li>
             </ul>
-            <p>For <strong>handlinger på klubbnivå</strong> (endring av innstillinger, rotering av invitasjonskode, sletting av klubb):</p>
+            <p>For <strong>handlinger på klubbnivå</strong> (endring av innstillinger, generering eller rotering av invitasjonskode, sletting av klubb):</p>
             <ul>
                 <li>UID-en til den handlende administratoren</li>
-                <li>Den handlende administratorens visningsnavn (registrert på tidspunktet for handlingen) — kun ved sletting av klubb; endringer av klubbinnstillinger og rotering av invitasjonskode registrerer kun UID-en</li>
-                <li>Handlingstypen — én av <em>club-updated</em>, <em>club-invite-code-rotated</em>, <em>club-deleted</em></li>
+                <li>Den handlende administratorens visningsnavn (registrert på tidspunktet for handlingen) — kun ved sletting av klubb; endringer av klubbinnstillinger og generering eller rotering av invitasjonskode registrerer kun UID-en</li>
+                <li>Handlingstypen — én av <em>club-updated</em>, <em>club-invite-code-issued</em>, <em>club-invite-code-rotated</em>, <em>club-deleted</em></li>
                 <li>For <em>club-updated</em>, navnene på feltene som ble endret (f.eks. "name", "description", "colors") — aldri selve feltverdiene</li>
                 <li>Klubb-ID-en og et tidsstempel</li>
             </ul>
             <p>Når en bruker <strong>overtar en plassholderklubb</strong> (tar over en klubb som ble opprettet på vegne av dem for å sette opp kamper før de ble med), registrerer vi handlingstypen <em>club-claimed</em>, UID-en og visningsnavnet til brukeren som overtar, UID-en til brukeren som opprettet plassholderklubben, UID-ene til eventuelle medlemmer som ble fjernet ved overtakelsen, klubb-ID-en og et tidsstempel.</p>
+            <p>Når en bruker <strong>slår sammen en plassholderklubb</strong> med sin egen klubb, registrerer vi handlingstypen <em>club-merged</em>, UID-en til brukeren som slår sammen, UID-en til brukeren som opprettet plassholderklubben, ID-en til klubben den ble slått sammen med, antallet ligaer og kamper som ble flyttet, klubb-ID-en og et tidsstempel. Ingen visningsnavn registreres.</p>
             <p>Vi registrerer <strong>ikke</strong> e-postadresser, profilinnhold, fritekstnotater, det faktiske innholdet i endrede klubbinnstillinger eller andre personopplysninger i revisjonslogger. Der visningsnavn registreres, registreres de kun slik de var på tidspunktet for handlingen, slik at oppføringen forblir lesbar for tvisteløsning dersom en deltaker senere endrer navn, eller dersom den <em>andre</em> parten sletter kontoen sin. Ditt eget visningsnavn anonymiseres i disse oppføringene når du sletter kontoen din (se "Kontosletting og denne loggen" nedenfor). Så lenge kontoen din er aktiv, viser revisjonslogg-visningen ditt <em>gjeldende</em> visningsnavn fra den aktive profilen din — det registrerte navnet vises kun som en reserveløsning etter at den opprinnelige brukeroppføringen ikke lenger er tilgjengelig.</p>
 
             <h3>Hvorfor vi logger dette</h3>
@@ -323,7 +324,7 @@
             </ul>
 
             <h3>Din tilgang til oppføringer om deg</h3>
-            <p>Revisjonsloggoppføringer som registrerer deg som den handlende brukeren eller som medlemmet en handling ble utført mot, <strong>er inkludert</strong> i dataeksporten din (se punkt 6). Hver eksporterte oppføring viser klubben, handlingen, om det var du som handlet eller ble berørt, når det skjedde, og hvem som utførte den — deg selv, en klubbadministrator eller en annen bruker. <strong>Andre medlemmers identitet</strong> — navn og bruker-ID — <strong>holdes tilbake</strong> fra eksporterte oppføringer, og der en handling fortrengte flere medlemmer, vises bare antallet. Hvis du opprettet en plassholderklubb, eller var et medlem som ble fjernet da den ble overtatt, er den <em>club-claimed</em>-oppføringen ikke en del av eksporten din; du kan be om den på <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a>. For å bestride en handling der den andre partens identitet er holdt tilbake, send e-post til <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> innenfor oppbevaringsperioden på 90 dager; vi gjennomgår oppføringen og løser tvisten sammen med deg.</p>
+            <p>Revisjonsloggoppføringer som registrerer deg som den handlende brukeren eller som medlemmet en handling ble utført mot, <strong>er inkludert</strong> i dataeksporten din (se punkt 6). Hver eksporterte oppføring viser klubben, handlingen, om det var du som handlet eller ble berørt, når det skjedde, og hvem som utførte den — deg selv, en klubbadministrator eller en annen bruker. <strong>Andre medlemmers identitet</strong> — navn og bruker-ID — <strong>holdes tilbake</strong> fra eksporterte oppføringer, og der en handling fortrengte flere medlemmer, vises bare antallet. Hvis du opprettet en plassholderklubb, eller var et medlem som ble fjernet da den ble overtatt, er <em>club-claimed</em>- eller <em>club-merged</em>-oppføringen for den ikke en del av eksporten din; du kan be om den på <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a>. For å bestride en handling der den andre partens identitet er holdt tilbake, send e-post til <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> innenfor oppbevaringsperioden på 90 dager; vi gjennomgår oppføringen og løser tvisten sammen med deg.</p>
 
             <h3>Kontosletting og denne loggen</h3>
             <p>Hvis du utøver din rett til sletting (sletter kontoen din), fjerner vi personopplysningene dine fra systemene våre som beskrevet i punkt 6, 7 og 7a. Visningsnavnet ditt <strong>anonymiseres</strong> i eksisterende revisjonsloggoppføringer ved slettingen; UID-en din blir værende i disse oppføringene til hver av dem slettes automatisk ved utløpet av sin 90-dagersperiode. I sjeldne tilfeller kan et kort behandlingsvindu under slettingen etterlate gjenværende oppføringer som fortsatt inneholder visningsnavnet ditt; disse slettes automatisk ved utløpet av sine egne 90-dagersperioder. Vi kan ikke fjerne enkeltoppføringer på forespørsel.</p>

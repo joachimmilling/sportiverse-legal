@@ -285,7 +285,7 @@
             </ul>
 
             <h3>Personalized vs Non-Personalized Ads</h3>
-            <p>If you are located in the European Economic Area, United Kingdom, or Switzerland, we show a consent form on first launch asking whether you allow personalized ads. You can change this choice at any time in Settings → Privacy.</p>
+            <p>If you are located in the European Economic Area, United Kingdom, or Switzerland, we show a consent form on first launch asking whether you allow personalized ads. You can change this choice at any time in Settings → Account Center.</p>
             <ul>
                 <li><strong>With consent:</strong> AdMob may use your advertising identifier to show ads tailored to your interests.</li>
                 <li><strong>Without consent:</strong> Only non-personalized ads are shown, based on contextual signals rather than your profile.</li>
@@ -301,7 +301,7 @@
         <!-- See ADR-016 in sportiverse repo docs/DECISIONS.md -->
         <div class="section" id="section-4b">
             <h2>4b. Administrative Audit Logs</h2>
-            <p>When an action that affects who can govern a club is taken — an admin adding, promoting, demoting, or removing a member, a member (including an admin) leaving a club they belong to, an admin editing club settings or rotating the invite code, or an admin deleting the club — we write a short record to an internal audit log. This section explains what is captured, why, and how long it is kept.</p>
+            <p>When an action that affects who can govern a club is taken — an admin adding, promoting, demoting, or removing a member, a member (including an admin) leaving a club they belong to, an admin editing club settings, generating or rotating the invite code, or deleting the club, or a user claiming a placeholder club or merging one into their own club — we write a short record to an internal audit log. This section explains what is captured, why, and how long it is kept.</p>
 
             <h3>What we log</h3>
             <p>For <strong>member-level actions</strong> (a member added, promoted, demoted, removed, or leaving):</p>
@@ -312,15 +312,16 @@
                 <li>The action type — one of <em>member-added</em>, <em>admin-promoted</em>, <em>admin-demoted</em>, <em>member-removed</em>, <em>member-left</em></li>
                 <li>The club ID and a timestamp</li>
             </ul>
-            <p>For <strong>club-level actions</strong> (settings changes, invite-code rotation, club deletion):</p>
+            <p>For <strong>club-level actions</strong> (settings changes, invite-code generation or rotation, club deletion):</p>
             <ul>
                 <li>The UID of the acting admin</li>
-                <li>The acting admin's display name (captured at the time of the action) — only for club deletion; club-settings edits and invite-code rotations record only the UID</li>
-                <li>The action type — one of <em>club-updated</em>, <em>club-invite-code-rotated</em>, <em>club-deleted</em></li>
+                <li>The acting admin's display name (captured at the time of the action) — only for club deletion; club-settings edits and invite-code generation or rotation record only the UID</li>
+                <li>The action type — one of <em>club-updated</em>, <em>club-invite-code-issued</em>, <em>club-invite-code-rotated</em>, <em>club-deleted</em></li>
                 <li>For <em>club-updated</em>, the names of the fields that changed (e.g. "name", "description", "colors") — never the field values themselves</li>
                 <li>The club ID and a timestamp</li>
             </ul>
             <p>When a user <strong>claims a placeholder club</strong> (takes over a club that was created on their behalf to schedule matches before they joined), we record the action type <em>club-claimed</em>, the claiming user's UID and display name, the UID of the user who created the placeholder, the UIDs of any members removed by the claim, the club ID and a timestamp.</p>
+            <p>When a user <strong>merges a placeholder club</strong> into their own club, we record the action type <em>club-merged</em>, the merging user's UID, the UID of the user who created the placeholder, the ID of the club it was merged into, the number of leagues and matches moved, the club ID and a timestamp. No display names are recorded.</p>
             <p>We do <strong>not</strong> capture email addresses, profile content, free-form notes, the actual contents of changed club settings, or any other personal data in audit logs. Where display names are captured, they are captured only as they were at the time of the action, so the entry remains readable for dispute resolution if a participant later changes their name, or if the <em>other</em> party deletes their account. Your own display name is anonymized in these entries when you delete your account (see "Account deletion and this log" below). While your account remains active, the audit-log viewer displays your <em>current</em> display name from your live profile — the captured name is shown only as a fallback after the original user record is no longer available.</p>
 
             <h3>Why we log this</h3>
@@ -340,7 +341,7 @@
             </ul>
 
             <h3>Your access to entries about you</h3>
-            <p>Audit-log entries that record you as the acting user or as the member an action was taken on <strong>are included</strong> in your data export (see section 6). Each exported entry shows the club, the action, whether you were the one acting or the one affected, when it happened, and who performed it — you, a club administrator, or another user. The <strong>identities of other members</strong> — their names and user IDs — are <strong>withheld</strong> from exported entries, and where an action displaced several members, only the number of members is shown. If you were the creator of a placeholder club, or a member removed when it was claimed, that <em>club-claimed</em> entry is not part of your export; you can request it from <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a>. To contest an action in which the other party's identity is withheld, email <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> within the 90-day retention window; we will review the entry and resolve the dispute with you.</p>
+            <p>Audit-log entries that record you as the acting user or as the member an action was taken on <strong>are included</strong> in your data export (see section 6). Each exported entry shows the club, the action, whether you were the one acting or the one affected, when it happened, and who performed it — you, a club administrator, or another user. The <strong>identities of other members</strong> — their names and user IDs — are <strong>withheld</strong> from exported entries, and where an action displaced several members, only the number of members is shown. If you were the creator of a placeholder club, or a member removed when it was claimed, the <em>club-claimed</em> or <em>club-merged</em> entry for it is not part of your export; you can request it from <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a>. To contest an action in which the other party's identity is withheld, email <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> within the 90-day retention window; we will review the entry and resolve the dispute with you.</p>
 
             <h3>Account deletion and this log</h3>
             <p>If you exercise your right to erasure (delete your account), we remove your personal data from our systems as described in sections 6, 7 and 7a. Your display name is <strong>anonymized</strong> in existing audit-log entries at deletion; your UID remains in those entries until each is auto-deleted at the end of its 90-day window. In rare cases, a narrow processing window during deletion may leave residual entries that still carry your display name; these are auto-deleted at the end of their own 90-day windows. We cannot remove individual entries on request.</p>
