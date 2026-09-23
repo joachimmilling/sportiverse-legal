@@ -148,9 +148,10 @@
     <section class="hero">
         <div class="container">
             <h1>Personvernerklæring</h1>
-            <p class="effective-date">Gjelder fra: 25. april 2026</p>
+            <p class="effective-date">Gjelder fra: 23. september 2026</p>
             <p class="effective-date" style="margin-top: 6px;">Denne oversettelsen er kun til informasjon. Ved motstrid gjelder den engelske versjonen.</p>
-            <p style="opacity: 0.85; font-size: 0.95em; margin-top: 8px;"><em>Oppdatert 25. april 2026: presisert at administrative revisjonslogger inkluderer visningsnavnet som ble registrert på tidspunktet for hver handling, i tillegg til UID-er (se punkt 4b).</em></p>
+            <p style="opacity: 0.85; font-size: 0.95em; margin-top: 8px;"><em>Oppdatert 23. september 2026: beskrevet hva en dataeksport inneholder, inkludert revisjonsloggoppføringer om kontoen din der andre medlemmers identitet er holdt tilbake (punkt 4b og 6); korrigert hvordan navn i revisjonsloggen behandles ved kontosletting (punkt 4b); lagt til oppbevaringstiden på 30 dager for varsler og elementer i din personlige feed (punkt 7); og beskrevet hva som forblir synlig for andre medlemmer etter at du har slettet kontoen din (punkt 7a).</em></p>
+            <p style="opacity: 0.85; font-size: 0.95em; margin-top: 4px;"><em>Oppdatert 25. april 2026: presisert at administrative revisjonslogger inkluderer visningsnavnet som ble registrert på tidspunktet for hver handling, i tillegg til UID-er (se punkt 4b).</em></p>
         </div>
     </section>
 
@@ -267,7 +268,7 @@
             </ul>
 
             <h3>Persontilpassede kontra ikke-persontilpassede annonser</h3>
-            <p>Hvis du befinner deg i Det europeiske økonomiske samarbeidsområdet, Storbritannia eller Sveits, viser vi et samtykkeskjema ved første oppstart der du blir spurt om du tillater persontilpassede annonser. Du kan endre dette valget når som helst i Innstillinger → Personvern.</p>
+            <p>Hvis du befinner deg i Det europeiske økonomiske samarbeidsområdet, Storbritannia eller Sveits, viser vi et samtykkeskjema ved første oppstart der du blir spurt om du tillater persontilpassede annonser. Du kan endre dette valget når som helst i Innstillinger → Kontosenter.</p>
             <ul>
                 <li><strong>Med samtykke:</strong> AdMob kan bruke annonseidentifikatoren din til å vise annonser tilpasset dine interesser.</li>
                 <li><strong>Uten samtykke:</strong> Kun ikke-persontilpassede annonser vises, basert på kontekstuelle signaler i stedet for profilen din.</li>
@@ -283,7 +284,7 @@
         <!-- See ADR-016 in sportiverse repo docs/DECISIONS.md -->
         <div class="section" id="section-4b">
             <h2>4b. Administrative revisjonslogger</h2>
-            <p>Når det utføres en handling som påvirker hvem som kan styre en klubb — en administrator som legger til, forfremmer, degraderer eller fjerner et medlem, et medlem (inkludert en administrator) som forlater en klubb vedkommende tilhører, en administrator som endrer klubbinnstillinger eller roterer invitasjonskoden, eller en administrator som sletter klubben — skriver vi en kort oppføring til en intern revisjonslogg. Dette punktet forklarer hva som registreres, hvorfor, og hvor lenge det oppbevares.</p>
+            <p>Når det utføres en handling som påvirker hvem som kan styre en klubb — en administrator som legger til, forfremmer, degraderer eller fjerner et medlem, et medlem (inkludert en administrator) som forlater en klubb vedkommende tilhører, en administrator som endrer klubbinnstillinger eller roterer invitasjonskoden, klubbens oppretter eller en administrator som genererer invitasjonskoden, en administrator som sletter klubben, eller en bruker som overtar en plassholderklubb eller slår en sammen med sin egen klubb — skriver vi en kort oppføring til en intern revisjonslogg. Dette punktet forklarer hva som registreres, hvorfor, og hvor lenge det oppbevares.</p>
 
             <h3>Hva vi logger</h3>
             <p>For <strong>handlinger på medlemsnivå</strong> (et medlem som legges til, forfremmes, degraderes, fjernes eller forlater klubben):</p>
@@ -294,15 +295,17 @@
                 <li>Handlingstypen — én av <em>member-added</em>, <em>admin-promoted</em>, <em>admin-demoted</em>, <em>member-removed</em>, <em>member-left</em></li>
                 <li>Klubb-ID-en og et tidsstempel</li>
             </ul>
-            <p>For <strong>handlinger på klubbnivå</strong> (endring av innstillinger, rotering av invitasjonskode, sletting av klubb):</p>
+            <p>For <strong>handlinger på klubbnivå</strong> (endring av innstillinger, generering eller rotering av invitasjonskode, sletting av klubb):</p>
             <ul>
-                <li>UID-en til den handlende administratoren</li>
-                <li>Den handlende administratorens visningsnavn (registrert på tidspunktet for handlingen) — kun ved sletting av klubb; endringer av klubbinnstillinger og rotering av invitasjonskode registrerer kun UID-en</li>
-                <li>Handlingstypen — én av <em>club-updated</em>, <em>club-invite-code-rotated</em>, <em>club-deleted</em></li>
+                <li>UID-en til den handlende administratoren (eller, ved generering av invitasjonskode, klubbens oppretter)</li>
+                <li>Den handlende administratorens visningsnavn (registrert på tidspunktet for handlingen) — kun ved sletting av klubb; endringer av klubbinnstillinger og generering eller rotering av invitasjonskode registrerer kun UID-en</li>
+                <li>Handlingstypen — én av <em>club-updated</em>, <em>club-invite-code-issued</em>, <em>club-invite-code-rotated</em>, <em>club-deleted</em></li>
                 <li>For <em>club-updated</em>, navnene på feltene som ble endret (f.eks. "name", "description", "colors") — aldri selve feltverdiene</li>
                 <li>Klubb-ID-en og et tidsstempel</li>
             </ul>
-            <p>Vi registrerer <strong>ikke</strong> e-postadresser, profilinnhold, fritekstnotater, det faktiske innholdet i endrede klubbinnstillinger eller andre personopplysninger i revisjonslogger. Der visningsnavn registreres, registreres de kun slik de var på tidspunktet for handlingen, slik at oppføringen forblir lesbar for tvisteløsning dersom de involverte personene senere sletter kontoene sine eller endrer navn. Så lenge kontoen din er aktiv, viser revisjonslogg-visningen ditt <em>gjeldende</em> visningsnavn fra den aktive profilen din — det registrerte navnet vises kun som en reserveløsning etter at den opprinnelige brukeroppføringen ikke lenger er tilgjengelig.</p>
+            <p>Når en bruker <strong>overtar en plassholderklubb</strong> (tar over en klubb som ble opprettet på vegne av dem for å sette opp kamper før de ble med), registrerer vi handlingstypen <em>club-claimed</em>, UID-en og visningsnavnet til brukeren som overtar, UID-en til brukeren som opprettet plassholderklubben, UID-ene til eventuelle medlemmer som ble fjernet ved overtakelsen, klubb-ID-en og et tidsstempel.</p>
+            <p>Når en bruker <strong>slår sammen en plassholderklubb</strong> med sin egen klubb, registrerer vi handlingstypen <em>club-merged</em>, UID-en til brukeren som slår sammen, UID-en til brukeren som opprettet plassholderklubben, ID-en til klubben den ble slått sammen med, antallet ligaer og kamper som ble flyttet, klubb-ID-en og et tidsstempel. Ingen visningsnavn registreres.</p>
+            <p>Vi registrerer <strong>ikke</strong> e-postadresser, profilinnhold, fritekstnotater, det faktiske innholdet i endrede klubbinnstillinger eller andre personopplysninger i revisjonslogger. Der visningsnavn registreres, registreres de kun slik de var på tidspunktet for handlingen, slik at oppføringen forblir lesbar for tvisteløsning dersom en deltaker senere endrer navn, eller dersom den <em>andre</em> parten sletter kontoen sin. Ditt eget visningsnavn anonymiseres i disse oppføringene når du sletter kontoen din (se "Kontosletting og denne loggen" nedenfor). Så lenge kontoen din er aktiv, viser revisjonslogg-visningen ditt <em>gjeldende</em> visningsnavn fra den aktive profilen din — det registrerte navnet vises kun som en reserveløsning etter at den opprinnelige brukeroppføringen ikke lenger er tilgjengelig.</p>
 
             <h3>Hvorfor vi logger dette</h3>
             <p>Revisjonsloggen finnes utelukkende for at vi skal kunne undersøke tvister — for eksempel hvis en bruker rapporterer å ha blitt kastet ut eller degradert urettmessig, eller hvis vi må undersøke koordinert misbruk av administratorrettigheter. Den er ikke en brukervendt funksjon og brukes ikke til profilering, analyse, annonsering eller produktutvikling.</p>
@@ -313,15 +316,18 @@
             <h3>Rettslig grunnlag</h3>
             <p>Behandlingen bygger på GDPR artikkel 6 nr. 1 bokstav f — berettigede interesser som forfølges av Sportiverse (svindelforebygging, tvisteløsning og plattformintegritet). Vi har veid dette opp mot dine rettigheter og friheter:</p>
             <ul>
-                <li><strong>Nødvendighet:</strong> de registrerte visningsnavnene er nødvendige for at oppføringer om et medlem som forlater eller blir fjernet skal forbli lesbare etter at vedkommendes konto er slettet; uten dem ville de mest relevante radene i en tvist vises som "ukjent bruker".</li>
+                <li><strong>Nødvendighet:</strong> de registrerte visningsnavnene er nødvendige for at en oppføring skal forbli lesbar for den gjenværende parten i en tvist etter at den <em>andre</em> parten har slettet kontoen sin; uten dem ville de mest relevante radene vises som "ukjent bruker". Den slettende brukerens eget navn anonymiseres ved slettingen.</li>
                 <li><strong>Dataminimering:</strong> loggen er begrenset til UID-er, metadata om handlingen og (der det er aktuelt) visningsnavnene til den handlende brukeren og den berørte brukeren. Ingen e-postadresser, profilinnhold, fritekstnotater eller verdier fra klubbinnstillinger registreres. Endringer av klubbinnstillinger registrerer kun navnene på feltene som ble endret, ikke innholdet i dem.</li>
                 <li><strong>Foretrukket bruk av gjeldende navn:</strong> så lenge en brukers konto eksisterer, viser revisjonslogg-visningen den brukerens <em>gjeldende</em> visningsnavn fra den aktive profilen. Det registrerte navnet leses kun som en reserveløsning når den opprinnelige brukeroppføringen ikke lenger er tilgjengelig.</li>
                 <li><strong>Kort oppbevaringstid:</strong> 90 dager fra handlingen, håndhevet av en time-to-live-policy i Firestore.</li>
                 <li><strong>Ingen sekundær bruk:</strong> dataene deles ikke med tredjeparter og kombineres ikke med profilen din for noe annet formål (ingen profilering, analyse, annonsering eller produktutvikling).</li>
             </ul>
 
+            <h3>Din tilgang til oppføringer om deg</h3>
+            <p>Revisjonsloggoppføringer som registrerer deg som den handlende brukeren eller som medlemmet en handling ble utført mot, <strong>er inkludert</strong> i dataeksporten din (se punkt 6). Hver eksporterte oppføring viser klubben, handlingen, om det var du som handlet eller ble berørt, når det skjedde, og hvem som utførte den — du selv, en klubbadministrator eller en annen bruker. <strong>Andre medlemmers identitet</strong> — navn og bruker-ID — <strong>holdes tilbake</strong> fra eksporterte oppføringer, og der en handling fjernet flere medlemmer, vises bare antallet. Hvis du opprettet en plassholderklubb, eller var et medlem som ble fjernet da den ble overtatt, er <em>club-claimed</em>- eller <em>club-merged</em>-oppføringen for den ikke en del av eksporten din; du kan be om den på <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a>. For å bestride en handling der den andre partens identitet er holdt tilbake, send e-post til <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> innenfor oppbevaringsperioden på 90 dager; vi gjennomgår oppføringen og løser tvisten sammen med deg.</p>
+
             <h3>Kontosletting og denne loggen</h3>
-            <p>Hvis du utøver din rett til sletting (sletter kontoen din), fjerner vi personopplysningene dine fra systemene våre som beskrevet i punkt 6 og 7. Imidlertid vil enhver UID som tilhører deg, og visningsnavnet slik det var på tidspunktet for handlingen, som <em>allerede er registrert</em> i revisjonsloggoppføringer før slettingen, forbli i disse oppføringene ut deres individuelle 90-dagersperioder, og deretter slettes automatisk sammen med hver oppføring. Vi kan ikke fjerne enkeltoppføringer på forespørsel.</p>
+            <p>Hvis du utøver din rett til sletting (sletter kontoen din), fjerner vi personopplysningene dine fra systemene våre som beskrevet i punkt 6, 7 og 7a. Visningsnavnet ditt <strong>anonymiseres</strong> i eksisterende revisjonsloggoppføringer ved slettingen; UID-en din blir værende i disse oppføringene til hver av dem slettes automatisk ved utløpet av sin 90-dagersperiode. I sjeldne tilfeller kan et kort behandlingsvindu under slettingen etterlate gjenværende oppføringer som fortsatt inneholder visningsnavnet ditt; disse slettes automatisk ved utløpet av sine egne 90-dagersperioder. Vi kan ikke fjerne enkeltoppføringer på forespørsel.</p>
 
             <h3>Rett til å protestere</h3>
             <p>Du kan protestere mot denne behandlingen ved å sende e-post til <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> og vise til de konkrete revisjonsloggoppføringene eller tidsrommet. Fordi denne behandlingen tjener interesser knyttet til svindelforebygging og tvisteløsning som kan veie tyngre enn en individuell protest, kan vi ikke garantere umiddelbar sletting innenfor 90-dagersperioden; vi vil imidlertid vurdere hver forespørsel individuelt. Uavhengig av utfallet slettes hver oppføring automatisk når dens 90 dager er utløpt.</p>
@@ -352,13 +358,27 @@
             <p>Etter GDPR har du følgende rettigheter:</p>
 
             <h3>Rett til innsyn</h3>
-            <p>Be om en kopi av personopplysningene vi har om deg</p>
+            <p>Be om en kopi av personopplysningene vi har om deg — vi utleverer den innen én måned. I appen går du til <strong>Innstillinger → Kontosenter → Be om personlige data</strong>. Eksporten inneholder blant annet:</p>
+            <ul>
+                <li>Profilen din og profilbildene dine</li>
+                <li>Klubber du er medlem av, og plassholderklubber du har opprettet for motstandere som ennå ikke er på Sportiverse</li>
+                <li>Kamper du har spilt, kamphendelser som involverer deg, og statistikken din</li>
+                <li>Feed-hendelser om deg</li>
+                <li>Innlegg på klubbtavlen, stemmer i avstemninger, kommentarer og likerklikk du har opprettet</li>
+                <li>Direktemeldinger du har sendt, treningsøkter du har opprettet eller blitt invitert til, og meldingene dine i chattene deres</li>
+                <li>Ligaer du har opprettet, klubber, ligaer og spillere du følger, og medlemsforespørslene dine</li>
+                <li>Personer du har blokkert, og om du abonnerer på treningskalenderen</li>
+                <li>Varsler du har mottatt (oppbevares i 30 dager) og elementer levert til din personlige feed (oppbevares i 30 dager)</li>
+                <li>Administrative revisjonsloggoppføringer om kontoen din, der andre medlemmers identitet er holdt tilbake (se punkt 4b)</li>
+                <li>Oppdateringstokener for Live Activities på enhetene dine, hvis du bruker dem (oppbevares i inntil 13 timer)</li>
+            </ul>
+            <p>Eksporten viser også hvilke kategorier som ble hentet i sin helhet, og oppbevaringstiden for hver kategori som slettes automatisk.</p>
 
             <h3>Rett til retting</h3>
             <p>Rette uriktige eller ufullstendige personopplysninger</p>
 
             <h3>Rett til sletting ("retten til å bli glemt")</h3>
-            <p>Be om sletting av personopplysningene dine (med 30 dagers angrefrist). Merk: administrative revisjonslogger som inneholder din UID og visningsnavnet som ble registrert på tidspunktet for hver handling, beholdes i inntil 90 dager fra den opprinnelige handlingen og slettes deretter automatisk; vi kan ikke fjerne enkeltoppføringer på forespørsel (se punkt 4b).</p>
+            <p>Be om sletting av personopplysningene dine (med 30 dagers angrefrist). Noe av det du har delt med andre forblir synlig for dem etter slettingen, uten at profilen din er knyttet til det — se punkt 7a. Merk: administrative revisjonslogger som inneholder din UID, beholdes i inntil 90 dager fra den opprinnelige handlingen og slettes deretter automatisk; visningsnavnet ditt anonymiseres i dem ved slettingen, men et kort behandlingsvindu kan etterlate gjenværende oppføringer som inneholder det i inntil 90 dager (se punkt 4b). Vi kan ikke fjerne enkeltoppføringer på forespørsel.</p>
 
             <h3>Rett til begrensning av behandling</h3>
             <p>Begrense hvordan vi bruker personopplysningene dine</p>
@@ -373,7 +393,7 @@
             <p>Trekke tilbake samtykket til analyse når som helst i Innstillinger</p>
 
             <p style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                <strong>Slik utøver du disse rettighetene:</strong> Gå til Innstillinger → Personvern i appen, eller kontakt oss på privacy@sportiverse.no
+                <strong>Slik utøver du disse rettighetene:</strong> Gå til Innstillinger → Kontosenter i appen, eller kontakt oss på privacy@sportiverse.no
             </p>
         </div>
 
@@ -382,11 +402,29 @@
             <p>Vi oppbevarer dataene dine i ulike perioder avhengig av type:</p>
             <ul>
                 <li><strong>Kontodata:</strong> Til kontoen slettes + 30 dagers gjenopprettingsperiode</li>
-                <li><strong>Kampstatistikk:</strong> På ubestemt tid for historiske registre (anonymiseres etter kontosletting)</li>
+                <li><strong>Kampstatistikk:</strong> På ubestemt tid for historiske registre. Ved kontosletting fjernes kontoen din fra kampoppstillinger og portrettet ditt slettes; spillernavnet ditt blir værende i kamphistorikken, og kamphendelser og feed-hendelser kan fortsatt inneholde konto-ID-en din, som ikke lenger fører til en profil (se punkt 7a)</li>
                 <li><strong>Analysedata:</strong> 2 år</li>
                 <li><strong>Logger og sikkerhetsdata:</strong> 90 dager</li>
-                <li><strong>Administrative revisjonslogger:</strong> UID, metadata om handlingen og visningsnavnene til de direkte involverte personene (registrert på tidspunktet for hver handling) — 90 dager fra handlingen, slettes automatisk av Firestore TTL. Beholdes gjennom kontosletting til hver oppførings periode er utløpt (se punkt 4b).</li>
+                <li><strong>Administrative revisjonslogger:</strong> UID, metadata om handlingen og visningsnavnene til de direkte involverte personene (registrert på tidspunktet for hver handling) — 90 dager fra handlingen, slettes automatisk av Firestore TTL. Beholdes gjennom kontosletting til hver oppførings periode er utløpt; visningsnavnet ditt anonymiseres i dem ved slettingen (se punkt 4b).</li>
+                <li><strong>Varsler:</strong> 30 dager fra levering, slettes automatisk av Firestore TTL. Utløpsdatoen settes av serverne våre og kan ikke forlenges fra appen.</li>
+                <li><strong>Elementer i din personlige feed:</strong> kopiene av aktivitet levert til din personlige feed — 30 dager fra levering, slettes automatisk av Firestore TTL.</li>
+                <li><strong>Oppdateringstokener for Live Activities:</strong> inntil 13 timer fra siste oppdatering, slettes automatisk av Firestore TTL.</li>
             </ul>
+            <p>Automatisk sletting kjøres etter en tidsplan, så en oppføring kan bli liggende en kort stund — vanligvis mindre enn et døgn — etter slettedatoen. Slettede data kan også bli liggende i en begrenset ekstra periode i sikkerhetskopier som ikke er tilgjengelige for brukere.</p>
+        </div>
+
+        <div class="section" id="section-7a">
+            <h2>7a. Hva som forblir synlig for andre etter at du har slettet kontoen din</h2>
+            <p>Når du sletter kontoen din, fjernes profilen din og personopplysningene dine. Noe av det du har delt med andre, er en del av deres klubber, kamper og samtaler, og forblir synlig for dem uten at profilen din er knyttet til det, selv om konto-ID-en din kan bli værende på dette innholdet. Listen gir de viktigste eksemplene; den er ikke uttømmende.</p>
+            <ul>
+                <li><strong>Innlegg og kommentarer på klubbtavlen</strong> du har skrevet, inkludert vedlagte bilder og filer, blir liggende for klubbens medlemmer, vist som "Slettet bruker". Så lenge du er medlem, kan du slette dem selv; etter at kontoen er slettet, kan bare en klubbadministrator fjerne dem.</li>
+                <li><strong>Kommentarer på feed-hendelser</strong> blir liggende, med navnet ditt erstattet av "Deleted User".</li>
+                <li><strong>Navnet ditt i kamphistorikken</strong> — kampoppstillinger og feed-hendelser om kamper du har spilt, beholder spillernavnet, slik at resultater og kamphendelser forblir intakte. Kontoen din fjernes fra kampoppstillinger og portrettet ditt slettes; kamphendelser og feed-hendelser kan fortsatt inneholde konto-ID-en din, som ikke lenger fører til en profil.</li>
+                <li><strong>Direktemeldinger</strong> du har sendt, blir liggende i mottakernes samtaler, med koblingen til kontoen din fjernet.</li>
+                <li><strong>Varsler andre medlemmer allerede har mottatt</strong> om deg — for eksempel en fan- eller medlemsforespørsel, eller et nytt innlegg på klubbtavlen — kan fortsatt vise navnet ditt, konto-ID-en din, en lenke til profilbildet ditt (som slutter å laste når kontoen din er slettet) eller et kort utdrag av innlegget ditt. Vi søker ikke gjennom alle andre medlemmers varsler ved sletting, fordi hver kopi slettes automatisk innen 30 dager etter levering (punkt 7).</li>
+                <li><strong>Administrative revisjonslogger</strong>, som beskrevet i punkt 4b.</li>
+            </ul>
+            <p>Hvis du ønsker å få fjernet noe bestemt, send e-post til <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a>.</p>
         </div>
 
         <div class="section">

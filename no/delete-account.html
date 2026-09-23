@@ -150,7 +150,7 @@
                 <li><strong>Kampoppstillinger og hendelser du har opprettet:</strong> åpne kampen → rediger oppstilling eller hendelser (innenfor ditt administratoromfang)</li>
                 <li><strong>Medlemskap i klubb, liga eller lag:</strong> forlat enheten fra dens detaljskjerm</li>
             </ul>
-            <p>Enkeltvise slettinger trer i kraft umiddelbart. Aggregerte ligatabeller og historiske kampresultater forblir knyttet til spillerprofilen inntil selve kontoen slettes.</p>
+            <p>Enkeltvise slettinger trer i kraft umiddelbart. Ligatabeller og historiske kampresultater forblir knyttet til spillerprofilen din så lenge kontoen eksisterer; når kontoen slettes, fjernes kontoen din fra kampoppstillinger og portrettet ditt slettes; spillernavnet ditt blir værende i kamphistorikken, og kamphendelser og feed-hendelser kan fortsatt inneholde konto-ID-en din, som ikke lenger fører til en profil.</p>
             <p>Hvis du ønsker å få fjernet data som ikke kan slettes fra appen, send en e-post til <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> fra din registrerte adresse med emnet <strong>"Data deletion request"</strong> og beskriv hva du ønsker fjernet.</p>
         </div>
 
@@ -187,10 +187,10 @@
             <p>Når kontoen din slettes permanent, fjernes følgende data fra våre systemer:</p>
             <ul>
                 <li>Profilen din (navn, e-post, fødselsdato, nasjonalitet, profilbilde, biografi)</li>
-                <li>Kommentarer og likerklikk du har opprettet</li>
-                <li>Direktemeldinger du har sendt</li>
-                <li>Opplastede bilder og medier</li>
-                <li>Kampoppstillinger, hendelser og vurderinger du har opprettet</li>
+                <li>Likerklikk, reaksjoner og stemmer du har avgitt i avstemninger</li>
+                <li>Meldinger du har sendt i chatter for treningsøkter</li>
+                <li>Profilbildene dine og andre medier lagret under kontoen din</li>
+                <li>Den personlige statistikken din</li>
                 <li>Medlemskap i klubber, ligaer og lag</li>
                 <li>Varslingsinnstillinger og enhetstokener</li>
             </ul>
@@ -198,7 +198,7 @@
 
         <div class="section">
             <h2>Hva som beholdes, og hvorfor</h2>
-            <p>Enkelte data beholdes etter at kontoen er slettet. Der oppbevaring er nødvendig av legitime formål, fjernes personlige identifikatorer eller dataene anonymiseres — med unntak av administrative revisjonslogger, som (der du utførte eller var gjenstand for en slik handling mens kontoen din eksisterte) beholder din bruker-ID og visningsnavnet registrert på tidspunktet for hver handling i en kort, fast periode før automatisk sletting (se personvernerklæringen, punkt 4b).</p>
+            <p>Enkelte data beholdes etter at kontoen er slettet. Det du har delt med andre, forblir synlig for dem uten at profilen din er knyttet til det (konto-ID-en din kan bli værende på dette innholdet), og administrative revisjonslogger beholder bruker-ID-en din i en kort, fast periode før automatisk sletting. Tabellen gir de viktigste eksemplene; den er ikke uttømmende — se <a href="/no/privacy.html#section-7a">personvernerklæringen, punkt 7a</a>.</p>
 
             <table>
                 <tr>
@@ -207,12 +207,27 @@
                     <th>Begrunnelse</th>
                 </tr>
                 <tr>
-                    <td>Kampresultater, ligatabeller, historisk statistikk</td>
-                    <td>Ubegrenset (anonymisert — navnet ditt erstattes med "Tidligere spiller")</td>
+                    <td>Kampresultater, ligatabeller, kampoppstillinger og feed-hendelser om kamper du har spilt</td>
+                    <td>Ubegrenset. Kontoen din fjernes fra kampoppstillinger og portrettet ditt slettes; spillernavnet ditt blir værende i kamphistorikken, og kamphendelser og feed-hendelser kan fortsatt inneholde konto-ID-en din, som ikke lenger fører til en profil</td>
                     <td>Bevarer integriteten til den sportslige historikken for klubber og ligaer du har deltatt i</td>
                 </tr>
                 <tr>
-                    <td>Administrative revisjonslogger (din UID, samt visningsnavnet slik det var på handlingstidspunktet der det er aktuelt, hvis du utførte eller var gjenstand for en av de registrerte handlingene — å legge til, forfremme, degradere eller fjerne et medlem; å forlate en klubb; å redigere klubbinnstillinger; å rotere en klubbs invitasjonskode; eller å slette en klubb)</td>
+                    <td>Innlegg og kommentarer du har skrevet på klubbtavlen (inkludert vedlagte bilder og filer), og kommentarer på feed-hendelser</td>
+                    <td>Til de fjernes — innhold på klubbtavlen vises som "Slettet bruker" og kan da bare fjernes av en klubbadministrator; kommentarer på feed-hendelser vises som "Deleted User"</td>
+                    <td>Holder samtalene til klubben og de andre medlemmene intakte</td>
+                </tr>
+                <tr>
+                    <td>Direktemeldinger du har sendt</td>
+                    <td>Blir liggende i mottakernes samtaler, med koblingen til kontoen din fjernet</td>
+                    <td>Bevarer meldingshistorikken til de andre deltakerne</td>
+                </tr>
+                <tr>
+                    <td>Varsler andre medlemmer allerede har mottatt om deg (som kan vise navnet ditt, konto-ID-en din, en lenke til profilbildet ditt eller et kort utdrag av et innlegg på klubbtavlen)</td>
+                    <td>Innen 30 dager fra levering (slettes automatisk av Firestore TTL; se personvernerklæringen §7)</td>
+                    <td>Hver kopi er kortvarig og utløper automatisk — se <a href="/no/privacy.html#section-7a">personvernerklæringen §7a</a></td>
+                </tr>
+                <tr>
+                    <td>Administrative revisjonslogger om handlinger du utførte eller var gjenstand for (å legge til, forfremme, degradere eller fjerne et medlem; å forlate en klubb; å redigere klubbinnstillinger; å generere eller rotere en klubbs invitasjonskode; å slette en klubb; eller å overta en plassholderklubb eller slå en sammen med klubben din). UID-en din blir værende i dem; visningsnavnet ditt anonymiseres ved slettingen, men et kort behandlingsvindu kan etterlate gjenværende oppføringer som fortsatt inneholder det</td>
                     <td>90 dager fra handlingen (slettes automatisk av Firestore TTL)</td>
                     <td>Forebygging av svindel, tvisteløsning, plattformintegritet — se <a href="/no/privacy.html#section-4b">personvernerklæringen §4b</a></td>
                 </tr>
@@ -231,7 +246,7 @@
 
         <div class="section">
             <h2>Eksporter dataene dine først (valgfritt)</h2>
-            <p>Før du sletter kontoen din, kan du laste ned en kopi av personopplysningene dine. I appen går du til <strong>Innstillinger → Kontosenter → Eksporter mine data</strong>. Du mottar en nedlastingslenke på e-post innen 14 dager.</p>
+            <p>Før du sletter kontoen din, kan du laste ned en kopi av personopplysningene dine. I appen går du til <strong>Innstillinger → Kontosenter → Be om personlige data</strong>. Når den er klar — innen én måned — finner du nedlastingen samme sted i appen. Nedlastingslenken er gyldig i 7 dager.</p>
         </div>
 
         <div class="contact-info">

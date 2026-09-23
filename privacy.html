@@ -166,8 +166,9 @@
     <section class="hero">
         <div class="container">
             <h1>Privacy Policy</h1>
-            <p class="effective-date">Effective Date: April 25, 2026</p>
-            <p style="opacity: 0.85; font-size: 0.95em; margin-top: 8px;"><em>Updated April 25, 2026: clarified that administrative audit logs include the display name recorded at the time of each action, in addition to UIDs (see section 4b).</em></p>
+            <p class="effective-date">Effective Date: September 23, 2026</p>
+            <p style="opacity: 0.85; font-size: 0.95em; margin-top: 8px;"><em>Updated September 23, 2026: listed what a data export contains, including audit-log entries about your account with other members' identities withheld (sections 4b and 6); corrected how audit-log names are handled on account deletion (section 4b); added the 30-day retention period for notifications and personal feed items (section 7); and described what stays visible to other members after you delete your account (section 7a).</em></p>
+            <p style="opacity: 0.85; font-size: 0.95em; margin-top: 4px;"><em>Updated April 25, 2026: clarified that administrative audit logs include the display name recorded at the time of each action, in addition to UIDs (see section 4b).</em></p>
         </div>
     </section>
     
@@ -284,7 +285,7 @@
             </ul>
 
             <h3>Personalized vs Non-Personalized Ads</h3>
-            <p>If you are located in the European Economic Area, United Kingdom, or Switzerland, we show a consent form on first launch asking whether you allow personalized ads. You can change this choice at any time in Settings → Privacy.</p>
+            <p>If you are located in the European Economic Area, United Kingdom, or Switzerland, we show a consent form on first launch asking whether you allow personalized ads. You can change this choice at any time in Settings → Account Center.</p>
             <ul>
                 <li><strong>With consent:</strong> AdMob may use your advertising identifier to show ads tailored to your interests.</li>
                 <li><strong>Without consent:</strong> Only non-personalized ads are shown, based on contextual signals rather than your profile.</li>
@@ -300,7 +301,7 @@
         <!-- See ADR-016 in sportiverse repo docs/DECISIONS.md -->
         <div class="section" id="section-4b">
             <h2>4b. Administrative Audit Logs</h2>
-            <p>When an action that affects who can govern a club is taken — an admin adding, promoting, demoting, or removing a member, a member (including an admin) leaving a club they belong to, an admin editing club settings or rotating the invite code, or an admin deleting the club — we write a short record to an internal audit log. This section explains what is captured, why, and how long it is kept.</p>
+            <p>When an action that affects who can govern a club is taken — an admin adding, promoting, demoting, or removing a member, a member (including an admin) leaving a club they belong to, an admin editing club settings or rotating the invite code, the club's creator or an admin generating the invite code, an admin deleting the club, or a user claiming a placeholder club or merging one into their own club — we write a short record to an internal audit log. This section explains what is captured, why, and how long it is kept.</p>
 
             <h3>What we log</h3>
             <p>For <strong>member-level actions</strong> (a member added, promoted, demoted, removed, or leaving):</p>
@@ -311,15 +312,17 @@
                 <li>The action type — one of <em>member-added</em>, <em>admin-promoted</em>, <em>admin-demoted</em>, <em>member-removed</em>, <em>member-left</em></li>
                 <li>The club ID and a timestamp</li>
             </ul>
-            <p>For <strong>club-level actions</strong> (settings changes, invite-code rotation, club deletion):</p>
+            <p>For <strong>club-level actions</strong> (settings changes, invite-code generation or rotation, club deletion):</p>
             <ul>
-                <li>The UID of the acting admin</li>
-                <li>The acting admin's display name (captured at the time of the action) — only for club deletion; club-settings edits and invite-code rotations record only the UID</li>
-                <li>The action type — one of <em>club-updated</em>, <em>club-invite-code-rotated</em>, <em>club-deleted</em></li>
+                <li>The UID of the acting admin (or, for invite-code generation, the club's creator)</li>
+                <li>The acting admin's display name (captured at the time of the action) — only for club deletion; club-settings edits and invite-code generation or rotation record only the UID</li>
+                <li>The action type — one of <em>club-updated</em>, <em>club-invite-code-issued</em>, <em>club-invite-code-rotated</em>, <em>club-deleted</em></li>
                 <li>For <em>club-updated</em>, the names of the fields that changed (e.g. "name", "description", "colors") — never the field values themselves</li>
                 <li>The club ID and a timestamp</li>
             </ul>
-            <p>We do <strong>not</strong> capture email addresses, profile content, free-form notes, the actual contents of changed club settings, or any other personal data in audit logs. Where display names are captured, they are captured only as they were at the time of the action, so the entry remains readable for dispute resolution if the people involved later delete their accounts or change their names. While your account remains active, the audit-log viewer displays your <em>current</em> display name from your live profile — the captured name is shown only as a fallback after the original user record is no longer available.</p>
+            <p>When a user <strong>claims a placeholder club</strong> (takes over a club that was created on their behalf to schedule matches before they joined), we record the action type <em>club-claimed</em>, the claiming user's UID and display name, the UID of the user who created the placeholder, the UIDs of any members removed by the claim, the club ID and a timestamp.</p>
+            <p>When a user <strong>merges a placeholder club</strong> into their own club, we record the action type <em>club-merged</em>, the merging user's UID, the UID of the user who created the placeholder, the ID of the club it was merged into, the number of leagues and matches moved, the club ID and a timestamp. No display names are recorded.</p>
+            <p>We do <strong>not</strong> capture email addresses, profile content, free-form notes, the actual contents of changed club settings, or any other personal data in audit logs. Where display names are captured, they are captured only as they were at the time of the action, so the entry remains readable for dispute resolution if a participant later changes their name, or if the <em>other</em> party deletes their account. Your own display name is anonymized in these entries when you delete your account (see "Account deletion and this log" below). While your account remains active, the audit-log viewer displays your <em>current</em> display name from your live profile — the captured name is shown only as a fallback after the original user record is no longer available.</p>
 
             <h3>Why we log this</h3>
             <p>The audit log exists purely to allow us to investigate disputes — for example, if a user reports they were kicked or demoted unfairly, or if we need to investigate coordinated abuse of admin powers. It is not a user-facing feature and is not used for profiling, analytics, advertising, or product development.</p>
@@ -330,15 +333,18 @@
             <h3>Legal basis</h3>
             <p>The processing relies on GDPR Article 6(1)(f) — legitimate interests pursued by Sportiverse (fraud prevention, dispute resolution, and platform integrity). We have balanced this against your rights and freedoms:</p>
             <ul>
-                <li><strong>Necessity:</strong> the captured display names are needed so that entries about a member leaving or being removed remain readable after that person's account is deleted; without them, the most relevant rows for a dispute would render as "unknown user."</li>
+                <li><strong>Necessity:</strong> the captured display names are needed so that an entry stays readable for the remaining party in a dispute after the <em>other</em> party has deleted their account; without them, the most relevant rows would render as "unknown user." The deleting user's own name is anonymized at deletion.</li>
                 <li><strong>Data minimization:</strong> the log is limited to UIDs, action metadata, and (where applicable) the display names of the acting user and the affected user. No emails, profile content, free-form notes, or club-settings values are captured. Club-settings edits record only the names of fields that changed, not their contents.</li>
                 <li><strong>Live-name preference:</strong> while a user's account exists, the audit-log viewer shows that user's <em>current</em> display name from their live profile. The captured name is read only as a fallback when the original user record is no longer available.</li>
                 <li><strong>Short retention:</strong> 90 days from the action, enforced by a Firestore time-to-live policy.</li>
                 <li><strong>No secondary use:</strong> the data is not shared with third parties and is not combined with your profile for any other purpose (no profiling, analytics, advertising, or product development).</li>
             </ul>
 
+            <h3>Your access to entries about you</h3>
+            <p>Audit-log entries that record you as the acting user or as the member an action was taken on <strong>are included</strong> in your data export (see section 6). Each exported entry shows the club, the action, whether you were the one acting or the one affected, when it happened, and who performed it — you, a club administrator, or another user. The <strong>identities of other members</strong> — their names and user IDs — are <strong>withheld</strong> from exported entries, and where an action displaced several members, only the number of members is shown. If you were the creator of a placeholder club, or a member removed when it was claimed, the <em>club-claimed</em> or <em>club-merged</em> entry for it is not part of your export; you can request it from <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a>. To contest an action in which the other party's identity is withheld, email <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> within the 90-day retention window; we will review the entry and resolve the dispute with you.</p>
+
             <h3>Account deletion and this log</h3>
-            <p>If you exercise your right to erasure (delete your account), we remove your personal data from our systems as described in sections 6 and 7. However, any UID of yours, and the display name as it was at the time of the action, <em>already captured</em> in audit-log entries before deletion will remain in those entries for the remainder of their individual 90-day windows, and will then be auto-deleted along with each entry. We cannot remove individual entries on request.</p>
+            <p>If you exercise your right to erasure (delete your account), we remove your personal data from our systems as described in sections 6, 7 and 7a. Your display name is <strong>anonymized</strong> in existing audit-log entries at deletion; your UID remains in those entries until each is auto-deleted at the end of its 90-day window. In rare cases, a narrow processing window during deletion may leave residual entries that still carry your display name; these are auto-deleted at the end of their own 90-day windows. We cannot remove individual entries on request.</p>
 
             <h3>Right to object</h3>
             <p>You can object to this processing by emailing <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a> and citing the specific audit-log entries or timeframe. Because this processing serves fraud-prevention and dispute-resolution interests that may override an individual objection, we cannot guarantee immediate deletion within the 90-day window; we will, however, review each request on its merits. Regardless of the outcome, every entry is auto-deleted once its 90 days elapse.</p>
@@ -369,13 +375,27 @@
             <p>Under GDPR, you have the following rights:</p>
             
             <h3>Right to Access</h3>
-            <p>Request a copy of your personal data we hold</p>
+            <p>Request a copy of your personal data we hold — we provide it within one month. In the app, go to <strong>Settings → Account Center → Request Personal Data</strong>. The export includes, among other things:</p>
+            <ul>
+                <li>Your profile and profile pictures</li>
+                <li>Clubs you belong to, and placeholder clubs you created for opponents not yet on Sportiverse</li>
+                <li>Matches you played in, match events involving you, and your statistics</li>
+                <li>Feed events about you</li>
+                <li>Club board posts, poll votes, comments and likes you created</li>
+                <li>Direct messages you sent, training sessions you created or were invited to, and your messages in their chats</li>
+                <li>Leagues you created, clubs, leagues and players you follow, and your club membership requests</li>
+                <li>People you have blocked, and whether you subscribe to the training calendar feed</li>
+                <li>Notifications you received (kept for 30 days) and items delivered to your personal feed (kept for 30 days)</li>
+                <li>Administrative audit-log entries about your account, with other members' identities withheld (see section 4b)</li>
+                <li>Live Activity update tokens for your devices, if you use them (kept for up to 13 hours)</li>
+            </ul>
+            <p>The export also tells you which categories were collected in full, and the storage period of each category that is automatically deleted.</p>
             
             <h3>Right to Rectification</h3>
             <p>Correct inaccurate or incomplete personal data</p>
             
             <h3>Right to Erasure ("Right to be Forgotten")</h3>
-            <p>Request deletion of your personal data (with 30-day grace period). Note: administrative audit logs containing your UID and the display name recorded at the time of each action remain for up to 90 days from the original action and are then auto-deleted; we cannot remove individual entries on request (see section 4b).</p>
+            <p>Request deletion of your personal data (with 30-day grace period). Some things you shared with others stay visible to them after deletion, without your profile attached — see section 7a. Note: administrative audit logs containing your UID remain for up to 90 days from the original action and are then auto-deleted; your display name is anonymized in them at deletion, though a narrow processing window may leave residual entries carrying it for up to 90 days (see section 4b). We cannot remove individual entries on request.</p>
             
             <h3>Right to Restrict Processing</h3>
             <p>Limit how we use your personal data</p>
@@ -390,7 +410,7 @@
             <p>Withdraw consent for analytics at any time in Settings</p>
             
             <p style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                <strong>To exercise these rights:</strong> Go to Settings → Privacy in the app or contact us at privacy@sportiverse.no
+                <strong>To exercise these rights:</strong> Go to Settings → Account Center in the app or contact us at privacy@sportiverse.no
             </p>
         </div>
         
@@ -399,11 +419,29 @@
             <p>We retain your data for different periods based on the type:</p>
             <ul>
                 <li><strong>Account Data:</strong> Until account deletion + 30-day recovery period</li>
-                <li><strong>Match Statistics:</strong> Indefinitely for historical records (anonymized after account deletion)</li>
+                <li><strong>Match Statistics:</strong> Indefinitely for historical records. At account deletion your account is removed from match lineups and your portrait is deleted; your player name stays in the match history, and match events and feed events may still carry your account identifier, which no longer leads to a profile (see section 7a)</li>
                 <li><strong>Analytics Data:</strong> 2 years</li>
                 <li><strong>Logs and Security Data:</strong> 90 days</li>
-                <li><strong>Administrative Audit Logs:</strong> UID, action metadata, and the display names of the people directly involved (captured at the time of each action) — 90 days from the action, auto-deleted by Firestore TTL. Retained through account deletion until each entry's window elapses (see section 4b).</li>
+                <li><strong>Administrative Audit Logs:</strong> UID, action metadata, and the display names of the people directly involved (captured at the time of each action) — 90 days from the action, auto-deleted by Firestore TTL. Retained through account deletion until each entry's window elapses; your display name is anonymized in them at deletion (see section 4b).</li>
+                <li><strong>Notifications:</strong> 30 days from delivery, auto-deleted by Firestore TTL. The expiry date is set by our servers and cannot be extended from the app.</li>
+                <li><strong>Personal Feed Items:</strong> the copies of activity delivered to your personal feed — 30 days from delivery, auto-deleted by Firestore TTL.</li>
+                <li><strong>Live Activity Update Tokens:</strong> up to 13 hours from the last update, auto-deleted by Firestore TTL.</li>
             </ul>
+            <p>Automatic deletion runs on a schedule, so a record may remain for a short time — usually less than a day — after its deletion date. Deleted data may also persist for a limited additional period in backups that are not accessible to users.</p>
+        </div>
+
+        <div class="section" id="section-7a">
+            <h2>7a. What Stays Visible to Others After You Delete Your Account</h2>
+            <p>Deleting your account removes your profile and personal data. Some things you shared with other people are part of their clubs, matches and conversations, and stay visible to them without your profile attached, although your account identifier may remain on that content. This list gives the main examples; it is not exhaustive.</p>
+            <ul>
+                <li><strong>Club board posts and comments</strong> you wrote, including attached photos and files, stay on the board for that club's members, shown as "Deleted user". While you are still a member you can delete them yourself; after your account is deleted, only a club admin can remove them.</li>
+                <li><strong>Comments on feed events</strong> stay, with your name replaced by "Deleted User".</li>
+                <li><strong>Your name in match history</strong> — match lineups and feed events about matches you played in keep the player name, so results and match events stay intact. Your account is removed from match lineups and your portrait is deleted; match events and feed events may still carry your account identifier, which no longer leads to a profile.</li>
+                <li><strong>Direct messages</strong> you sent stay in the recipients' conversations, with the link to your account removed.</li>
+                <li><strong>Notifications other members already received</strong> about you — for example a fan or membership request, or a new club board post — may still show your name, account identifier, a link to your profile photo (which stops loading once your account is deleted) or a short preview of your post. We do not separately search every other member's notifications at deletion, because each copy is automatically deleted within 30 days of delivery (section 7).</li>
+                <li><strong>Administrative audit logs</strong>, as described in section 4b.</li>
+            </ul>
+            <p>If you want something specific removed, email <a href="mailto:privacy@sportiverse.no">privacy@sportiverse.no</a>.</p>
         </div>
         
         <div class="section">
