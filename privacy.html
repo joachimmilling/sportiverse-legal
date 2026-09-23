@@ -331,7 +331,7 @@
             <h3>Legal basis</h3>
             <p>The processing relies on GDPR Article 6(1)(f) — legitimate interests pursued by Sportiverse (fraud prevention, dispute resolution, and platform integrity). We have balanced this against your rights and freedoms:</p>
             <ul>
-                <li><strong>Necessity:</strong> the captured display names are needed so that an entry stays readable for the remaining party in a dispute — for example, a removed member contesting the action after the admin who removed them has deleted their account, or after either party has changed their name; without them, the most relevant rows would render as "unknown user." The deleting user's own name is anonymized at deletion.</li>
+                <li><strong>Necessity:</strong> the captured display names are needed so that an entry stays readable for the remaining party in a dispute — for example, after either party has changed their name, or after one of them has deleted their account; without them, the most relevant rows would render as "unknown user." The deleting user's own name is anonymized at deletion.</li>
                 <li><strong>Data minimization:</strong> the log is limited to UIDs, action metadata, and (where applicable) the display names of the acting user and the affected user. No emails, profile content, free-form notes, or club-settings values are captured. Club-settings edits record only the names of fields that changed, not their contents.</li>
                 <li><strong>Live-name preference:</strong> while a user's account exists, the audit-log viewer shows that user's <em>current</em> display name from their live profile. The captured name is read only as a fallback when the original user record is no longer available.</li>
                 <li><strong>Short retention:</strong> 90 days from the action, enforced by a Firestore time-to-live policy.</li>
@@ -417,7 +417,7 @@
             <p>We retain your data for different periods based on the type:</p>
             <ul>
                 <li><strong>Account Data:</strong> Until account deletion + 30-day recovery period</li>
-                <li><strong>Match Statistics:</strong> Indefinitely for historical records. At account deletion the link to your account and your portrait are removed; your player name stays in the match history (see section 7a)</li>
+                <li><strong>Match Statistics:</strong> Indefinitely for historical records. At account deletion your account is removed from match lineups and your portrait is deleted; your player name stays in the match history, and match events and feed events may still carry your account identifier, which no longer leads to a profile (see section 7a)</li>
                 <li><strong>Analytics Data:</strong> 2 years</li>
                 <li><strong>Logs and Security Data:</strong> 90 days</li>
                 <li><strong>Administrative Audit Logs:</strong> UID, action metadata, and the display names of the people directly involved (captured at the time of each action) — 90 days from the action, auto-deleted by Firestore TTL. Retained through account deletion until each entry's window elapses; your display name is anonymized in them at deletion (see section 4b).</li>
@@ -430,11 +430,11 @@
 
         <div class="section" id="section-7a">
             <h2>7a. What Stays Visible to Others After You Delete Your Account</h2>
-            <p>Deleting your account removes your profile and personal data. Some things you shared with other people are part of their clubs, matches and conversations, and stay visible to them without your profile attached. This list gives the main examples; it is not exhaustive.</p>
+            <p>Deleting your account removes your profile and personal data. Some things you shared with other people are part of their clubs, matches and conversations, and stay visible to them without your profile attached, although your account identifier may remain on that content. This list gives the main examples; it is not exhaustive.</p>
             <ul>
                 <li><strong>Club board posts and comments</strong> you wrote, including attached photos and files, stay on the board for that club's members, shown as "Deleted user". While you are still a member you can delete them yourself; after your account is deleted, only a club admin can remove them.</li>
                 <li><strong>Comments on feed events</strong> stay, with your name replaced by "Deleted User".</li>
-                <li><strong>Your name in match history</strong> — match lineups and feed events about matches you played in keep the player name, so results and match events stay intact. The link to your account and your portrait are removed.</li>
+                <li><strong>Your name in match history</strong> — match lineups and feed events about matches you played in keep the player name, so results and match events stay intact. Your account is removed from match lineups and your portrait is deleted; match events and feed events may still carry your account identifier, which no longer leads to a profile.</li>
                 <li><strong>Direct messages</strong> you sent stay in the recipients' conversations, with the link to your account removed.</li>
                 <li><strong>Notifications other members already received</strong> about you — for example a fan or membership request, or a new club board post — may still show your name, account identifier, profile photo or a short preview of your post. We do not separately search every other member's notifications at deletion, because each copy is automatically deleted within 30 days of delivery (section 7).</li>
                 <li><strong>Administrative audit logs</strong>, as described in section 4b.</li>

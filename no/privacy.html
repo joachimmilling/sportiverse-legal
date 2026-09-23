@@ -314,7 +314,7 @@
             <h3>Rettslig grunnlag</h3>
             <p>Behandlingen bygger på GDPR artikkel 6 nr. 1 bokstav f — berettigede interesser som forfølges av Sportiverse (svindelforebygging, tvisteløsning og plattformintegritet). Vi har veid dette opp mot dine rettigheter og friheter:</p>
             <ul>
-                <li><strong>Nødvendighet:</strong> de registrerte visningsnavnene er nødvendige for at en oppføring skal forbli lesbar for den gjenværende parten i en tvist — for eksempel et fjernet medlem som bestrider handlingen etter at administratoren som fjernet vedkommende har slettet kontoen sin, eller etter at en av partene har endret navn; uten dem ville de mest relevante radene vises som "ukjent bruker". Den slettende brukerens eget navn anonymiseres ved slettingen.</li>
+                <li><strong>Nødvendighet:</strong> de registrerte visningsnavnene er nødvendige for at en oppføring skal forbli lesbar for den gjenværende parten i en tvist — for eksempel etter at en av partene har endret navn, eller etter at en av dem har slettet kontoen sin; uten dem ville de mest relevante radene vises som "ukjent bruker". Den slettende brukerens eget navn anonymiseres ved slettingen.</li>
                 <li><strong>Dataminimering:</strong> loggen er begrenset til UID-er, metadata om handlingen og (der det er aktuelt) visningsnavnene til den handlende brukeren og den berørte brukeren. Ingen e-postadresser, profilinnhold, fritekstnotater eller verdier fra klubbinnstillinger registreres. Endringer av klubbinnstillinger registrerer kun navnene på feltene som ble endret, ikke innholdet i dem.</li>
                 <li><strong>Foretrukket bruk av gjeldende navn:</strong> så lenge en brukers konto eksisterer, viser revisjonslogg-visningen den brukerens <em>gjeldende</em> visningsnavn fra den aktive profilen. Det registrerte navnet leses kun som en reserveløsning når den opprinnelige brukeroppføringen ikke lenger er tilgjengelig.</li>
                 <li><strong>Kort oppbevaringstid:</strong> 90 dager fra handlingen, håndhevet av en time-to-live-policy i Firestore.</li>
@@ -400,7 +400,7 @@
             <p>Vi oppbevarer dataene dine i ulike perioder avhengig av type:</p>
             <ul>
                 <li><strong>Kontodata:</strong> Til kontoen slettes + 30 dagers gjenopprettingsperiode</li>
-                <li><strong>Kampstatistikk:</strong> På ubestemt tid for historiske registre. Ved kontosletting fjernes koblingen til kontoen din og portrettet ditt; spillernavnet ditt blir værende i kamphistorikken (se punkt 7a)</li>
+                <li><strong>Kampstatistikk:</strong> På ubestemt tid for historiske registre. Ved kontosletting kontoen din fjernes fra kampoppstillinger og portrettet ditt slettes; spillernavnet ditt blir værende i kamphistorikken, og kamphendelser og feed-hendelser kan fortsatt inneholde konto-ID-en din, som ikke lenger fører til en profil (se punkt 7a)</li>
                 <li><strong>Analysedata:</strong> 2 år</li>
                 <li><strong>Logger og sikkerhetsdata:</strong> 90 dager</li>
                 <li><strong>Administrative revisjonslogger:</strong> UID, metadata om handlingen og visningsnavnene til de direkte involverte personene (registrert på tidspunktet for hver handling) — 90 dager fra handlingen, slettes automatisk av Firestore TTL. Beholdes gjennom kontosletting til hver oppførings periode er utløpt; visningsnavnet ditt anonymiseres i dem ved slettingen (se punkt 4b).</li>
@@ -413,11 +413,11 @@
 
         <div class="section" id="section-7a">
             <h2>7a. Hva som forblir synlig for andre etter at du har slettet kontoen din</h2>
-            <p>Når du sletter kontoen din, fjernes profilen din og personopplysningene dine. Noe av det du har delt med andre, er en del av deres klubber, kamper og samtaler, og forblir synlig for dem uten at profilen din er knyttet til det. Listen gir de viktigste eksemplene; den er ikke uttømmende.</p>
+            <p>Når du sletter kontoen din, fjernes profilen din og personopplysningene dine. Noe av det du har delt med andre, er en del av deres klubber, kamper og samtaler, og forblir synlig for dem uten at profilen din er knyttet til det, selv om konto-ID-en din kan bli værende på dette innholdet. Listen gir de viktigste eksemplene; den er ikke uttømmende.</p>
             <ul>
                 <li><strong>Innlegg og kommentarer på klubbtavlen</strong> du har skrevet, inkludert vedlagte bilder og filer, blir liggende for klubbens medlemmer, vist som "Slettet bruker". Så lenge du er medlem, kan du slette dem selv; etter at kontoen er slettet, kan bare en klubbadministrator fjerne dem.</li>
                 <li><strong>Kommentarer på feed-hendelser</strong> blir liggende, med navnet ditt erstattet av "Deleted User".</li>
-                <li><strong>Navnet ditt i kamphistorikken</strong> — kampoppstillinger og feed-hendelser om kamper du har spilt, beholder spillernavnet, slik at resultater og kamphendelser forblir intakte. Koblingen til kontoen din og portrettet ditt fjernes.</li>
+                <li><strong>Navnet ditt i kamphistorikken</strong> — kampoppstillinger og feed-hendelser om kamper du har spilt, beholder spillernavnet, slik at resultater og kamphendelser forblir intakte. Kontoen din fjernes fra kampoppstillinger og portrettet ditt slettes; kamphendelser og feed-hendelser kan fortsatt inneholde konto-ID-en din, som ikke lenger fører til en profil.</li>
                 <li><strong>Direktemeldinger</strong> du har sendt, blir liggende i mottakernes samtaler, med koblingen til kontoen din fjernet.</li>
                 <li><strong>Varsler andre medlemmer allerede har mottatt</strong> om deg — for eksempel en fan- eller medlemsforespørsel, eller et nytt innlegg på klubbtavlen — kan fortsatt vise navnet ditt, konto-ID-en din, profilbildet ditt eller et kort utdrag av innlegget ditt. Vi søker ikke gjennom alle andre medlemmers varsler ved sletting, fordi hver kopi slettes automatisk innen 30 dager etter levering (punkt 7).</li>
                 <li><strong>Administrative revisjonslogger</strong>, som beskrevet i punkt 4b.</li>
