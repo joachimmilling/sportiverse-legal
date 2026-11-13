@@ -27,15 +27,12 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta name="view-transition" content="same-origin">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oxanium:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #000000;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Roboto, Inter, system-ui, sans-serif;
+            background: #060B1E;
             color: #ffffff;
             min-height: 100vh;
             line-height: 1.8;
@@ -44,19 +41,19 @@
 
         nav {
             position: fixed; width: 100%; top: 0; z-index: 1000;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(6, 11, 30, 0.9);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             padding: 20px 0;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             border-bottom: 1px solid transparent;
         }
-        nav.scrolled { padding: 14px 0; background: rgba(0, 0, 0, 0.97); border-bottom-color: rgba(255, 255, 255, 0.07); }
+        nav.scrolled { padding: 14px 0; background: rgba(6, 11, 30, 0.97); border-bottom-color: rgba(255, 255, 255, 0.07); }
 
         .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; align-items: center; }
 
         .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .logo img { width: 32px; height: 32px; }
-        .logo-text { font-family: 'Oxanium', sans-serif; font-size: 22px; font-weight: 600; color: #ffffff; letter-spacing: -0.3px; }
+        .logo-text { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Roboto, Inter, system-ui, sans-serif; font-size: 22px; font-weight: 600; color: #ffffff; letter-spacing: -0.3px; }
 
         .back-link { color: rgba(255, 255, 255, 0.55); text-decoration: none; transition: color 0.3s; font-weight: 400; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; }
         .back-link:hover { color: #ffffff; }
@@ -64,18 +61,18 @@
         .hero { padding: 150px 32px 60px; position: relative; }
         .container { max-width: 900px; margin: 0 auto; }
 
-        h1 { font-family: 'Oxanium', sans-serif; font-size: clamp(36px, 5vw, 52px); font-weight: 700; margin-bottom: 14px; color: #ffffff; line-height: 1.1; letter-spacing: -0.03em; }
-        .effective-date { color: rgba(255, 255, 255, 0.45); font-size: 14px; font-weight: 300; }
+        h1 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Roboto, Inter, system-ui, sans-serif; font-size: clamp(36px, 5vw, 52px); font-weight: 700; margin-bottom: 14px; color: #ffffff; line-height: 1.1; letter-spacing: -0.03em; }
+        .effective-date { color: rgba(255, 255, 255, 0.45); font-size: 14px; font-weight: 400; }
 
         .content { padding: 60px 32px 80px; max-width: 900px; margin: 0 auto; }
         .section { margin-bottom: 48px; }
 
-        h2 { font-family: 'Oxanium', sans-serif; color: #ffffff; font-size: 22px; font-weight: 600; margin-bottom: 18px; letter-spacing: -0.01em; }
-        h3 { font-family: 'Oxanium', sans-serif; color: rgba(255, 255, 255, 0.85); font-size: 17px; font-weight: 600; margin-top: 28px; margin-bottom: 12px; }
+        h2 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Roboto, Inter, system-ui, sans-serif; color: #ffffff; font-size: 22px; font-weight: 600; margin-bottom: 18px; letter-spacing: -0.01em; }
+        h3 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Roboto, Inter, system-ui, sans-serif; color: rgba(255, 255, 255, 0.85); font-size: 17px; font-weight: 600; margin-top: 28px; margin-bottom: 12px; }
 
-        p { color: rgba(255, 255, 255, 0.6); margin-bottom: 14px; font-size: 15px; line-height: 1.75; font-weight: 300; }
+        p { color: rgba(255, 255, 255, 0.6); margin-bottom: 14px; font-size: 15px; line-height: 1.75; font-weight: 400; }
         ul { margin: 16px 0 16px 20px; }
-        li { color: rgba(255, 255, 255, 0.6); margin-bottom: 8px; font-size: 15px; font-weight: 300; line-height: 1.65; }
+        li { color: rgba(255, 255, 255, 0.6); margin-bottom: 8px; font-size: 15px; font-weight: 400; line-height: 1.65; }
         li::marker { color: rgba(255, 255, 255, 0.2); }
         li strong { color: rgba(255, 255, 255, 0.85); font-weight: 500; }
 
@@ -102,7 +99,7 @@
         table { width: 100%; margin: 24px 0; border-collapse: collapse; overflow: hidden; border-radius: 8px; background: rgba(255, 255, 255, 0.02); }
         th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
         th { background: rgba(255, 255, 255, 0.04); color: rgba(255, 255, 255, 0.85); font-weight: 500; font-size: 14px; }
-        td { color: rgba(255, 255, 255, 0.6); font-size: 14px; font-weight: 300; }
+        td { color: rgba(255, 255, 255, 0.6); font-size: 14px; font-weight: 400; }
         tr:last-child td { border-bottom: none; }
 
         .contact-info {
@@ -117,11 +114,11 @@
         .contact-info p { color: rgba(255, 255, 255, 0.6); font-size: 15px; }
         .contact-info strong { color: rgba(255, 255, 255, 0.85); }
 
-        a { color: #087F8C; text-decoration: none; transition: color 0.3s; }
-        a:hover { color: #0A9DAD; }
+        a { color: #13C2B3; text-decoration: none; transition: color 0.3s; }
+        a:hover { color: #13C2B3; }
 
-        footer { background: #000000; padding: 48px 32px 24px; border-top: 1px solid rgba(255, 255, 255, 0.07); text-align: center; }
-        .footer-content { max-width: 900px; margin: 0 auto; color: rgba(255, 255, 255, 0.3); font-size: 13px; font-weight: 300; }
+        footer { background: #060B1E; padding: 48px 32px 24px; border-top: 1px solid rgba(255, 255, 255, 0.07); text-align: center; }
+        .footer-content { max-width: 900px; margin: 0 auto; color: rgba(255, 255, 255, 0.3); font-size: 13px; font-weight: 400; }
 
         @media (max-width: 768px) {
             .hero { padding: 120px 20px 40px; }
@@ -130,6 +127,7 @@
             .contact-info { padding: 28px 20px; }
             th, td { padding: 10px 8px; font-size: 13px; }
         }
+        .logo img.logo-lockup { width: auto; height: 24px; }
     </style>
 </head>
 <body>
@@ -137,8 +135,7 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="/no/" class="logo">
-                <img src="/assets/icon.png" alt="Sportiverse" />
-                <span class="logo-text">sportiverse</span>
+                <img class="logo-lockup" src="/assets/site/sportiverse-lockup-white.svg" alt="Sportiverse" width="153" height="24" />
             </a>
             <div style="display: flex; gap: 24px; align-items: center;"><a href="/privacy.html" class="back-link" hreflang="en" onclick="try{localStorage.setItem('lang','en')}catch(e){}">English</a><a href="/no/" class="back-link">Tilbake til forsiden</a></div>
         </div>
